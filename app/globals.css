@@ -1,0 +1,412 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ───────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #EAECE4;
+    color: #33181C;
+    @apply font-sans;
+  }
+
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-plum;
+  }
+
+  ::selection {
+    background-color: theme('colors.plum.DEFAULT' / 20%);
+    color: theme('colors.plum.dark');
+  }
+
+  .skip-nav {
+    @apply absolute -top-full left-4 z-[9999] px-4 py-2 bg-plum text-ivory text-sm font-light focus:top-4 transition-all duration-200 rounded;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .heading-display {
+    font-family: var(--font-juana), var(--font-catchye), "Cormorant Garamond", serif;
+    letter-spacing: 0.03em;
+  }
+}
+
+/* ── Components ──────────────────────────────────────────────────────────── */
+@layer components {
+
+  /* ── Ghost buttons ──────────────────────────────────────────────── */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-8 py-3 border border-charcoal/20 text-charcoal font-light text-sm tracking-[0.2em] uppercase transition-all duration-400 hover:bg-plum hover:border-plum hover:text-ivory focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum;
+  }
+
+  .btn-ghost-white {
+    @apply inline-flex items-center justify-center px-8 py-3 border border-ivory/50 text-ivory font-light text-sm tracking-[0.2em] uppercase transition-all duration-400 hover:bg-ivory hover:border-ivory hover:text-plum focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ivory;
+  }
+
+  .btn-ghost-secondary {
+    @apply inline-flex items-center justify-center px-8 py-3 border border-ivory/20 text-ivory/70 font-light text-sm tracking-[0.2em] uppercase transition-all duration-400 hover:border-ivory/50 hover:text-ivory hover:bg-ivory/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ivory;
+  }
+
+  .btn-plum-solid {
+    @apply inline-flex items-center justify-center px-8 py-3 bg-plum text-ivory border border-plum font-light text-sm tracking-[0.2em] uppercase transition-all duration-400 hover:bg-plum-dark hover:border-plum-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum;
+  }
+
+  /* ── Surfaces ───────────────────────────────────────────────────── */
+  .glass-card {
+    background: theme('colors.ivory' / 70%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid theme('colors.charcoal' / 5%);
+    @apply rounded-2xl shadow-soft;
+  }
+
+  .glass-card-light {
+    background: theme('colors.ivory' / 50%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid theme('colors.charcoal' / 5%);
+    @apply rounded-2xl;
+  }
+
+  .glass-nav {
+    background: theme('colors.ivory' / 92%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(148, 75, 125, 0.12);
+  }
+
+  .heading-display {
+    @apply font-serif font-thin tracking-tight text-charcoal leading-tight;
+  }
+
+  .eyebrow {
+    @apply text-xs font-sans font-light tracking-[0.25em] uppercase text-taupe;
+  }
+
+  /* ── Page hero ───────────────────────────────────────────────────── */
+  .page-hero {
+    @apply relative pt-36 pb-24 px-6 overflow-hidden;
+    background: #33181C;
+  }
+
+  .page-hero__content {
+    @apply relative z-10 max-w-[1440px] mx-auto;
+    color: #EAECE4;
+  }
+
+  .page-hero__eyebrow {
+    @apply font-sans font-light text-[9px] tracking-[0.3em] uppercase mb-5;
+    color: rgba(234, 236, 228, 0.6);
+  }
+
+  .page-hero__title {
+    @apply font-serif font-light text-[3rem] md:text-[4.5rem] lg:text-[6rem] tracking-[0.05em] leading-[0.9] max-w-4xl mt-3;
+    font-family: var(--font-juana), "Cormorant Garamond", serif;
+    color: #EAECE4;
+  }
+
+  .page-hero__descriptor {
+    @apply font-sans font-light text-base md:text-lg max-w-2xl mt-6 leading-loose;
+    color: rgba(234, 236, 228, 0.75);
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     Contact Page — plum theme (cp-* classes)
+  ══════════════════════════════════════════════════════════════════ */
+
+  /* ── Full-screen section wrapping strip + form ─────────────────── */
+  .cp-screen {
+    @apply flex flex-col min-h-screen;
+  }
+
+  /* ── Compact plum strip (hero replacement) ─────────────────────── */
+  .cp-strip {
+    @apply px-4 sm:px-6 pt-24 pb-6 md:pt-28 md:pb-8;
+    background: linear-gradient(120deg, theme('colors.plum.deep') 0%, theme('colors.plum.dark') 60%, theme('colors.plum.DEFAULT') 100%);
+  }
+
+  .cp-strip__inner {
+    @apply max-w-[1440px] mx-auto flex items-baseline gap-4 sm:gap-6;
+  }
+
+  .cp-strip__inner--col {
+    @apply flex-col items-start gap-1;
+  }
+
+  .cp-strip__eyebrow {
+    @apply font-sans font-light text-[8px] sm:text-[9px] tracking-[0.3em] uppercase text-plum-bright shrink-0;
+  }
+
+  .cp-strip__title {
+    @apply font-serif font-light text-2xl md:text-3xl text-ivory tracking-[0.04em] leading-tight;
+    font-family: var(--font-catchye);
+  }
+
+  /* ── Form card — fills remaining viewport ──────────────────────── */
+  .cp-form-card {
+    @apply flex-1 bg-ivory border-t-0 border border-plum/10 px-4 py-6 md:px-12 md:py-10 flex flex-col gap-6 md:gap-8;
+  }
+
+  .cp-form-card__header {
+    @apply flex flex-col gap-1 md:gap-2;
+  }
+
+  .cp-form-card__eyebrow {
+    @apply font-sans font-light text-[9px] sm:text-[10px] tracking-[0.28em] uppercase text-plum;
+  }
+
+  .cp-form-card__title {
+    @apply font-serif font-light text-xl sm:text-2xl md:text-3xl text-plum-deep tracking-tight mt-1;
+  }
+
+  .cp-form-card__subtitle {
+    @apply font-sans font-light text-xs sm:text-sm text-taupe;
+  }
+
+  /* ── Form layout ───────────────────────────────────────────────── */
+  .cp-form {
+    @apply flex flex-col gap-6;
+  }
+
+  .cp-form__footer {
+    @apply flex flex-col gap-4;
+  }
+
+  .cp-form__cols {
+    @apply grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-6 md:gap-10;
+  }
+
+  .cp-form__col {
+    @apply flex flex-col gap-4 sm:gap-6;
+  }
+
+  .cp-form__col-label {
+    @apply font-sans font-light text-[9px] sm:text-[10px] tracking-[0.25em] uppercase text-plum mb-1 border-b border-plum/15 pb-2;
+  }
+
+  .cp-form__col-divider {
+    @apply hidden md:block bg-plum/10 w-px self-stretch;
+  }
+
+  /* ── Field primitives ──────────────────────────────────────────── */
+  .cp-field {
+    @apply flex flex-col gap-1.5;
+  }
+
+  .cp-field--grow {
+    @apply flex-1;
+  }
+
+  .cp-field--checkbox {
+    @apply flex-row items-start gap-2.5 sm:gap-3;
+  }
+
+  .cp-field__label {
+    @apply font-sans font-medium text-[9px] sm:text-[10px] tracking-[0.2em] uppercase text-plum/70;
+  }
+
+  .cp-field__label span {
+    @apply text-plum-bright ml-0.5;
+  }
+
+  .cp-field__input {
+    @apply w-full px-3 py-2.5 sm:px-4 sm:py-3 font-sans font-light text-[13px] sm:text-sm text-charcoal placeholder:text-taupe-light bg-transparent border border-plum/20 outline-none focus:border-plum focus:ring-1 focus:ring-plum/25 transition-all duration-300;
+  }
+
+  .cp-field__select {
+    @apply cp-field__input cursor-pointer;
+    appearance: auto;
+  }
+
+  .cp-field__textarea {
+    @apply cp-field__input resize-none leading-relaxed;
+  }
+
+  .cp-field__checkbox {
+    @apply mt-0.5 w-4 h-4 shrink-0 cursor-pointer accent-plum;
+  }
+
+  .cp-field__checkbox-label {
+    @apply font-sans font-light text-xs text-taupe leading-relaxed;
+  }
+
+  .cp-field__inline-link {
+    @apply underline text-plum hover:text-plum-dark transition-colors;
+  }
+
+  /* ── Submit button ─────────────────────────────────────────────── */
+  .cp-submit {
+    @apply w-full flex items-center justify-between px-10 py-5 mt-2 border border-plum bg-plum-deep text-ivory font-sans font-light text-sm tracking-[0.18em] uppercase transition-all duration-400 hover:bg-plum hover:border-plum focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum;
+  }
+
+  .cp-submit__text {
+    @apply flex-1 text-center;
+  }
+
+  .cp-submit__arrow {
+    @apply text-plum-bright text-lg;
+  }
+
+  /* ── Reach us section ──────────────────────────────────────────── */
+  .cp-reach {
+    @apply max-w-[1440px] mx-auto w-full px-4 sm:px-6 md:px-12 py-12 md:py-16 flex flex-col gap-6 md:gap-10;
+  }
+
+  .cp-reach__header {
+    @apply flex flex-col gap-1 md:gap-2;
+  }
+
+  .cp-reach__title {
+    @apply font-serif font-light text-xl sm:text-2xl md:text-3xl text-plum-deep tracking-tight mt-1;
+  }
+
+  .cp-reach__grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 border border-plum/15;
+  }
+
+  .cp-reach__card {
+    @apply flex flex-col gap-3 p-7 border border-plum/10 bg-ivory transition-colors duration-300 hover:bg-plum-pale;
+  }
+
+  .cp-reach__card--accent {
+    @apply bg-sandstone;
+  }
+
+  .cp-reach__centres {
+    @apply sm:col-span-2 lg:col-span-1;
+  }
+
+  .cp-reach__card-label {
+    @apply font-sans font-medium text-[10px] tracking-[0.22em] uppercase text-plum;
+  }
+
+  .cp-reach__card-value {
+    @apply font-sans font-light text-sm text-charcoal leading-relaxed;
+  }
+
+  .cp-reach__card-value a {
+    @apply text-plum hover:text-plum-dark transition-colors;
+  }
+
+  .cp-reach__card-value--muted {
+    @apply text-taupe;
+  }
+
+  .cp-reach__centres-list {
+    @apply flex flex-col gap-3;
+  }
+
+  .cp-reach__centre-item {
+    @apply flex flex-col gap-0.5;
+  }
+
+  .cp-reach__centre-name {
+    @apply font-sans font-medium text-[10px] tracking-[0.18em] uppercase text-taupe;
+  }
+
+  .cp-reach__centre-phone {
+    @apply font-sans font-light text-sm text-plum hover:text-plum-dark transition-colors;
+  }
+
+  /* ── Brand story (About) ─────────────────────────────────────────── */
+  .brand-story {
+    @apply py-24 px-6 bg-sandstone;
+  }
+
+  .brand-story__body {
+    @apply max-w-3xl mx-auto mt-12 flex flex-col gap-6;
+  }
+
+  .brand-story__paragraph {
+    @apply font-sans font-light text-base md:text-lg text-charcoal/80 leading-loose;
+  }
+
+  .brand-story__figure {
+    @apply max-w-2xl mx-auto mt-16 text-center;
+  }
+
+  .brand-story__image-placeholder {
+    @apply w-full h-72 md:h-96 flex items-center justify-center bg-ivory border border-charcoal/5;
+  }
+
+  .brand-story__caption {
+    @apply mt-4 font-sans font-medium text-xs text-taupe tracking-[0.15em] uppercase;
+  }
+
+  /* ── Values grid (About) ─────────────────────────────────────────── */
+  .values-section {
+    @apply py-24 px-6 bg-ivory;
+  }
+
+  .values-section__list {
+    @apply max-w-[1440px] mx-auto mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5;
+  }
+
+  .values-section__item {
+    @apply list-none;
+  }
+
+  .values-section__card {
+    @apply bg-sandstone p-8 h-full flex flex-col gap-3 transition-all duration-500 hover:shadow-soft hover:border-plum/10;
+  }
+
+  .values-section__card-title {
+    @apply font-serif font-light text-xl text-charcoal;
+  }
+
+  .values-section__card-body {
+    @apply font-sans font-light text-sm text-taupe leading-relaxed;
+  }
+
+  /* ── Methodology (Services) ──────────────────────────────────────── */
+  .methodology {
+    @apply py-24 px-6 bg-ivory;
+  }
+
+  .methodology__steps {
+    @apply max-w-[1440px] mx-auto mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8;
+  }
+
+  .methodology__step {
+    @apply flex flex-col gap-4 relative;
+  }
+
+  .methodology__step-number {
+    @apply font-serif font-thin text-5xl leading-none text-plum/30;
+  }
+
+  .methodology__step-content {
+    @apply flex flex-col gap-2;
+  }
+
+  .methodology__step-title {
+    @apply font-serif font-light text-xl text-charcoal;
+  }
+
+  .methodology__step-body {
+    @apply font-sans font-light text-sm text-taupe leading-relaxed;
+  }
+}
+
+/* ── Utilities ───────────────────────────────────────────────────────────── */
+@layer utilities {
+  .scroll-x-drag {
+    cursor: grab;
+  }
+
+  .scroll-x-drag:active {
+    cursor: grabbing;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}

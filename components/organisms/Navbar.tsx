@@ -1,0 +1,134 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import NavLink from "@/components/molecules/NavLink";
+import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
+
+export default function Navbar() {
+    const currentPathname = usePathname();
+    const [mobileOpen, setMobileOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handler = () => setScrolled(window.scrollY > 30);
+        window.addEventListener("scroll", handler, { passive: true });
+        return () => window.removeEventListener("scroll", handler);
+    }, []);
+
+    const isLightPage = currentPathname === "/contact" || currentPathname === "/blogs" || currentPathname?.startsWith("/centres/");
+    const isNavDark = scrolled || isLightPage;
+
+    return (
+        <motion.header
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isNavDark
+                ? "glass-nav shadow-soft"
+                : "bg-transparent border-b border-transparent"
+                }`}
+            role="banner"
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] as [number, number, number, number], delay: 0.1 }}
+        >
+            <nav
+                className="flex items-center justify-between max-w-[1440px] mx-auto px-6 py-4"
+                aria-label="Main site navigation"
+            >
+                {/* Logo wordmark */}
+                <Link href="/" className="flex items-center gap-3 group" aria-label={`${SITE_NAME} — home`}>
+                    <Image
+                        src={isNavDark
+                            ? "/assets/Changampally Remedium_logo.png"
+                            : "/assets/Changampally Remedium_logo-light1.png"
+                        }
+                        alt={`${SITE_NAME} logo`}
+                        width={80}
+                        height={80}
+                        className="object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                        priority
+                    />
+
+                </Link>
+
+                {/* Desktop links */}
+                <ul className="hidden md:flex items-center gap-10" role="list">
+                    {NAV_LINKS.map((link) => (
+                        <li key={link.href}>
+                            <NavLink
+                                label={link.label}
+                                href={link.href}
+                                ariaLabel={link.ariaLabel}
+                                currentPathname={currentPathname}
+                                scrolled={isNavDark}
+                            />
+                        </li>
+                    ))}
+                </ul>
+
+                {/* Right side: Desktop CTA + Mobile Hamburger */}
+                <div className="flex items-center gap-4">
+                    {/* Desktop CTA */}
+                    <div className="hidden md:block">
+                        <Link href="/contact" className={`text-xs tracking-[0.2em] uppercase font-sans font-light px-6 py-2.5 border transition-all duration-400 ${isNavDark
+                            ? "border-charcoal/20 text-charcoal hover:bg-plum hover:border-plum hover:text-ivory"
+                            : "border-ivory/50 text-ivory hover:bg-ivory hover:text-plum"
+                            }`}>
+                            Book Consultation
+                        </Link>
+                    </div>
+
+                    {/* Mobile hamburger */}
+                    <button
+                        className="md:hidden flex flex-col gap-1.5 p-2"
+                        aria-label={mobileOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={mobileOpen}
+                        aria-controls="mobile-menu"
+                        type="button"
+                        onClick={() => setMobileOpen((v) => !v)}
+                    >
+                        <span className={`block w-6 h-px transition-all duration-300 ${isNavDark ? "bg-charcoal/60" : "bg-ivory/80"} ${mobileOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+                        <span className={`block w-6 h-px transition-all duration-300 ${isNavDark ? "bg-charcoal/60" : "bg-ivory/80"} ${mobileOpen ? "opacity-0" : ""}`} />
+                        <span className={`block w-6 h-px transition-all duration-300 ${isNavDark ? "bg-charcoal/60" : "bg-ivory/80"} ${mobileOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+                    </button>
+                </div>
+            </nav>
+
+            {/* Mobile drawer */}
+            <AnimatePresence>
+                {mobileOpen && (
+                    <motion.div
+                        id="mobile-menu"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+                        className="md:hidden overflow-hidden border-t border-plum/10"
+                        style={{ background: "rgba(255,252,248,0.97)", backdropFilter: "blur(20px)" }}
+                    >
+                        <ul className="flex flex-col py-5 px-6 gap-5" role="list">
+                            {NAV_LINKS.map((link) => (
+                                <li key={link.href} onClick={() => setMobileOpen(false)}>
+                                    <NavLink
+                                        label={link.label}
+                                        href={link.href}
+                                        ariaLabel={link.ariaLabel}
+                                        currentPathname={currentPathname}
+                                        scrolled={true}
+                                    />
+                                </li>
+                            ))}
+                            <li className="pt-3 border-t border-plum/15">
+                                <Link href="/contact" className="btn-ghost w-full text-center text-xs" onClick={() => setMobileOpen(false)}>
+                                    Book Consultation
+                                </Link>
+                            </li>
+                        </ul>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </motion.header>
+    );
+}

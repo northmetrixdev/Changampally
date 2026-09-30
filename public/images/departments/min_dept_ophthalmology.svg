@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+    <defs>
+        <linearGradient id="bg-ophthalmology" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fdfbfb" />
+            <stop offset="100%" stop-color="#f6f4f5" />
+        </linearGradient>
+        <filter id="blur-ophthalmology" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="80" />
+        </filter>
+        <pattern id="grid-ophthalmology" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(148, 75, 125, 0.03)" stroke-width="1"/>
+        </pattern>
+    </defs>
+    
+    <!-- Base smooth background -->
+    <rect width="800" height="500" fill="url(#bg-ophthalmology)" />
+    
+    <!-- Very subtle grid overlay for a clinical/precision feel -->
+    <rect width="800" height="500" fill="url(#grid-ophthalmology)" />
+    
+    <!-- Soft abstract plum/blush blur 1 -->
+    <circle cx="317" cy="369" r="295" fill="hsl(319, 25%, 90%)" filter="url(#blur-ophthalmology)" opacity="0.7" />
+    
+    <!-- Soft abstract blur 2 -->
+    <circle cx="483" cy="363" r="227" fill="hsl(316, 30%, 93%)" filter="url(#blur-ophthalmology)" opacity="0.8" />
+    
+    <!-- Minimalist clinical accent line -->
+    <line x1="317" y1="369" x2="357" y2="369" stroke="rgba(148, 75, 125, 0.15)" stroke-width="1.5" />
+    <circle cx="317" cy="369" r="3" fill="rgba(148, 75, 125, 0.2)" />
+</svg>

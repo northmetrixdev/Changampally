@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+    <defs>
+        <linearGradient id="bg-orthopedics" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fdfbfb" />
+            <stop offset="100%" stop-color="#f6f4f5" />
+        </linearGradient>
+        <filter id="blur-orthopedics" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="80" />
+        </filter>
+        <pattern id="grid-orthopedics" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(148, 75, 125, 0.03)" stroke-width="1"/>
+        </pattern>
+    </defs>
+    
+    <!-- Base smooth background -->
+    <rect width="800" height="500" fill="url(#bg-orthopedics)" />
+    
+    <!-- Very subtle grid overlay for a clinical/precision feel -->
+    <rect width="800" height="500" fill="url(#grid-orthopedics)" />
+    
+    <!-- Soft abstract plum/blush blur 1 -->
+    <circle cx="304" cy="278" r="290" fill="hsl(318, 25%, 90%)" filter="url(#blur-orthopedics)" opacity="0.7" />
+    
+    <!-- Soft abstract blur 2 -->
+    <circle cx="496" cy="206" r="224" fill="hsl(317, 30%, 93%)" filter="url(#blur-orthopedics)" opacity="0.8" />
+    
+    <!-- Minimalist clinical accent line -->
+    <line x1="304" y1="278" x2="344" y2="278" stroke="rgba(148, 75, 125, 0.15)" stroke-width="1.5" />
+    <circle cx="304" cy="278" r="3" fill="rgba(148, 75, 125, 0.2)" />
+</svg>
