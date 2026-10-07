@@ -21,7 +21,7 @@ const MEDIA_MAP: Record<string, { video?: string; photos: string[] }> = {
         ],
     },
     remedium: {
-        video: "/videos/properties/remedium_fixed.mp4",
+        video: "/videos/properties/remedium.mp4",
         photos: [],
     },
     vaidyabhavan: {
@@ -56,6 +56,19 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [isPlaying, setIsPlaying] = useState(true);
     const [isMuted, setIsMuted] = useState(true);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            videoRef.current.defaultMuted = true;
+            videoRef.current.muted = true;
+            const playPromise = videoRef.current.play();
+            if (playPromise !== undefined) {
+                playPromise
+                    .then(() => setIsPlaying(true))
+                    .catch(() => setIsPlaying(false));
+            }
+        }
+    }, [media.video]);
 
     const togglePlay = () => {
         if (!videoRef.current) return;
@@ -109,10 +122,13 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
                             src={media.video}
                             autoPlay
                             loop
-                            muted={isMuted}
+                            muted
                             playsInline
+                            preload="auto"
                             className="w-full h-full object-cover opacity-100"
-                        />
+                        >
+                            <source src={media.video} type="video/mp4" />
+                        </video>
 
                         {/* Interactive Play/Pause & Sound Controls overlay */}
                         <div className="absolute bottom-4 right-4 md:bottom-6 md:right-8 flex items-center gap-2.5 z-20">
