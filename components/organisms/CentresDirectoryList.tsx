@@ -196,9 +196,25 @@ function CentreDirectoryCard({
                 className="w-full xl:w-[40%] flex flex-col justify-center h-auto md:h-[55vh] lg:h-[75vh] py-4 md:py-8"
             >
                 {/* Location at top right */}
-                <div className="flex flex-col gap-1 mb-6 md:mb-10 border-l-2 px-4 md:px-6 border-charcoal/20">
-                    <span className="font-sans font-bold text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-charcoal/40">Location</span>
-                    <span className="font-sans font-bold text-xs md:text-sm text-charcoal/80">{centre.location}</span>
+                <div className="flex items-center justify-between gap-4 mb-6 md:mb-10 border-l-2 px-4 md:px-6 border-charcoal/20">
+                    <div className="flex flex-col gap-1">
+                        <span className="font-sans font-bold text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-charcoal/40">Location</span>
+                        <span className="font-sans font-bold text-xs md:text-sm text-charcoal/80">{centre.location}</span>
+                    </div>
+                    {centre.mapUrl && (
+                        <a
+                            href={centre.mapUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center w-10 h-10 bg-plum text-ivory rounded-full hover:bg-plum-dark transition-all shadow-sm shrink-0 hover:scale-110"
+                            aria-label={`Open Google Maps location for ${centre.name}`}
+                            title={`Open Google Maps for ${centre.name}`}
+                        >
+                            <svg className="w-5 h-5 fill-current text-ivory" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                        </a>
+                    )}
                 </div>
 
                 {/* Specialisations (No card background, clean editorial text) */}

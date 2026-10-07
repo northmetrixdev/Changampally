@@ -58,10 +58,10 @@ const config: Config = {
 
             // ── Typography ──────────────────────────────────────────────────────
             fontFamily: {
-                sans: ["var(--font-sans)", "Manrope", "SF Pro Display", "system-ui", "sans-serif"],
-                serif: ["var(--font-juana)", "var(--font-catchye)", "Cormorant Garamond", "Cormorant", "Garamond", "serif"],
-                display: ["var(--font-juana)", "var(--font-catchye)", "Cormorant Garamond", "serif"],
-                juana: ["var(--font-juana)", "Cormorant Garamond", "serif"],
+                sans: ["'JuanaFont'", "var(--font-juana)", "Georgia", "serif"],
+                serif: ["'JuanaFont'", "var(--font-juana)", "Georgia", "serif"],
+                display: ["'JuanaFont'", "var(--font-juana)", "Georgia", "serif"],
+                juana: ["'JuanaFont'", "var(--font-juana)", "Georgia", "serif"],
             },
 
             // ── Font weights ────────────────────────────────────────────────────

@@ -76,6 +76,7 @@ export interface Centre {
   description: string;
   specialisations: string[];
   anchor: string;
+  mapUrl?: string;
 }
 
 // ---------------------------------------------------------------------------

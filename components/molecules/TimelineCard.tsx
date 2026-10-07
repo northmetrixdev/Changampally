@@ -91,11 +91,11 @@ export default function TimelineCard({ event, index, total }: {
             >
                 {/* Decorative image area (minimalist) */}
                 <div
-                    className="w-full h-32 mb-6 flex items-center justify-center border-b border-charcoal/5 transition-colors duration-700 group-hover:border-sage/40 pb-6"
+                    className="w-full h-16 mb-4 flex items-center justify-center border-b border-charcoal/5 transition-colors duration-700 group-hover:border-plum/30 pb-4"
                     role="img"
                     aria-label={event.imageAlt ?? event.title}
                 >
-                    <span className="font-serif font-light text-4xl text-sage/30" aria-hidden="true">✦</span>
+                    <div className="w-8 h-px bg-plum/30" />
                 </div>
 
                 <h3 className="font-serif font-light text-xl text-charcoal leading-snug mb-3 group-hover:text-forest transition-colors duration-700">

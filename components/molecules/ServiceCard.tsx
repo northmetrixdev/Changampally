@@ -22,10 +22,10 @@ export default function ServiceCard({ service }: { service: ServiceItem }) {
             <header className="mb-6 flex flex-col items-start gap-4">
                 {/* Icon circle — subtle */}
                 <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-700 group-hover:-translate-y-1 bg-sandstone"
+                    className="w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-700 group-hover:-translate-y-1 bg-sandstone border border-plum/10 text-plum"
                     aria-hidden="true"
                 >
-                    <span className="text-sage text-sm">✦</span>
+                    <div className="w-2 h-2 rounded-full bg-plum" />
                 </div>
 
                 {/* Badge */}
@@ -38,7 +38,7 @@ export default function ServiceCard({ service }: { service: ServiceItem }) {
             </header>
 
             {/* Content */}
-            <h3 className="font-serif font-light text-xl text-charcoal tracking-tight leading-snug mb-3 pr-4 group-hover:text-forest transition-colors duration-700">
+            <h3 className="font-serif font-light text-xl text-charcoal tracking-tight leading-snug mb-3 pr-4 group-hover:text-plum transition-colors duration-700" style={{ fontFamily: "var(--font-juana)" }}>
                 {service.name}
             </h3>
 
@@ -50,8 +50,8 @@ export default function ServiceCard({ service }: { service: ServiceItem }) {
             {service.highlights.length > 0 && (
                 <ul className="flex flex-col gap-2 mt-auto pt-4 border-t border-charcoal/[0.03]" aria-label={`Highlights for ${service.name}`}>
                     {service.highlights.map((h) => (
-                        <li key={h} className="flex items-start gap-3 flex-wrap text-xs font-sans font-light text-taupe/80">
-                            <span className="text-sage mt-0.5 shrink-0 text-[10px]" aria-hidden="true">■</span>
+                        <li key={h} className="flex items-center gap-2 text-xs font-sans font-light text-taupe">
+                            <span className="w-1.5 h-1.5 rounded-full bg-plum/40 shrink-0" aria-hidden="true" />
                             <span className="flex-1 leading-snug">{h}</span>
                         </li>
                     ))}

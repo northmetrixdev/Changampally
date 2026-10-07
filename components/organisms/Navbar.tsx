@@ -14,13 +14,19 @@ export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
-        const handler = () => setScrolled(window.scrollY > 30);
+        const isCentrePage = currentPathname?.startsWith("/centres/");
+        const handler = () => {
+            const threshold = isCentrePage ? Math.max(300, window.innerHeight - 120) : 30;
+            setScrolled(window.scrollY > threshold);
+        };
+        handler();
         window.addEventListener("scroll", handler, { passive: true });
         return () => window.removeEventListener("scroll", handler);
-    }, []);
+    }, [currentPathname]);
 
-    const isLightPage = currentPathname === "/contact" || currentPathname === "/blogs" || currentPathname?.startsWith("/centres/");
-    const isNavDark = scrolled || isLightPage;
+    const isCentrePage = currentPathname?.startsWith("/centres/");
+    const isLightPage = currentPathname === "/contact";
+    const isNavDark = isCentrePage ? false : (scrolled || isLightPage);
 
     return (
         <motion.header

@@ -57,10 +57,8 @@ export default function HeroSection() {
                     slot="hero"
                 />
 
-                {/* Unified dark overlay for text contrast — pure neutral charcoal, no plum */}
-                <div className="absolute inset-0"
-                    style={{ background: "linear-gradient(135deg, rgba(34,34,34,0.70) 0%, rgba(34,34,34,0.45) 50%, rgba(34,34,34,0.85) 100%)" }}
-                />
+                {/* Minimal top/bottom gradient to ensure text contrast without changing video hue */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50 pointer-events-none" />
 
 
             </div>
@@ -89,7 +87,7 @@ export default function HeroSection() {
                     <motion.h1
                         variants={fadeUpBlur}
                         className="font-serif font-light text-4xl sm:text-5xl md:text-7xl lg:text-[6rem] tracking-[0.05em] text-ivory leading-[1.1] mb-6 md:mb-8"
-                        style={{ fontFamily: "var(--font-catchye)", fontWeight: 300 }}
+                        style={{ fontFamily: "var(--font-juana)", fontWeight: 300 }}
                     >
                         Where Centuries of<br />
                         <span className="italic">Healing Meet Today.</span>

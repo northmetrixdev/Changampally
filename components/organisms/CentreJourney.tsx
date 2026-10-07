@@ -13,7 +13,7 @@ const JOURNEY_STEPS = [
         description: "Experience tailored treatments using classical formulations, bio-purification techniques, and state-of-the-art integrated care.",
     },
     {
-        title: "Mind & Body Rest",
+        title: "Mind and Body Rest",
         description: "Healing requires profound rest. Our serene environments, coupled with Yoga and meditation, foster deep emotional and physical recovery.",
     },
     {

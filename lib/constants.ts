@@ -117,7 +117,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
         title: "The Vaidya Legacy Begins",
         description:
             "The Changampally Vaidya family begins its healing tradition in Kerala. This lineage of Ayurvedic physicians would pass its knowledge — and its commitment to compassionate care — from generation to generation, unbroken for over seven centuries.",
-        imageAlt: "Depiction of the Changampally Vaidya family's founding era in Kerala",
+        imageAlt: "Depiction of the Changampally Vaidya family founding era in Kerala",
     },
     {
         id: "timeline-2",
@@ -125,8 +125,8 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
         era: "Present",
         title: "An Integrated Institution",
         description:
-            "Today, the Changampally family operates five centres across Kerala — from an integrated hospital at Edappal to Ayurvedic wellness retreats in Peringode and Munnar. With 120 beds, 24×7 care, and over 50 specialists across 3 core disciplines, the mission remains unchanged: restore health with honesty and wisdom.",
-        imageAlt: "Changampally's five modern centres of excellence across Kerala",
+            "Today, the Changampally family operates five centres across Kerala — from an integrated hospital at Edappal to Ayurvedic wellness retreats in Peringode and Munnar. With 120 beds, 24/7 care, and over 50 specialists across 3 core disciplines, the mission remains unchanged: restore health with honesty and wisdom.",
+        imageAlt: "Changampally five modern centres of excellence across Kerala",
     },
 ];
 
@@ -143,21 +143,22 @@ export const CENTRES: Centre[] = [
         tagline: "Integrated Healthcare",
         location: "Kandanakam, Edappal",
         phone: "+91 9072 666 104",
+        mapUrl: "https://maps.app.goo.gl/vi4HHRfwggfezT4H8?g_st=iw",
         description:
             "Changampally Remedium is an integrated healthcare hospital delivering scientific care — combining Ayurveda and modern medicine. Specialised units include Cancer Rehabilitation (Ayurvedic oncology), mental health through counselling and psychotherapy, a Cosmetooncology unit for post-therapy care, and comprehensive management of lifestyle disorders, infertility, paediatric conditions, and chronic diseases.",
         specialisations: [
-            "Oncology & Tumor Disorders",
-            "Mental Health & Behavioural Disorders",
-            "Endocrine & Metabolic Disorders",
-            "Cardio-renal & Respiratory Disorders",
-            "Rare & Multi-system Disorders",
-            "Reproductive & Fertility Care",
-            "Neurological & Neuro-psychiatric Disorders",
-            "Autoimmune & Inflammatory Disorders",
-            "Gastrointestinal & Hepatobiliary Disorders",
-            "Musculoskeletal & Degenerative Disorders",
-            "Dermatology, Aesthetic & Regenerative Care",
-            "Diabetic & Chronic Wound Care",
+            "Oncology and Tumor Disorders",
+            "Mental Health and Behavioural Disorders",
+            "Endocrine and Metabolic Disorders",
+            "Cardio-renal and Respiratory Disorders",
+            "Rare and Multi-system Disorders",
+            "Reproductive and Fertility Care",
+            "Neurological and Neuro-psychiatric Disorders",
+            "Autoimmune and Inflammatory Disorders",
+            "Gastrointestinal and Hepatobiliary Disorders",
+            "Musculoskeletal and Degenerative Disorders",
+            "Dermatology, Aesthetic and Regenerative Care",
+            "Diabetic and Chronic Wound Care",
             "Oncology-Associated Specialty Care",
         ],
     },
@@ -165,14 +166,15 @@ export const CENTRES: Centre[] = [
         id: "centre-kaivalya",
         anchor: "kaivalya",
         name: "Changampally Kaivalya",
-        tagline: "Ayurveda Village & Retreat",
+        tagline: "Ayurveda Village and Retreat",
         location: "Peringode",
         phone: "+91 70251 29232",
+        mapUrl: "https://maps.app.goo.gl/ofgbngCLBzoTULCd8?g_st=iw",
         description:
             "Set in a serene, lush environment in Peringode, Kaivalya blends traditional Ayurvedic wisdom with modern comforts. The centre provides a peaceful sanctuary for scientific healing, personalised therapies, Ayurvedic meals, and restful accommodation — designed for those seeking both recovery and deep rejuvenation.",
         specialisations: [
             "Stress Management Therapy",
-            "Obesity & Metabolism Correction",
+            "Obesity and Metabolism Correction",
             "Insomnia and Sleep Disorder Care",
             "Migraine and Headache Treatment",
             "Seasonal Detox Programmes",
@@ -185,12 +187,13 @@ export const CENTRES: Centre[] = [
         tagline: "Heritage Retreat",
         location: "Veu, Munnar",
         phone: "+91 9072 666 107",
+        mapUrl: "https://maps.app.goo.gl/vi4HHRfwggfezT4H8?g_st=iw",
         description:
             "Nestled in the highlands of Munnar, this heritage retreat combines the cultural richness of Ayurveda with contemporary wellness practices. Guests experience personalised therapies, Ayurvedic meals, yoga, and meditation in a tranquil setting designed around scientific healing and rejuvenation.",
         specialisations: [
             "Scientific Rejuvenation Packages",
             "Anti-ageing Therapies",
-            "Ayurvedic Beauty & Skin Treatments",
+            "Ayurvedic Beauty and Skin Treatments",
             "Immune Boosting Programmes",
             "Bone and Spine Care",
         ],
@@ -202,14 +205,15 @@ export const CENTRES: Centre[] = [
         tagline: "Authentic Ayurvedic Heritage Centre",
         location: "Thirunavaya",
         phone: "+91 8921 043851",
+        mapUrl: "https://maps.app.goo.gl/3Ec9CY7wVB6MkndW6?g_st=iw",
         description:
-            "Located in Thirunavaya, Vaidya Bhavan is rooted in authentic Ayurvedic tradition. The centre's heritage-style architecture reflects the timeless legacy of the Changampally lineage. It offers personalised care from experienced practitioners, Ayurvedic meals, and comfortable accommodation — from standard rooms to A/C rooms with private balconies.",
+            "Located in Thirunavaya, Vaidya Bhavan is rooted in authentic Ayurvedic tradition. The centre heritage style architecture reflects the timeless legacy of the Changampally lineage. It offers personalised care from experienced practitioners, Ayurvedic meals, and comfortable accommodation — from standard rooms to A/C rooms with private balconies.",
         specialisations: [
             "Respiratory Disorders Management",
             "Traditional Panchakarma Therapy",
-            "Women's Health Ayurveda",
+            "Womens Health Ayurveda",
             "Geriatric Care Programmes",
-            "Mind-Body Wellness Therapies",
+            "Mind Body Wellness Therapies",
         ],
     },
     {
@@ -219,14 +223,15 @@ export const CENTRES: Centre[] = [
         tagline: "Scientific Healing Retreat",
         location: "Edappal",
         phone: "+91 85473 53585",
+        mapUrl: "https://maps.app.goo.gl/iGEE6kCLjLrQvp3e6?g_st=iw",
         description:
             "Sanjeevani blends traditional Ayurvedic care with modern amenities across a tranquil landscape in Edappal. The centre features specialised treatment suites, lush herbal gardens, a meditation pavilion, and a therapeutic spa — offering personalised therapies for physical and emotional wellbeing in a harmonious natural setting.",
         specialisations: [
-            "Joint Care & Arthritis Management",
+            "Joint Care and Arthritis Management",
             "Digestive Disorders Treatment",
             "Lifestyle Disease Management",
             "Skin Disease Treatments",
-            "Rejuvenation & Detox Programmes",
+            "Rejuvenation and Detox Programmes",
         ],
     },
 ];
@@ -247,16 +252,16 @@ export const SERVICE_ITEMS: ServiceItem[] = [
         id: "svc-panchakarma",
         category: "Traditional",
         name: "Panchakarma Therapy",
-        shortDescription: "Classical Ayurvedic detoxification & purification",
+        shortDescription: "Classical Ayurvedic detoxification and purification",
         longDescription:
-            "Rooted in the Changampally Vaidya tradition, Panchakarma is offered at Vaidya Bhavan as the cornerstone classical therapy — a systematic bio-purification process to restore doshic balance and address chronic conditions.",
+            "Rooted in the Changampally Vaidya tradition, Panchakarma is offered at Vaidya Bhavan as the cornerstone classical therapy — a systematic bio purification process to restore doshic balance and address chronic conditions.",
         iconId: "leaf",
-        highlights: ["Bio-purification", "Doshic balance", "Chronic condition management"],
+        highlights: ["Bio purification", "Doshic balance", "Chronic condition management"],
     },
     {
         id: "svc-womens-health",
         category: "Traditional",
-        name: "Women's Health Ayurveda",
+        name: "Womens Health Ayurveda",
         shortDescription: "Classical Ayurvedic care for women at every stage",
         longDescription:
             "Available at Changampally Vaidya Bhavan — comprehensive Ayurvedic care spanning reproductive health, hormonal balance, and menopausal support through classical formulations and therapies.",
@@ -266,12 +271,12 @@ export const SERVICE_ITEMS: ServiceItem[] = [
     {
         id: "svc-rejuvenation",
         category: "Traditional",
-        name: "Rejuvenation & Detox",
-        shortDescription: "Seasonal detox and anti-ageing Ayurvedic programmes",
+        name: "Rejuvenation and Detox",
+        shortDescription: "Seasonal detox and anti ageing Ayurvedic programmes",
         longDescription:
-            "Offered across Kaivalya, the Wellness Centre, and Sanjeevani — personalised detox programmes, anti-ageing therapies, and immune-boosting packages rooted in classical Ayurvedic science.",
+            "Offered across Kaivalya, the Wellness Centre, and Sanjeevani — personalised detox programmes, anti ageing therapies, and immune boosting packages rooted in classical Ayurvedic science.",
         iconId: "sun",
-        highlights: ["Seasonal detox", "Anti-ageing", "Immune enhancement"],
+        highlights: ["Seasonal detox", "Anti ageing", "Immune enhancement"],
     },
 
     // ── Integrated Care (Ayurveda + Modern Medicine) ─────────────────────
@@ -281,7 +286,7 @@ export const SERVICE_ITEMS: ServiceItem[] = [
         name: "Cancer Rehabilitation",
         shortDescription: "Ayurvedic oncology integrated with modern cancer care",
         longDescription:
-            "Led by Dr. Jannathul Firdouse Changampally — an Ayurveda Oncology Specialist with 25 years of experience and a 12-year tenure at Nims Super Specialty Hospital — Changampally Remedium's Cancer Rehabilitation unit combines evidence-based Ayurvedic protocols with conventional oncology to support recovery, mitigate side-effects, and improve quality of life.",
+            "Led by Dr. Jannathul Firdouse Changampally — an Ayurveda Oncology Specialist with 25 years of experience and a 12-year tenure at Nims Super Specialty Hospital — Changampally Remedium Cancer Rehabilitation unit combines evidence based Ayurvedic protocols with conventional oncology to support recovery, mitigate side effects, and improve quality of life.",
         iconId: "microscope",
         highlights: ["Ayurvedic oncology", "Side-effect mitigation", "Quality of life support"],
     },
@@ -293,29 +298,29 @@ export const SERVICE_ITEMS: ServiceItem[] = [
         longDescription:
             "Changampally addresses lifestyle disorders, diabetes, chronic wounds including diabetic foot, autoimmune conditions, and skin diseases — through an integrated approach that combines the root-cause focus of Ayurveda with the diagnostic precision of modern medicine.",
         iconId: "activity",
-        highlights: ["Metabolic disorders", "Diabetic & chronic wound care", "Autoimmune conditions"],
+        highlights: ["Metabolic disorders", "Diabetic and chronic wound care", "Autoimmune conditions"],
     },
     {
         id: "svc-fertility",
         category: "Integrated",
-        name: "Reproductive & Fertility Care",
+        name: "Reproductive and Fertility Care",
         shortDescription: "Integrated approach to infertility and reproductive health",
         longDescription:
-            "Changampally Remedium's Reproductive & Fertility Care unit provides integrated support for infertility — combining modern diagnostic workup with targeted Ayurvedic therapeutic protocols for both men and women.",
+            "Changampally Remedium's Reproductive and Fertility Care unit provides integrated support for infertility — combining modern diagnostic workup with targeted Ayurvedic therapeutic protocols for both men and women.",
         iconId: "heart",
         highlights: ["Infertility support", "Dual diagnostic approach", "Hormonal care"],
     },
 
-    // ── Mental & Emotional Wellbeing ──────────────────────────────────────
+    // ── Mental and Emotional Wellbeing ──────────────────────────────────────
     {
         id: "svc-mental-health",
         category: "Integrated",
-        name: "Mental Health & Psychiatric Care",
-        shortDescription: "Ayurvedic psychiatry, counselling & psychotherapy",
+        name: "Mental Health and Psychiatric Care",
+        shortDescription: "Ayurvedic psychiatry, counselling and psychotherapy",
         longDescription:
             "Changampally Remedium offers dedicated mental health care through counselling and psychotherapy. This is further supported by Dr. Sajjad Changampally, an MD in Ayurvedic Psychiatry, who brings scientific mental health approaches through Ayurvedic psychiatric practice at Changampally Vaidya Bhavan — addressing psychiatric conditions, stress, anxiety, sleep disorders, and contemporary challenges with compassionate, evidence-informed care.",
         iconId: "brain",
-        highlights: ["Ayurvedic psychiatry", "Counselling & psychotherapy", "Stress & sleep care"],
+        highlights: ["Ayurvedic psychiatry", "Counselling and psychotherapy", "Stress and sleep care"],
     },
     {
         id: "svc-stress",
@@ -323,19 +328,19 @@ export const SERVICE_ITEMS: ServiceItem[] = [
         name: "Mind-Body Wellness",
         shortDescription: "Stress, sleep, and mental calm through Ayurvedic therapies",
         longDescription:
-            "Available across Kaivalya and Vaidya Bhavan — dedicated programmes for stress management, insomnia, migraine, and overall mind-body balance, using Shirodhara, medicated therapies, and personalised Ayurvedic protocols.",
+            "Available across Kaivalya and Vaidya Bhavan — dedicated programmes for stress management, insomnia, migraine, and overall mind body balance, using Shirodhara, medicated therapies, and personalised Ayurvedic protocols.",
         iconId: "moon",
         highlights: ["Stress management", "Insomnia care", "Migraine treatment"],
     },
     {
         id: "svc-neuro",
         category: "Integrated",
-        name: "Neurological & Neuro-psychiatric Disorders",
+        name: "Neurological and Neuro Psychiatric Disorders",
         shortDescription: "Integrated care for neurological conditions",
         longDescription:
-            "Changampally Remedium's neurology unit addresses neurological and neuro-psychiatric conditions through a combined approach — modern neurological assessment alongside Ayurvedic neuro-rejuvenation therapies and mind-body practices.",
+            "Changampally Remedium neurology unit addresses neurological and neuro psychiatric conditions through a combined approach — modern neurological assessment alongside Ayurvedic neuro rejuvenation therapies and mind body practices.",
         iconId: "zap",
-        highlights: ["Neurological assessment", "Ayurvedic neuro-rejuvenation", "Neuro-psychiatric support"],
+        highlights: ["Neurological assessment", "Ayurvedic neuro rejuvenation", "Neuro psychiatric support"],
     },
 ];
 
@@ -361,19 +366,22 @@ export const TEAM = [
         credentials: "BSc, BAMS",
         role: "Chief Consultant — Ayurveda Oncology Specialist",
         bio: "A distinguished figure in Ayurvedic oncology with 25 years of expertise. Dr. Firdouse served as a cancer consultant at Nims Super Specialty Hospital, Trivandrum for 12 years and is a member of the Open Source Drug Discovery (OSDD) initiative.",
+        image: "/images/doctors/Dr_Firdouse.png",
     },
     {
         id: "team-2",
         name: "Dr. Jibu Gurukkal Changampally",
         credentials: "MBBS",
-        role: "Allopathic General Physician & Medicine Manufacturer",
+        role: "Allopathic General Physician and Medicine Manufacturer",
         bio: "An accomplished Allopathic General Physician with 13 years of experience. Actively engaged in Ayurvedic medicine manufacturing and export at Changampally Vaidya Bhavan and Vedic Age in Thirunnavaya. Medical Director at Orchid Medicity.",
+        image: "/images/doctors/DR.jibu_Gurukkal.png",
     },
     {
         id: "team-3",
         name: "Dr. Sajjad Changampally",
         credentials: "MD (Ayurvedic Psychiatry)",
-        role: "Ayurvedic Psychiatrist & Managing Director, Happymoon",
+        role: "Ayurvedic Psychiatrist and Managing Director, Happymoon",
         bio: "An esteemed Ayurvedic Psychiatrist offering compassionate care at Changampally Vaidya Bhavan, Thirunnavaya. Managing Director of Happymoon, advocating scientific mental health approaches. Secretary, Ayurveda Medical Association of India, Ponnani. Researcher on mobile phone addiction and contemporary mental health challenges.",
+        image: "/images/doctors/Dr_Sajad.png",
     },
 ];

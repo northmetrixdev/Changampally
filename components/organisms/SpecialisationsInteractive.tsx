@@ -4,18 +4,18 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 const DEPARTMENTS = [
-    { name: "Oncology & Tumor Disorders", centre: "Remedium" },
-    { name: "Mental Health & Behavioral Disorders", centre: "Remedium" },
-    { name: "Neurological & Neuro Psychiatric Disorders", centre: "Remedium" },
-    { name: "Autoimmune & Inflammatory Disorders", centre: "Remedium" },
-    { name: "Reproductive & Fertility Care", centre: "Remedium" },
-    { name: "Dermatology, Aesthetic & Regenerative Care", centre: "Remedium" },
+    { name: "Oncology and Tumor Disorders", centre: "Remedium" },
+    { name: "Mental Health and Behavioral Disorders", centre: "Remedium" },
+    { name: "Neurological and Neuro Psychiatric Disorders", centre: "Remedium" },
+    { name: "Autoimmune and Inflammatory Disorders", centre: "Remedium" },
+    { name: "Reproductive and Fertility Care", centre: "Remedium" },
+    { name: "Dermatology, Aesthetic and Regenerative Care", centre: "Remedium" },
 ];
 
 export default function SpecialisationsInteractive() {
     return (
         <section
-            className="py-20 md:py-32 px-4 sm:px-6 bg-[#3D2B1F] relative"
+            className="py-20 md:py-32 px-4 sm:px-6 bg-plum relative"
             aria-labelledby="depts-preview-heading"
         >
             <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24 relative">
@@ -59,14 +59,6 @@ export default function SpecialisationsInteractive() {
                                 <h3 className="font-serif font-light text-xl md:text-3xl lg:text-4xl text-ivory/80 group-hover:text-ivory md:group-hover:translate-x-2 transition-all duration-500 leading-snug max-w-lg">
                                     {dept.name}
                                 </h3>
-                            </div>
-                            <div className="flex items-center justify-between md:justify-end gap-6 w-full md:w-auto mt-2 md:mt-0 pl-8 md:pl-0">
-                                <span className="font-sans font-medium text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-ivory/40 group-hover:text-ivory/80 transition-colors duration-500 text-right">
-                                    {dept.centre}
-                                </span>
-                                <span className="text-ivory/0 group-hover:text-ivory transition-colors duration-500 text-xl font-light transform -translate-x-4 group-hover:translate-x-0 hidden md:block">
-                                    +
-                                </span>
                             </div>
                         </motion.div>
                     ))}

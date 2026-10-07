@@ -133,7 +133,7 @@ function StoryStickySection() {
 
                         {/* Paragraph 3 */}
                         <motion.div style={{ opacity: opacity3, y: y3 }} className="absolute w-full space-y-4 pointer-events-none">
-                            <h3 className="text-2xl font-serif text-plum md:text-3xl">Body & Mind</h3>
+                            <h3 className="text-2xl font-serif text-plum md:text-3xl">Body and Mind</h3>
                             <p className="font-sans font-light text-xl md:text-2xl text-taupe leading-relaxed">
                                 We believe that medication alone is not enough. The body and the mind must both
                                 be cared for. That is why mental health and emotional wellbeing are not an
@@ -150,7 +150,7 @@ function StoryStickySection() {
 const VALUES = [
     {
         heading: "Our Vision",
-        body: "Ayurveda, the ancient system of medicine from India, is known for its scientific healing approach. We envision a world where this wisdom is accessible, evidence-informed, and integrated with modern care.",
+        body: "Ayurveda, the ancient system of medicine from India, is known for its scientific healing approach. We envision a world where this wisdom is accessible, evidence informed, and integrated with modern care.",
     },
     {
         heading: "Our Mission",
@@ -291,7 +291,7 @@ function QuoteSection() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    <span className="text-8xl font-serif text-plum/40 mb-8 block leading-none">“</span>
+                    <span className="text-8xl text-plum/40 mb-8 block leading-none select-none" style={{ fontFamily: "Georgia, serif" }}>“</span>
                     <p className="font-serif font-light text-3xl md:text-5xl leading-tight md:leading-snug mb-12 text-ivory/90">
                         The doctorhood is not the promise of extended life but the accuracy in diagnosis,
                         excellence in practical knowledge, and the compassionate touch to remove physical

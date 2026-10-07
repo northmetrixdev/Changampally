@@ -16,42 +16,46 @@ const stagger = {
 };
 
 // ── 3 main featured doctors ──────────────────────────────────────────────────
+// ── 3 main featured doctors ──────────────────────────────────────────────────
 const FEATURED_DOCTORS = [
     {
         ...TEAM[0],
         centre: "Changampally Remedium, Edappal",
         speciality: "Ayurveda Oncology",
-        tagline: "Chief Consultant & Ayurveda Oncology Specialist",
+        tagline: "Chief Consultant and Ayurveda Oncology Specialist",
         highlights: [
             "25 years of Ayurvedic Oncology experience",
             "12-year tenure at Nims Super Specialty Hospital, Trivandrum",
             "Member, Open Source Drug Discovery (OSDD) initiative",
         ],
         accentColor: "#33181C",
+        image: "/images/doctors/Dr_Firdouse.png",
     },
     {
         ...TEAM[1],
         centre: "Changampally Vaidya Bhavan, Thirunavaya",
         speciality: "Allopathic General Medicine",
-        tagline: "Allopathic Physician & Ayurvedic Medicine Manufacturer",
+        tagline: "Allopathic Physician and Ayurvedic Medicine Manufacturer",
         highlights: [
             "13 years of allopathic general medicine practice",
-            "Medicine Manufacturer & Exporter — Changampally Vaidya Bhavan & Vedic Age",
-            "Medical Director, Orchid Medicity (Malappuram & Changaramkulam)",
+            "Medicine Manufacturer and Exporter — Changampally Vaidya Bhavan and Vedic Age",
+            "Medical Director, Orchid Medicity (Malappuram and Changaramkulam)",
         ],
         accentColor: "#4A2832",
+        image: "/images/doctors/DR.jibu_Gurukkal.png",
     },
     {
         ...TEAM[2],
         centre: "Changampally Vaidya Bhavan, Thirunavaya",
         speciality: "Ayurvedic Psychiatry",
-        tagline: "Ayurvedic Psychiatrist & Mental Health Specialist",
+        tagline: "Ayurvedic Psychiatrist and Mental Health Specialist",
         highlights: [
             "MD in Ayurvedic Psychiatry",
             "Managing Director, Happymoon — scientific mental health platform",
             "Secretary, Ayurveda Medical Association of India, Ponnani",
         ],
         accentColor: "#5A3040",
+        image: "/images/doctors/Dr_Sajad.png",
     },
 ];
 
@@ -59,12 +63,13 @@ const FEATURED_DOCTORS = [
 const OTHER_DOCTORS = [
     {
         id: "team-4",
-        name: "Dr. Azhar Kalliyath",
-        credentials: "MBBS, DNB(PM&R), MNAMS, FIPM",
-        bio: "An experienced Physiatrist specializing in Physical Medicine and Rehabilitation, offering comprehensive care for intricate physical health conditions.",
+        name: "Dr. Najla Gurukkal",
+        credentials: "BDS",
+        bio: "A skilled Dental Surgeon ensuring complete oral health and hygiene as part of our integrated healthcare approach.",
         centre: "Changampally Remedium, Edappal",
-        speciality: "Physiatrist",
-        tagline: "Specialist in Physical Medicine and Rehabilitation",
+        speciality: "Dentist",
+        tagline: "Dental Surgeon",
+        image: "/images/doctors/Dr.Najila_Gurukkal.png",
     },
     {
         id: "team-5",
@@ -74,15 +79,46 @@ const OTHER_DOCTORS = [
         centre: "Changampally Remedium, Edappal",
         speciality: "Senior Physician",
         tagline: "Senior Ayurvedic Physician",
+        image: "/images/doctors/Dr_shani.png",
+    },
+    {
+        id: "team-5b",
+        name: "Dr. Shahna MT",
+        credentials: "BAMS, PGDAN, CSAMT",
+        bio: "Ayurveda physician specializing in holistic & personalized care, psychosomatic disorders, clinical nutrition, dermatological and orthopaedic conditions, and mind-body wellbeing.",
+        centre: "Changampally Remedium, Edappal",
+        speciality: "Associate Physician",
+        tagline: "HOD – Ayurveda & Medical Communications",
+        image: "/images/doctors/Dr_shana.png",
     },
     {
         id: "team-6",
-        name: "Dr. Najla Gurukkal",
-        credentials: "BDS",
-        bio: "A skilled Dental Surgeon ensuring complete oral health and hygiene as part of our integrated healthcare approach.",
+        name: "Dr. Neethu",
+        credentials: "BAMS",
+        bio: "Experienced Ayurvedic practitioner dedicated to holistic patient care and personalized treatment protocols.",
+        centre: "Changampally Vaidya Bhavan, Thirunavaya",
+        speciality: "Ayurvedic Physician",
+        tagline: "Ayurvedic Specialist",
+        image: "/images/doctors/Dr.Neethu.png",
+    },
+    {
+        id: "team-7",
+        name: "Dr. Navya",
+        credentials: "BAMS",
+        bio: "Specialist in classical Ayurvedic therapies, Panchakarma management, and preventative lifestyle consultation.",
+        centre: "Changampally Kaivalya, Peringode",
+        speciality: "Ayurvedic Physician",
+        tagline: "Panchakarma Specialist",
+        image: "/images/doctors/Dr_navya.png",
+    },
+    {
+        id: "team-8",
+        name: "Dr. Azhar Kalliyath",
+        credentials: "MBBS, DNB(PM&R), MNAMS, FIPM",
+        bio: "An experienced Physiatrist specializing in Physical Medicine and Rehabilitation, offering comprehensive care for intricate physical health conditions.",
         centre: "Changampally Remedium, Edappal",
-        speciality: "Dentist",
-        tagline: "Dental Surgeon",
+        speciality: "Physiatrist",
+        tagline: "Specialist in Physical Medicine and Rehabilitation",
     },
 ];
 
@@ -127,7 +163,7 @@ export default function DoctorsPage() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="hidden md:flex flex-col items-end border-l border-ivory/20 pl-8 py-2"
                     >
-                        <span className="font-serif text-4xl text-ivory mb-1">50+</span>
+                        <span className="font-sans font-light text-4xl text-ivory mb-1">50+</span>
                         <span className="font-sans font-medium text-[11px] tracking-widest uppercase text-ivory/60">Expert Practitioners</span>
                     </motion.div>
                 </div>
@@ -176,7 +212,7 @@ export default function DoctorsPage() {
                                 <motion.article
                                     key={doctor.id}
                                     variants={fadeReveal}
-                                    className="relative flex flex-col bg-white border border-charcoal/[0.06] rounded-2xl overflow-visible shadow-soft group transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
+                                    className="relative flex flex-col bg-sandstone border border-charcoal/[0.06] rounded-2xl overflow-visible shadow-soft group transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
                                     aria-label={`Featured doctor: ${doctor.name}`}
                                 >
                                     {/* Specialty badge */}
@@ -186,21 +222,27 @@ export default function DoctorsPage() {
                                         </span>
                                     </div>
 
-                                    {/* Doctor photo placeholder — pops above card */}
+                                    {/* Doctor photo — pops above card */}
                                     <div className="relative mt-6 mx-auto">
-                                        {/* Photo placeholder circle — pops out visually */}
                                         <div
-                                            className="relative w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto overflow-hidden border-4 border-white shadow-md"
+                                            className="relative w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto overflow-hidden border-4 border-ivory shadow-md"
                                             style={{ background: `linear-gradient(135deg, ${doctor.accentColor}22 0%, ${doctor.accentColor}44 100%)` }}
-                                            aria-label={`Photo placeholder for ${doctor.name}`}
+                                            aria-label={`Photo of ${doctor.name}`}
                                         >
-                                            {/* Initials as placeholder */}
-                                            <div className="absolute inset-0 flex flex-col items-center justify-center">
-                                                <span className="font-serif text-3xl font-light" style={{ color: doctor.accentColor, fontFamily: "var(--font-juana)" }}>
-                                                    {initials}
-                                                </span>
-                                                <span className="text-[8px] font-sans text-taupe mt-1 tracking-wider opacity-70">Photo</span>
-                                            </div>
+                                            {doctor.image ? (
+                                                <Image
+                                                    src={doctor.image}
+                                                    alt={doctor.name}
+                                                    fill
+                                                    className="object-cover"
+                                                />
+                                            ) : (
+                                                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                                                    <span className="font-serif text-3xl font-light" style={{ color: doctor.accentColor, fontFamily: "var(--font-juana)" }}>
+                                                        {initials}
+                                                    </span>
+                                                </div>
+                                            )}
                                         </div>
                                         {/* Subtle decorative ring */}
                                         <div
@@ -227,7 +269,7 @@ export default function DoctorsPage() {
                                         <ul className="flex flex-col gap-2 mt-3 pt-3 border-t border-charcoal/[0.06]">
                                             {doctor.highlights.map((h) => (
                                                 <li key={h} className="flex items-start gap-2">
-                                                    <span className="text-[10px] mt-0.5 shrink-0 text-plum/40">✦</span>
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-plum/40 mt-1 shrink-0 inline-block" />
                                                     <span className="font-sans font-light text-[11px] md:text-xs leading-relaxed text-charcoal">{h}</span>
                                                 </li>
                                             ))}
@@ -235,7 +277,7 @@ export default function DoctorsPage() {
 
                                         {/* Centre */}
                                         <div className="flex items-center gap-2 mt-3 pt-3 border-t border-charcoal/[0.06]">
-                                            <span className="text-[10px] text-plum/40" aria-hidden="true">⊙</span>
+                                            <span className="w-1.5 h-1.5 rounded-full bg-plum/40 shrink-0 inline-block" aria-hidden="true" />
                                             <span className="font-sans font-light text-[10px] tracking-[0.12em] text-taupe">{doctor.centre}</span>
                                         </div>
                                     </div>
@@ -247,22 +289,27 @@ export default function DoctorsPage() {
             </section>
 
             {/* ── Supporting Doctors Grid ────────────────────────────────────── */}
-            <section className="py-12 md:py-16 px-4 md:px-8 xl:px-16 bg-sandstone" aria-labelledby="other-doctors-heading">
+            <section className="py-16 md:py-24 px-4 md:px-8 xl:px-16 bg-sandstone border-t border-charcoal/[0.06]" aria-labelledby="other-doctors-heading">
                 <div className="max-w-[1440px] mx-auto">
-                    <motion.h2
-                        id="other-doctors-heading"
+                    <motion.div
                         initial={{ opacity: 0, y: 16 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="font-serif font-light text-2xl md:text-3xl text-charcoal mb-8"
-                        style={{ fontFamily: "var(--font-juana)" }}
+                        className="mb-12 text-center"
                     >
-                        Our Specialist Team
-                    </motion.h2>
+                        <p className="font-sans font-medium text-[10px] tracking-[0.25em] uppercase text-plum mb-2">Specialist Team</p>
+                        <h2
+                            id="other-doctors-heading"
+                            className="font-serif font-light text-3xl md:text-4xl text-charcoal"
+                            style={{ fontFamily: "var(--font-juana)" }}
+                        >
+                            Our Expert Physicians &amp; Specialists
+                        </h2>
+                    </motion.div>
 
                     <motion.div
-                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+                        className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
                         variants={stagger}
                         initial="hidden"
                         whileInView="show"
@@ -279,29 +326,48 @@ export default function DoctorsPage() {
                                 <motion.article
                                     key={doctor.id}
                                     variants={fadeReveal}
-                                    className="flex flex-col bg-ivory border border-charcoal/[0.06] rounded-xl overflow-hidden hover:border-plum/20 transition-all duration-400 hover:shadow-soft"
+                                    className="relative flex flex-col bg-sandstone border border-charcoal/[0.06] rounded-2xl overflow-visible shadow-soft group transition-all duration-500 hover:shadow-lg hover:-translate-y-1 p-6 md:p-8"
                                     aria-label={doctor.name}
                                 >
-                                    {/* Top area with initials */}
-                                    <div className="flex items-center gap-4 p-5 pb-0">
-                                        <div className="w-12 h-12 rounded-full flex items-center justify-center bg-plum/10 border border-plum/15 shrink-0">
-                                            <span className="font-serif text-lg text-plum/70" style={{ fontFamily: "var(--font-juana)" }}>{initials}</span>
-                                        </div>
-                                        <div>
-                                            <h3 className="font-serif text-base text-charcoal leading-tight" style={{ fontFamily: "var(--font-juana)", fontWeight: 400 }}>
-                                                {doctor.name}
-                                            </h3>
-                                            <p className="font-sans font-medium text-[10px] text-plum mt-0.5">{doctor.credentials}</p>
-                                        </div>
-                                    </div>
-                                    <div className="p-5 flex flex-col gap-2 flex-grow">
-                                        <span className="text-[8px] tracking-[0.2em] uppercase font-sans font-medium text-plum bg-plum/8 px-2 py-0.5 rounded border border-plum/10 self-start">
+                                    {/* Specialty badge */}
+                                    <div className="text-center mb-2">
+                                        <span className="inline-block text-[8px] tracking-[0.22em] uppercase font-sans font-medium text-plum bg-plum/8 px-2.5 py-1 rounded border border-plum/15">
                                             {doctor.speciality}
                                         </span>
-                                        <p className="font-sans font-light text-xs text-taupe leading-relaxed mt-1">{doctor.bio}</p>
-                                        <div className="flex items-center gap-2 mt-auto pt-3 border-t border-charcoal/[0.06]">
-                                            <span className="text-[10px] text-plum/40">⊙</span>
-                                            <span className="font-sans font-light text-[10px] text-taupe">{doctor.centre}</span>
+                                    </div>
+
+                                    {/* Doctor photo centered */}
+                                    <div className="relative my-4 mx-auto">
+                                        <div
+                                            className="relative w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto overflow-hidden border-4 border-ivory shadow-md bg-plum/10"
+                                            aria-label={`Photo of ${doctor.name}`}
+                                        >
+                                            {doctor.image ? (
+                                                <Image src={doctor.image} alt={doctor.name} fill className="object-cover" />
+                                            ) : (
+                                                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                                                    <span className="font-serif text-3xl font-light text-plum" style={{ fontFamily: "var(--font-juana)" }}>
+                                                        {initials}
+                                                    </span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    {/* Doctor Info */}
+                                    <div className="flex flex-col gap-2 flex-grow text-center">
+                                        <h3 className="font-serif text-xl md:text-2xl text-charcoal leading-tight" style={{ fontFamily: "var(--font-juana)", fontWeight: 400 }}>
+                                            {doctor.name}
+                                        </h3>
+                                        <p className="font-sans font-medium text-xs text-plum">{doctor.credentials}</p>
+                                        <p className="font-sans font-light text-xs text-taupe mb-2">{doctor.tagline}</p>
+
+                                        <p className="font-sans font-light text-sm text-taupe leading-relaxed flex-grow border-t border-charcoal/[0.06] pt-3 mt-1">
+                                            {doctor.bio}
+                                        </p>
+
+                                        <div className="flex items-center justify-center gap-2 mt-4 pt-3 border-t border-charcoal/[0.06]">
+                                            <span className="font-sans font-light text-[10px] tracking-[0.12em] text-taupe">{doctor.centre}</span>
                                         </div>
                                     </div>
                                 </motion.article>
@@ -321,14 +387,13 @@ export default function DoctorsPage() {
                         transition={{ duration: 0.8 }}
                         className="flex flex-col md:flex-row gap-10 md:gap-16 items-center"
                     >
-                        {/* Photo placeholder */}
+                        {/* Doctor Photo */}
                         <div className="shrink-0 flex flex-col items-center gap-3">
                             <div
-                                className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-plum/20 shadow-md flex flex-col items-center justify-center bg-gradient-to-br from-plum/10 to-plum/25"
-                                aria-label="Photo placeholder for Dr. Jannathul Firdaus Changampally"
+                                className="relative w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-plum/20 shadow-md bg-gradient-to-br from-plum/10 to-plum/25"
+                                aria-label="Photo of Dr. Jannathul Firdaus Changampally"
                             >
-                                <span className="font-serif text-3xl text-plum/60" style={{ fontFamily: "var(--font-juana)" }}>JF</span>
-                                <span className="text-[8px] font-sans text-taupe mt-1 tracking-wider opacity-70">Photo</span>
+                                <Image src="/images/doctors/Dr_Firdouse.png" alt="Dr. Jannathul Firdouse Changampally" fill className="object-cover" />
                             </div>
                             <cite className="not-italic text-center">
                                 <span className="block font-serif font-light text-base text-plum" style={{ fontFamily: "var(--font-juana)" }}>
@@ -343,7 +408,7 @@ export default function DoctorsPage() {
                         {/* Quote */}
                         <blockquote className="flex-1">
                             <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-plum mb-6">Guiding Principle</p>
-                            <span className="text-5xl md:text-7xl font-serif text-plum/15 block leading-none mb-4" aria-hidden="true">"</span>
+                            <span className="text-5xl md:text-7xl font-serif text-plum/25 block leading-none mb-4" style={{ fontFamily: "Georgia, serif" }} aria-hidden="true">&ldquo;</span>
                             <p className="font-serif font-light text-xl sm:text-2xl md:text-3xl leading-snug text-charcoal" style={{ fontFamily: "var(--font-juana)" }}>
                                 A person walking into your clinic should not be the reason to treat them. Treat only if you are sure that the person is safe in your hands.
                             </p>

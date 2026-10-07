@@ -11,7 +11,7 @@ interface NavLinkProps {
 }
 
 export default function NavLink({ label, href, ariaLabel, currentPathname, scrolled = false }: NavLinkProps) {
-    const isActive = currentPathname === href;
+    const isActive = currentPathname === href || (href === "/services" && currentPathname?.startsWith("/centres/"));
 
     return (
         <Link

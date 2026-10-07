@@ -133,7 +133,7 @@ export default function DepartmentsPage() {
                             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
                             className="font-sans font-light text-sm sm:text-base md:text-lg text-ivory leading-relaxed max-w-2xl pr-4 md:pr-0"
                         >
-                            Our integrated approach combines the principles of Ayurveda with conventional modern medicine to manage complex diseases. The focus is on evidence-based approaches to root out the causes of diseases.
+                            Our integrated approach combines the principles of Ayurveda with conventional modern medicine to manage complex diseases. The focus is on evidence based approaches to root out the causes of diseases.
                         </motion.p>
                     </div>
                     {/* Professional metric/highlight stat for balance */}

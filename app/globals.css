@@ -3,6 +3,193 @@
 @tailwind utilities;
 
 /* ── Base ───────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'JuanaFont';
+  src: url('/fonts/Juana/Fontspring-DEMO-juana-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-0021, U+0023-0025, U+002C, U+002E, U+0030-0033, U+0035-003F, U+0041-005E, U+0060-007E, U+00A0-00FF, U+0100-024F;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+@font-face {
+  font-family: 'JuanaFont';
+  src: url('/fonts/Juana/Fontspring-DEMO-juana-regularit.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-0021, U+0023-0025, U+002C, U+002E, U+0030-0033, U+0035-003F, U+0041-005E, U+0060-007E, U+00A0-00FF, U+0100-024F;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+@font-face {
+  font-family: 'JuanaFont';
+  src: url('/fonts/Juana/Fontspring-DEMO-juana-light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-0021, U+0023-0025, U+002C, U+002E, U+0030-0033, U+0035-003F, U+0041-005E, U+0060-007E, U+00A0-00FF, U+0100-024F;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+@font-face {
+  font-family: 'JuanaFont';
+  src: url('/fonts/Juana/Fontspring-DEMO-juana-lightit.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-0021, U+0023-0025, U+002C, U+002E, U+0030-0033, U+0035-003F, U+0041-005E, U+0060-007E, U+00A0-00FF, U+0100-024F;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+@font-face {
+  font-family: 'JuanaFont';
+  src: url('/fonts/Juana/Fontspring-DEMO-juana-medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-0021, U+0023-0025, U+002C, U+002E, U+0030-0033, U+0035-003F, U+0041-005E, U+0060-007E, U+00A0-00FF, U+0100-024F;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+@font-face {
+  font-family: 'JuanaFont';
+  src: url('/fonts/Juana/Fontspring-DEMO-juana-mediumit.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-0021, U+0023-0025, U+002C, U+002E, U+0030-0033, U+0035-003F, U+0041-005E, U+0060-007E, U+00A0-00FF, U+0100-024F;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+@font-face {
+  font-family: 'JuanaFont';
+  src: url('/fonts/Juana/Fontspring-DEMO-juana-semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-0021, U+0023-0025, U+002C, U+002E, U+0030-0033, U+0035-003F, U+0041-005E, U+0060-007E, U+00A0-00FF, U+0100-024F;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+@font-face {
+  font-family: 'JuanaFont';
+  src: url('/fonts/Juana/Fontspring-DEMO-juana-semiboldit.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-0021, U+0023-0025, U+002C, U+002E, U+0030-0033, U+0035-003F, U+0041-005E, U+0060-007E, U+00A0-00FF, U+0100-024F;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+@font-face {
+  font-family: 'JuanaFont';
+  src: url('/fonts/Juana/Fontspring-DEMO-juana-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-0021, U+0023-0025, U+002C, U+002E, U+0030-0033, U+0035-003F, U+0041-005E, U+0060-007E, U+00A0-00FF, U+0100-024F;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+@font-face {
+  font-family: 'JuanaFont';
+  src: url('/fonts/Juana/Fontspring-DEMO-juana-boldit.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-0021, U+0023-0025, U+002C, U+002E, U+0030-0033, U+0035-003F, U+0041-005E, U+0060-007E, U+00A0-00FF, U+0100-024F;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+@font-face {
+  font-family: 'JuanaFont';
+  src: url('/fonts/Juana/Fontspring-DEMO-juana-thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-0021, U+0023-0025, U+002C, U+002E, U+0030-0033, U+0035-003F, U+0041-005E, U+0060-007E, U+00A0-00FF, U+0100-024F;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+@font-face {
+  font-family: 'JuanaFont';
+  src: url('/fonts/Juana/Fontspring-DEMO-juana-extralight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-0021, U+0023-0025, U+002C, U+002E, U+0030-0033, U+0035-003F, U+0041-005E, U+0060-007E, U+00A0-00FF, U+0100-024F;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+@font-face {
+  font-family: 'JuanaFont';
+  src: url('/fonts/Juana/Fontspring-DEMO-juana-black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-0021, U+0023-0025, U+002C, U+002E, U+0030-0033, U+0035-003F, U+0041-005E, U+0060-007E, U+00A0-00FF, U+0100-024F;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+:root {
+  --font-juana: 'JuanaFont', Georgia, "Times New Roman", serif;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -13,6 +200,7 @@
   body {
     background-color: #EAECE4;
     color: #33181C;
+    font-family: 'JuanaFont', Georgia, "Times New Roman", serif;
     @apply font-sans;
   }
 
@@ -34,7 +222,7 @@
   h3,
   h4,
   .heading-display {
-    font-family: var(--font-juana), var(--font-catchye), "Cormorant Garamond", serif;
+    font-family: 'JuanaFont', var(--font-juana), Georgia, "Times New Roman", serif;
     letter-spacing: 0.03em;
   }
 }
@@ -109,7 +297,7 @@
 
   .page-hero__title {
     @apply font-serif font-light text-[3rem] md:text-[4.5rem] lg:text-[6rem] tracking-[0.05em] leading-[0.9] max-w-4xl mt-3;
-    font-family: var(--font-juana), "Cormorant Garamond", serif;
+    font-family: var(--font-juana), serif;
     color: #EAECE4;
   }
 

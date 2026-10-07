@@ -138,7 +138,7 @@ export default function ServiceSpectrum() {
                                 style={{ opacity: descOp, y: descY }}
                                 className="font-sans font-light text-sm sm:text-base md:text-xl text-taupe text-center max-w-sm md:max-w-2xl leading-relaxed"
                             >
-                                Two complete systems of evidence-based science coming together.<br className="hidden md:block" />
+                                Two complete systems of evidence based science coming together.<br className="hidden md:block" />
                                 One unified, highly personalised care plan for intricate disorders.
                             </motion.p>
                         </motion.div>

@@ -65,10 +65,10 @@ function SpecialisationCard({ title, isHovered, onHover, onLeave }: { title: str
                 boxShadow: isHovered ? "0 20px 40px rgba(164,19,60,0.15)" : "0 4px 6px rgba(0,0,0,0.02)"
             }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="group relative bg-white border border-plum/10 rounded-2xl p-8 flex flex-col justify-center items-start overflow-hidden cursor-crosshair h-48"
+            className="group relative bg-sandstone border border-plum/10 rounded-2xl p-8 flex flex-col justify-center items-start overflow-hidden cursor-pointer h-48"
         >
             <div className="absolute top-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="text-plum text-2xl">✦</span>
+                <span className="text-plum text-sm">↗</span>
             </div>
 
             <h3 className="font-sans font-light text-xl leading-snug text-plum z-10">

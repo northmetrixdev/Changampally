@@ -1,37 +1,14 @@
 import type { Metadata } from "next";
-import { Manrope, Cormorant_Garamond } from "next/font/google";
-import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import { SITE_NAME, SITE_TAGLINE, SITE_DESCRIPTION } from "@/lib/constants";
 import "./globals.css";
 
-const manrope = Manrope({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600"],
   variable: "--font-sans",
-  display: "swap",
-});
-
-// Cormorant Garamond — closest available Google Font to Juana (elegant Latin serif)
-const juana = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
-  variable: "--font-juana",
-  display: "swap",
-});
-
-const tropicalAvenue = localFont({
-  src: "../public/fonts/TropicalAvenue.ttf",
-  variable: "--font-display",
-  display: "swap",
-});
-
-const catchye = localFont({
-  src: "../public/fonts/Catchye.otf",
-  variable: "--font-catchye",
   display: "swap",
 });
 
@@ -54,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${manrope.variable} ${juana.variable} ${tropicalAvenue.variable} ${catchye.variable}`}>
+    <html lang="en" className={inter.variable}>
       {/* #EAECE4 = brand sandstone */}
       <body className="min-h-[80vh] font-sans antialiased bg-sandstone text-charcoal" style={{ backgroundColor: "#EAECE4", color: "#33181C" }}>
         <SmoothScroll>

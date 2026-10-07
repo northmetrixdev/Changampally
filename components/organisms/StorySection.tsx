@@ -16,8 +16,8 @@ import { useScroll, useTransform, useSpring, motion, MotionValue, useMotionValue
  */
 
 // ── Palette ───────────────────────────────────────────────────────────────────
-const BISTRE_BG = "#3D2B1F";   // Bistre earthy brown
-const BISTRE_DIV = "rgba(255,252,248,0.18)";
+const BISTRE_BG = "#33181C";   // Brand plum dark
+const BISTRE_DIV = "rgba(234,236,228,0.18)";
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 const HEADLINE =
@@ -37,14 +37,14 @@ const PILLARS = [
         label: "Integration",
         title: "Integrated Modern Medicine",
         titleNode: <>Integrated Modern<br /><span className="italic">Medicine</span></>,
-        body: "Under the combined expertise of our Ayurvedic specialists and allopathic physicians, we address intricate disorders with an evidence-based, dual approach.",
+        body: "Under the combined expertise of our Ayurvedic specialists and allopathic physicians, we address intricate disorders with an evidence based, dual approach.",
         pull: "Two traditions. One care plan.",
         inStart: 0.62, inEnd: 0.68, outStart: 0.78, outEnd: 0.83,
     },
     {
         label: "Wholeness",
-        title: "Mental & Emotional Wellbeing",
-        titleNode: <>Mental & Emotional<br /><span className="italic">Wellbeing</span></>,
+        title: "Mental and Emotional Wellbeing",
+        titleNode: <>Mental and Emotional<br /><span className="italic">Wellbeing</span></>,
         body: "Guided by our Ayurvedic psychiatric care, we provide counselling and psychotherapy — because healing is never complete without addressing the mind.",
         pull: "The mind is never an afterthought.",
         inStart: 0.78, inEnd: 0.84, outStart: 0.97, outEnd: 1.00,

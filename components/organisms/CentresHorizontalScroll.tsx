@@ -6,6 +6,12 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import SectionHeading from "@/components/atoms/SectionHeading";
 import { CENTRES } from "@/lib/constants";
 
+function truncateToSentence(text: string) {
+    const periodIndex = text.indexOf('.');
+    if (periodIndex === -1) return text;
+    return text.substring(0, periodIndex + 1);
+}
+
 export default function CentresHorizontalScroll() {
     const targetRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
@@ -59,7 +65,7 @@ export default function CentresHorizontalScroll() {
                                         </h2>
                                     </div>
                                     <p className="font-sans font-light text-base leading-relaxed text-taupe flex-1">
-                                        {centre.description}
+                                        {truncateToSentence(centre.description)}
                                     </p>
                                     <div className="flex flex-col gap-1 pt-6 mt-4 border-t border-plum/10">
                                         <span className="font-sans font-medium text-[10px] tracking-[0.22em] uppercase text-taupe">
@@ -83,7 +89,7 @@ export default function CentresHorizontalScroll() {
                                     <ul className="flex flex-col gap-4" role="list">
                                         {centre.specialisations.map((spec) => (
                                             <li key={spec} className="flex items-start gap-4">
-                                                <span className="text-plum mt-0.5 shrink-0 text-sm" aria-hidden="true">✦</span>
+                                                <span className="w-1.5 h-1.5 rounded-full bg-plum mt-2 shrink-0" aria-hidden="true" />
                                                 <span className="font-sans font-light text-base text-charcoal leading-snug">{spec}</span>
                                             </li>
                                         ))}

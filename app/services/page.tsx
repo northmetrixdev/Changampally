@@ -2,6 +2,7 @@
 
 import type { Metadata } from "next";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { CENTRES } from "@/lib/constants";
 
@@ -10,6 +11,12 @@ const fadeReveal = {
     hidden: { opacity: 0, y: 24 },
     show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
 };
+
+function truncateToSentence(text: string) {
+    const periodIndex = text.indexOf('.');
+    if (periodIndex === -1) return text;
+    return text.substring(0, periodIndex + 1);
+}
 
 const staggerGrid = {
     hidden: { opacity: 0 },
@@ -76,86 +83,215 @@ export default function ServicesPage() {
                 </div>
             </section>
 
-            {/* ── 5-column Centre Cards Grid ──────────────────────────────── */}
+            {/* ── Centre Cards Grid (3 cards top, 2 cards bottom) ──────────────── */}
             <section className="py-16 md:py-20 px-4 md:px-6 xl:px-12 bg-ivory" aria-labelledby="centres-grid-heading">
                 <div className="max-w-[1440px] mx-auto">
                     <h2 id="centres-grid-heading" className="sr-only">Our Five Centres</h2>
+                    
+                    {/* Top row: 3 cards */}
                     <motion.div
-                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5"
+                        className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-8"
                         variants={staggerGrid}
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.1 }}
                     >
-                        {CENTRES.map((centre, idx) => (
-                            <motion.article
-                                key={centre.id}
-                                variants={fadeReveal}
-                                className="group flex flex-col bg-white border border-charcoal/[0.06] hover:border-plum/30 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
-                                aria-label={centre.name}
-                            >
-                                {/* Icon / Visual header */}
-                                <div className="flex items-center justify-center h-28 bg-plum/5 border-b border-charcoal/[0.04] transition-colors duration-500 group-hover:bg-plum/10">
-                                    <div className="text-plum/60 group-hover:text-plum transition-colors duration-500">
-                                        {CENTRE_ICONS[idx]}
-                                    </div>
-                                </div>
-
-                                {/* Content */}
-                                <div className="flex flex-col flex-grow p-5">
-                                    {/* Badge */}
-                                    <span className="inline-block text-[8px] tracking-[0.2em] uppercase font-sans font-medium text-plum bg-plum/8 px-2 py-1 rounded mb-3 self-start border border-plum/15">
-                                        {centre.tagline}
-                                    </span>
-
-                                    <h3 className="font-serif text-base md:text-lg text-charcoal mb-2 leading-snug group-hover:text-plum transition-colors duration-500" style={{ fontFamily: "var(--font-juana)", fontWeight: 400 }}>
-                                        {centre.name}
-                                    </h3>
-
-                                    <p className="font-sans text-[11px] md:text-xs text-taupe leading-relaxed mb-4 flex-grow">
-                                        {centre.description.slice(0, 160)}{centre.description.length > 160 ? "…" : ""}
-                                    </p>
-
-                                    {/* Location */}
-                                    <div className="flex flex-col gap-2 pt-3 border-t border-charcoal/[0.06]">
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-[10px] text-plum/40" aria-hidden="true">⊙</span>
-                                            <span className="font-sans font-light text-[10px] text-taupe tracking-wide">{centre.location}</span>
-                                        </div>
-                                        <a href="#" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-plum hover:text-plum-dark transition-colors w-fit" aria-label={`View ${centre.name} on Google Maps`}>
-                                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                            </svg>
-                                            <span className="text-[9px] font-sans font-medium uppercase tracking-widest">Google Maps</span>
-                                        </a>
-                                    </div>
-
-                                    {/* Specialisations */}
-                                    <div className="mt-3 flex flex-wrap gap-1">
-                                        {centre.specialisations.slice(0, 3).map(spec => (
-                                            <span key={spec} className="text-[9px] px-1.5 py-0.5 bg-sandstone text-charcoal/60 rounded font-sans">
-                                                {spec.split(" ").slice(0, 2).join(" ")}
-                                            </span>
-                                        ))}
-                                        {centre.specialisations.length > 3 && (
-                                            <span className="text-[9px] px-1.5 py-0.5 bg-sandstone text-plum/60 rounded font-sans">
-                                                +{centre.specialisations.length - 3} more
-                                            </span>
-                                        )}
-                                    </div>
-                                </div>
-
-                                {/* CTA Link */}
-                                <Link
-                                    href={`/centres/${centre.anchor}`}
-                                    className="mt-auto px-5 py-3 text-[10px] tracking-[0.18em] uppercase font-sans font-medium text-plum border-t border-charcoal/[0.06] hover:bg-plum hover:text-ivory transition-all duration-300 text-center"
-                                    aria-label={`Learn more about ${centre.name}`}
+                        {CENTRES.slice(0, 3).map((centre, idx) => {
+                            const propertyImages = [
+                                "/images/properties/PERINGODE KAIVALYA/unnamed-2.jpg",
+                                "/images/properties/PERINGODE KAIVALYA/unnamed.jpg",
+                                "/images/properties/THIRUNNAVYA/unnamed-3.jpg",
+                            ];
+                            return (
+                                <motion.article
+                                    key={centre.id}
+                                    variants={fadeReveal}
+                                    className="group flex flex-col bg-sandstone border border-charcoal/[0.06] hover:border-plum/30 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
+                                    aria-label={centre.name}
                                 >
-                                    Learn More →
-                                </Link>
-                            </motion.article>
-                        ))}
+                                    {/* Property photo header */}
+                                    <div className="relative h-48 bg-plum/5 border-b border-charcoal/[0.04] overflow-hidden">
+                                        <Image
+                                            src={propertyImages[idx]}
+                                            alt={centre.name}
+                                            fill
+                                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent opacity-60" />
+                                        <div className="absolute bottom-3 left-4 text-ivory flex items-center gap-2">
+                                            {CENTRE_ICONS[idx]}
+                                            <span className="font-sans font-medium text-[10px] tracking-widest uppercase text-ivory/90">{centre.location}</span>
+                                        </div>
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="flex flex-col flex-grow p-6">
+                                        {/* Badge */}
+                                        <span className="inline-block text-[8px] tracking-[0.2em] uppercase font-sans font-medium text-plum bg-plum/10 px-2.5 py-1 rounded mb-3 self-start border border-plum/15">
+                                            {centre.tagline}
+                                        </span>
+
+                                        <h3 className="font-serif text-xl md:text-2xl text-charcoal mb-2 leading-snug group-hover:text-plum transition-colors duration-500" style={{ fontFamily: "var(--font-juana)", fontWeight: 400 }}>
+                                            {centre.name}
+                                        </h3>
+
+                                        <p className="font-sans text-xs md:text-sm text-taupe leading-relaxed mb-4 flex-grow">
+                                            {truncateToSentence(centre.description)}
+                                        </p>
+
+                                        {/* Location & Maps */}
+                                        <div className="flex items-center justify-between pt-3 border-t border-charcoal/[0.08]">
+                                            <div className="flex flex-col gap-1">
+                                                <span className="font-sans font-light text-[11px] text-taupe tracking-wide">{centre.location}</span>
+                                                <a href={`tel:${centre.phone.replace(/\s+/g, "")}`} className="text-[10px] font-sans font-medium text-plum hover:text-plum-dark transition-colors">
+                                                    {centre.phone}
+                                                </a>
+                                            </div>
+                                            {centre.mapUrl && (
+                                                <a
+                                                    href={centre.mapUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center justify-center w-8 h-8 bg-plum text-ivory rounded-full hover:bg-plum-dark transition-all shadow-sm shrink-0 hover:scale-110"
+                                                    aria-label={`Open Google Maps location for ${centre.name}`}
+                                                    title={`Open Google Maps for ${centre.name}`}
+                                                >
+                                                    <svg className="w-4 h-4 fill-current text-ivory" viewBox="0 0 24 24">
+                                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                                    </svg>
+                                                </a>
+                                            )}
+                                        </div>
+
+                                        {/* Specialisations */}
+                                        <div className="mt-4 flex flex-wrap gap-1.5">
+                                            {centre.specialisations.slice(0, 3).map(spec => (
+                                                <span key={spec} className="text-[10px] px-2 py-0.5 bg-ivory text-charcoal/70 rounded font-sans border border-charcoal/5">
+                                                    {spec}
+                                                </span>
+                                            ))}
+                                            {centre.specialisations.length > 3 && (
+                                                <span className="text-[10px] px-2 py-0.5 bg-ivory text-plum rounded font-sans border border-plum/10">
+                                                    +{centre.specialisations.length - 3} more
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    {/* CTA Link */}
+                                    <Link
+                                        href={`/centres/${centre.anchor}`}
+                                        className="mt-auto px-5 py-3.5 text-xs tracking-[0.18em] uppercase font-sans font-medium text-plum border-t border-charcoal/[0.08] hover:bg-plum hover:text-ivory transition-all duration-300 text-center"
+                                        aria-label={`Learn more about ${centre.name}`}
+                                    >
+                                        Learn More →
+                                    </Link>
+                                </motion.article>
+                            );
+                        })}
+                    </motion.div>
+
+                    {/* Bottom row: 2 cards centered */}
+                    <motion.div
+                        className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto"
+                        variants={staggerGrid}
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.1 }}
+                    >
+                        {CENTRES.slice(3, 5).map((centre, idx) => {
+                            const propertyImages = [
+                                "/images/properties/THIRUNNAVYA/unnamed.jpg",
+                                "/images/properties/THIRUNNAVYA/unnamed-2.jpg",
+                            ];
+                            const globalIdx = idx + 3;
+                            return (
+                                <motion.article
+                                    key={centre.id}
+                                    variants={fadeReveal}
+                                    className="group flex flex-col bg-sandstone border border-charcoal/[0.06] hover:border-plum/30 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:-translate-y-1"
+                                    aria-label={centre.name}
+                                >
+                                    {/* Property photo header */}
+                                    <div className="relative h-48 bg-plum/5 border-b border-charcoal/[0.04] overflow-hidden">
+                                        <Image
+                                            src={propertyImages[idx]}
+                                            alt={centre.name}
+                                            fill
+                                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent opacity-60" />
+                                        <div className="absolute bottom-3 left-4 text-ivory flex items-center gap-2">
+                                            {CENTRE_ICONS[globalIdx]}
+                                            <span className="font-sans font-medium text-[10px] tracking-widest uppercase text-ivory/90">{centre.location}</span>
+                                        </div>
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="flex flex-col flex-grow p-6">
+                                        {/* Badge */}
+                                        <span className="inline-block text-[8px] tracking-[0.2em] uppercase font-sans font-medium text-plum bg-plum/10 px-2.5 py-1 rounded mb-3 self-start border border-plum/15">
+                                            {centre.tagline}
+                                        </span>
+
+                                        <h3 className="font-serif text-xl md:text-2xl text-charcoal mb-2 leading-snug group-hover:text-plum transition-colors duration-500" style={{ fontFamily: "var(--font-juana)", fontWeight: 400 }}>
+                                            {centre.name}
+                                        </h3>
+
+                                        <p className="font-sans text-xs md:text-sm text-taupe leading-relaxed mb-4 flex-grow">
+                                            {truncateToSentence(centre.description)}
+                                        </p>
+
+                                        {/* Location & Maps */}
+                                        <div className="flex items-center justify-between pt-3 border-t border-charcoal/[0.08]">
+                                            <div className="flex flex-col gap-1">
+                                                <span className="font-sans font-light text-[11px] text-taupe tracking-wide">{centre.location}</span>
+                                                <a href={`tel:${centre.phone.replace(/\s+/g, "")}`} className="text-[10px] font-sans font-medium text-plum hover:text-plum-dark transition-colors">
+                                                    {centre.phone}
+                                                </a>
+                                            </div>
+                                            {centre.mapUrl && (
+                                                <a
+                                                    href={centre.mapUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center justify-center w-8 h-8 bg-plum text-ivory rounded-full hover:bg-plum-dark transition-all shadow-sm shrink-0 hover:scale-110"
+                                                    aria-label={`Open Google Maps location for ${centre.name}`}
+                                                    title={`Open Google Maps for ${centre.name}`}
+                                                >
+                                                    <svg className="w-4 h-4 fill-current text-ivory" viewBox="0 0 24 24">
+                                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                                    </svg>
+                                                </a>
+                                            )}
+                                        </div>
+
+                                        {/* Specialisations */}
+                                        <div className="mt-4 flex flex-wrap gap-1.5">
+                                            {centre.specialisations.slice(0, 3).map(spec => (
+                                                <span key={spec} className="text-[10px] px-2 py-0.5 bg-ivory text-charcoal/70 rounded font-sans border border-charcoal/5">
+                                                    {spec}
+                                                </span>
+                                            ))}
+                                            {centre.specialisations.length > 3 && (
+                                                <span className="text-[10px] px-2 py-0.5 bg-ivory text-plum rounded font-sans border border-plum/10">
+                                                    +{centre.specialisations.length - 3} more
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    {/* CTA Link */}
+                                    <Link
+                                        href={`/centres/${centre.anchor}`}
+                                        className="mt-auto px-5 py-3.5 text-xs tracking-[0.18em] uppercase font-sans font-medium text-plum border-t border-charcoal/[0.08] hover:bg-plum hover:text-ivory transition-all duration-300 text-center"
+                                        aria-label={`Learn more about ${centre.name}`}
+                                    >
+                                        Learn More →
+                                    </Link>
+                                </motion.article>
+                            );
+                        })}
                     </motion.div>
                 </div>
             </section>

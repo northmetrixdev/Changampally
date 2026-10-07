@@ -126,7 +126,7 @@ export default function BlendSlider({ containerRef, onPositionChange, initialPos
                 >
                     <div className="text-center px-6">
                         <p className="font-serif font-light text-2xl md:text-3xl text-ivory tracking-wide">Integrated</p>
-                        <p className="font-sans font-medium text-[10px] tracking-[0.3em] uppercase mt-2 text-ivory/60">Modern + Ayurveda</p>
+                        <p className="font-sans font-medium text-[10px] tracking-[0.3em] uppercase mt-2 text-ivory/60">Modern and Ayurveda</p>
                     </div>
                 </div>
 

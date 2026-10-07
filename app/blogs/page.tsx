@@ -34,7 +34,7 @@ const BLOGS = [
         category: "Mental Health",
         date: "Aug 28, 2026",
         title: "Ayurvedic Psychiatry: A Scientific Approach to Mental Wellness",
-        excerpt: "Mobile phone addiction, chronic anxiety, and burnout are defining challenges of our era. Dr. Sajjad Changampally explains how Ayurvedic psychiatry offers evidence-informed solutions to contemporary mental health.",
+        excerpt: "Mobile phone addiction, chronic anxiety, and burnout are defining challenges of our era. Dr. Sajjad Changampally explains how Ayurvedic psychiatry offers evidence informed solutions to contemporary mental health.",
         readTime: "7 min read",
         color: "from-plum/10 to-ivory",
         imageGradient: "linear-gradient(135deg, #6F5F4D33 0%, #33181C22 100%)",
@@ -103,7 +103,7 @@ export default function BlogsPage() {
                     transition={{ duration: 0.5 }}
                     className="font-sans font-light text-[9px] tracking-[0.3em] uppercase text-ivory/50 mb-4"
                 >
-                    ✦ Blog
+                    Blog &amp; Insights
                 </motion.p>
                 <motion.h1
                     initial={{ opacity: 0, y: 16 }}
@@ -144,13 +144,13 @@ export default function BlogsPage() {
 
                     {/* Search */}
                     <div className="relative max-w-sm mb-5">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-taupe text-sm">🔍</span>
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-taupe text-xs">Search</span>
                         <input
                             type="search"
                             placeholder="Search articles…"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-9 pr-4 py-2.5 font-sans font-light text-sm text-charcoal bg-white border border-charcoal/10 rounded-lg outline-none focus:border-plum/50 transition-all duration-300 placeholder:text-taupe-light"
+                            className="w-full pl-16 pr-4 py-2.5 font-sans font-light text-sm text-charcoal bg-sandstone border border-charcoal/10 rounded-lg outline-none focus:border-plum/50 transition-all duration-300 placeholder:text-taupe"
                             aria-label="Search blog articles"
                         />
                     </div>
@@ -163,12 +163,12 @@ export default function BlogsPage() {
                                 onClick={() => setActiveCategory(cat)}
                                 className={`px-4 py-1.5 text-[10px] font-sans font-medium tracking-[0.15em] uppercase rounded-full border transition-all duration-300 ${activeCategory === cat
                                     ? "bg-plum text-ivory border-plum"
-                                    : "bg-white text-taupe border-charcoal/15 hover:border-plum/30 hover:text-plum"
+                                    : "bg-sandstone text-taupe border-charcoal/15 hover:border-plum/30 hover:text-plum"
                                     }`}
                                 aria-pressed={activeCategory === cat}
                                 aria-label={`Filter by ${cat}`}
                             >
-                                {cat === "All Articles" ? "✦ " : ""}{cat}
+                                {cat}
                             </button>
                         ))}
                     </div>

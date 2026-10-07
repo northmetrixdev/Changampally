@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { TEAM } from "@/lib/constants";
 
 const fadeUpVariant = {
@@ -85,13 +86,13 @@ const SECTIONS = [
         id: "focus",
         title: "03. Clinical Focus",
         heading: "Treating the Intricate",
-        text: "We specialise in chronic ailments: Cancer Rehabilitation, Infertility, Psychiatric Disorders, Diabetic Foot & Ulcers, Autoimmune Conditions, and Child Development."
+        text: "We specialise in chronic ailments: Cancer Rehabilitation, Infertility, Psychiatric Disorders, Diabetic Foot and Ulcers, Autoimmune Conditions, and Child Development."
     }
 ];
 
 function InteractiveFocusWheel() {
     return (
-        <div className="w-full relative py-24 md:py-32 bg-white">
+        <div className="w-full relative py-24 md:py-32 bg-sandstone">
             <div className="text-center mb-16 md:mb-20 px-6">
                 <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="font-sans font-medium text-[9px] tracking-[0.3em] uppercase text-plum mb-4">Who We Are</motion.p>
                 <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-serif text-4xl sm:text-5xl lg:text-6xl text-charcoal mb-4" style={{ fontFamily: "var(--font-juana)" }}>
@@ -140,7 +141,7 @@ function InteractiveFocusWheel() {
 
 // ── 3. Tabs (Vision & Mission) ──────────────────────────────────────────────
 const TABS = [
-    { id: "vision", label: "Our Vision", content: "Ayurveda, the ancient system of medicine from India, is known for its scientific healing approach. We envision a world where this wisdom is accessible, evidence-informed, and integrated with modern care." },
+    { id: "vision", label: "Our Vision", content: "Ayurveda, the ancient system of medicine from India, is known for its scientific healing approach. We envision a world where this wisdom is accessible, evidence informed, and integrated with modern care." },
     { id: "mission", label: "Our Mission", content: "We aim to bring Ayurveda to the forefront of modern medicine while preserving its authenticity — treating intricate chronic disorders with compassion, precision, and the accumulated wisdom of generations." },
     { id: "mind", label: "Mental Wellbeing", content: "Guided by Dr. Sajjad Changampally, MD (Ayurvedic Psychiatry), we provide counselling, psychotherapy, and Ayurvedic psychiatric care. Healing is never complete without looking after the mind." },
     { id: "safety", label: "Safety First", content: "\"Treat only if you are sure that the person is safe in your hands.\" — Dr. Jannathul Firdouse. Safety and honesty are the most sacred aspects of our practice. We will never overstate outcomes." },
@@ -190,24 +191,37 @@ function InteractiveTeam() {
         >
             {TEAM.map((member) => (
                 <motion.li key={member.id} variants={fadeUpVariant} className="group relative">
-                    <div className="relative h-full p-6 md:p-8 bg-white border border-plum/10 transition-all duration-500 rounded-2xl overflow-hidden w-full">
-                        <div className="flex items-center gap-4 md:gap-5 mb-5">
-                            <div className="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center shrink-0 bg-plum/5 border border-plum/10">
-                                <span className="font-serif font-light text-lg md:text-xl text-plum" style={{ fontFamily: "var(--font-juana)" }}>
-                                    {member.name.split(" ").map((n) => n[0]).join("").slice(0, 2)}
-                                </span>
-                            </div>
-                            <div>
-                                <h3 className="font-serif font-light text-lg md:text-xl text-charcoal mb-1" style={{ fontFamily: "var(--font-juana)" }}>{member.name}</h3>
-                                <span className="font-sans font-medium text-[9px] md:text-[10px] tracking-wider uppercase text-plum block">{member.credentials}</span>
-                            </div>
+                    <div className="relative h-full p-6 md:p-8 bg-sandstone border border-plum/10 transition-all duration-500 rounded-2xl overflow-hidden w-full flex flex-col items-center text-center shadow-soft hover:shadow-lg hover:-translate-y-1">
+                        {/* Doctor photo centered */}
+                        <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden shrink-0 border-4 border-ivory shadow-md mb-5 bg-plum/10">
+                            {member.image ? (
+                                <Image
+                                    src={member.image}
+                                    alt={member.name}
+                                    fill
+                                    className="object-cover"
+                                />
+                            ) : (
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <span className="font-serif text-3xl font-light text-plum" style={{ fontFamily: "var(--font-juana)" }}>
+                                        {member.name.split(" ").map((n) => n[0]).join("").slice(0, 2)}
+                                    </span>
+                                </div>
+                            )}
                         </div>
 
-                        <div className="w-6 md:w-8 h-px bg-plum/20 mb-3 md:mb-4" />
-                        <span className="font-sans font-medium text-[10px] md:text-xs text-taupe block mb-2 md:mb-3 border-l-2 border-plum/30 pl-2 md:pl-3">
+                        {/* Name & Credentials */}
+                        <h3 className="font-serif font-light text-xl md:text-2xl text-charcoal leading-tight mb-1" style={{ fontFamily: "var(--font-juana)" }}>
+                            {member.name}
+                        </h3>
+                        <span className="font-sans font-medium text-xs text-plum mb-2 block">{member.credentials}</span>
+
+                        <span className="font-sans font-light text-xs text-taupe block mb-4 border-b border-plum/15 pb-3 w-full">
                             {member.role}
                         </span>
-                        <p className="font-sans font-light text-xs md:text-sm leading-relaxed text-charcoal/80">
+
+                        {/* Description */}
+                        <p className="font-sans font-light text-sm leading-relaxed text-taupe text-center flex-grow">
                             {member.bio}
                         </p>
                     </div>
@@ -221,20 +235,19 @@ function InteractiveTeam() {
 export default function AboutInteractiveLayout() {
     return (
         <div className="bg-ivory selection:bg-plum/20">
-            {/* ── Page hero ─────────────────────────────────────────────────── */}
-            <section className="pt-28 pb-12 md:pt-36 md:pb-16 relative overflow-hidden bg-plum" aria-label="About Changampally — hero">
-                <div className="absolute inset-0 bg-charcoal/40 mix-blend-multiply" />
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none z-0" />
+            {/* ── Page hero — Brand Kit Plum theme ─────────────────────────────── */}
+            <section className="relative pt-24 md:pt-36 pb-12 md:pb-16 px-4 md:px-12 xl:px-24 bg-plum overflow-hidden" style={{ minHeight: "20vh" }} aria-label="About Changampally — hero">
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 blur-[120px] pointer-events-none rounded-full translate-x-1/3 -translate-y-1/3" />
                 
-                <div className="max-w-[1440px] mx-auto px-6 relative z-10 text-center w-full">
+                <div className="max-w-[1440px] mx-auto text-center relative z-10 w-full">
                     <motion.div initial="hidden" animate="show" variants={staggerContainer} className="max-w-4xl mx-auto">
-                        <motion.p variants={fadeUpVariant} className="font-sans font-medium text-[9px] tracking-[0.4em] uppercase mb-6 text-ivory/70">
+                        <motion.p variants={fadeUpVariant} className="font-sans font-medium text-[9px] tracking-[0.4em] uppercase mb-4 text-ivory/60">
                             Est. 1300 AD · Kerala, India
                         </motion.p>
-                        <motion.h1 variants={fadeUpVariant} className="font-serif font-light text-5xl md:text-7xl lg:text-8xl text-ivory tracking-tight mb-8" style={{ fontFamily: "var(--font-juana)" }}>
+                        <motion.h1 variants={fadeUpVariant} className="font-serif font-light text-4xl sm:text-5xl md:text-[4.5rem] text-ivory tracking-tight mb-4 leading-tight" style={{ fontFamily: "var(--font-juana)" }}>
                             The Vaidya Legacy
                         </motion.h1>
-                        <motion.p variants={fadeUpVariant} className="font-sans font-light text-sm md:text-base text-ivory/80 leading-relaxed max-w-2xl mx-auto">
+                        <motion.p variants={fadeUpVariant} className="font-sans font-light text-sm sm:text-base text-ivory/80 leading-relaxed max-w-2xl mx-auto">
                             A lineage of healers preserving the purity of Ayurveda while integrating the precision of modern medicine across five centres.
                         </motion.p>
                     </motion.div>
@@ -272,7 +285,7 @@ export default function AboutInteractiveLayout() {
                 >
                     <motion.p variants={fadeUpVariant} className="font-sans font-medium text-[9px] tracking-[0.3em] uppercase mb-8 text-ivory/50">In Their Own Words</motion.p>
                     <motion.blockquote variants={fadeUpVariant} className="relative w-full px-4">
-                        <span className="absolute -top-10 left-1/2 -translate-x-1/2 font-serif text-8xl text-ivory/10 pointer-events-none leading-none" aria-hidden="true" style={{ fontFamily: "var(--font-juana)" }}>“</span>
+                        <span className="absolute -top-10 left-1/2 -translate-x-1/2 text-8xl text-ivory/10 pointer-events-none leading-none select-none" aria-hidden="true" style={{ fontFamily: "Georgia, serif" }}>“</span>
                         <p className="font-serif font-light text-2xl sm:text-3xl md:text-4xl text-ivory leading-tight tracking-tight mb-10 relative z-10" style={{ fontFamily: "var(--font-juana)" }}>
                             The doctorhood is not the promise of extended life but the accuracy in diagnosis,
                             excellence in practical knowledge, and the compassionate touch.
