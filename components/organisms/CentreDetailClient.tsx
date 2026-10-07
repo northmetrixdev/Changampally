@@ -21,7 +21,7 @@ const MEDIA_MAP: Record<string, { video?: string; photos: string[] }> = {
         ],
     },
     remedium: {
-        video: "/videos/properties/remedium.mp4",
+        video: "/videos/properties/remedium_UUJs3ZgW.mp4",
         photos: [],
     },
     vaidyabhavan: {
