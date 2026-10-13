@@ -56,16 +56,43 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
     const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
     useEffect(() => {
-        if (videoRef.current) {
-            videoRef.current.defaultMuted = true;
-            videoRef.current.muted = true;
-            const playPromise = videoRef.current.play();
-            if (playPromise !== undefined) {
-                playPromise
-                    .then(() => setIsPlaying(true))
-                    .catch(() => setIsPlaying(false));
-            }
+        const vid = videoRef.current;
+        if (!vid) return;
+
+        vid.defaultMuted = true;
+        vid.muted = true;
+
+        const attemptPlay = () => {
+            vid.play()
+                .then(() => setIsPlaying(true))
+                .catch(() => {
+                    // Autoplay was blocked, will play upon first touch/click
+                    setIsPlaying(false);
+                });
+        };
+
+        if (vid.readyState >= 2) {
+            attemptPlay();
+        } else {
+            vid.addEventListener("loadeddata", attemptPlay, { once: true });
+            vid.addEventListener("canplay", attemptPlay, { once: true });
         }
+
+        const handleUserGesture = () => {
+            if (vid.paused) {
+                vid.play().then(() => setIsPlaying(true)).catch(() => {});
+            }
+        };
+
+        window.addEventListener("touchstart", handleUserGesture, { once: true, passive: true });
+        window.addEventListener("click", handleUserGesture, { once: true });
+
+        return () => {
+            vid.removeEventListener("loadeddata", attemptPlay);
+            vid.removeEventListener("canplay", attemptPlay);
+            window.removeEventListener("touchstart", handleUserGesture);
+            window.removeEventListener("click", handleUserGesture);
+        };
     }, [media.video]);
 
     const togglePlay = () => {

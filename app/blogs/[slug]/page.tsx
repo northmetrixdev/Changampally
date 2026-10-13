@@ -35,29 +35,50 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     }
 
     return (
-        <article className="min-h-screen bg-ivory text-charcoal font-sans pt-24 sm:pt-28 md:pt-36 pb-24">
-            <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16">
-                {/* Back to Blogs */}
-                <Link
-                    href="/blogs"
-                    className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-[0.2em] text-plum hover:text-plum-dark mb-8 transition-colors group"
-                >
-                    <span className="group-hover:-translate-x-1 transition-transform">←</span>
-                    <span>All Knowledge Posts</span>
-                </Link>
+        <article className="min-h-screen bg-sandstone text-charcoal font-sans pb-28">
+            {/* ── Seamless Plum Hero (~20% page height) ────────────────────── */}
+            <section
+                className="relative pt-24 md:pt-36 pb-12 md:pb-16 px-4 md:px-12 xl:px-24 bg-plum overflow-hidden"
+                style={{ minHeight: "20vh" }}
+            >
+                <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 blur-[120px] pointer-events-none rounded-full translate-x-1/3 -translate-y-1/3" />
+                <div className="max-w-5xl mx-auto relative z-10">
+                    {/* Back link */}
+                    <Link
+                        href="/blogs"
+                        className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-[0.2em] text-ivory/70 hover:text-ivory mb-6 transition-colors group"
+                    >
+                        <span className="group-hover:-translate-x-1 transition-transform">←</span>
+                        <span>Back to All Articles</span>
+                    </Link>
 
-                {/* Category Pill */}
-                <span className="inline-block px-3 py-1 bg-plum/10 text-plum rounded-full text-xs font-sans font-medium uppercase tracking-wider mb-4 border border-plum/15">
-                    {post.category}
-                </span>
+                    {/* Category */}
+                    <div className="mb-3">
+                        <span className="inline-block px-3 py-1 bg-white/10 text-ivory rounded-full text-xs font-sans font-medium uppercase tracking-wider border border-white/15">
+                            {post.category}
+                        </span>
+                    </div>
 
-                {/* Article Title — Medium Editorial Style */}
-                <h1
-                    className="font-serif font-light text-3xl sm:text-4xl md:text-5xl text-charcoal leading-[1.18] tracking-tight mb-4"
-                    style={{ fontFamily: "var(--font-juana)" }}
-                >
-                    {post.title}
-                </h1>
+                    {/* Title */}
+                    <h1
+                        className="font-serif font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-ivory leading-[1.18] tracking-tight mb-6"
+                        style={{ fontFamily: "var(--font-juana)" }}
+                    >
+                        {post.title}
+                    </h1>
+
+                    {/* Meta info */}
+                    <div className="flex flex-wrap items-center gap-4 text-xs font-sans text-ivory/70 pt-2 border-t border-white/10">
+                        <span>{post.date}</span>
+                        <span>•</span>
+                        <span>{post.readTime}</span>
+                        <span>•</span>
+                        <span>By {post.author.name} ({post.author.role})</span>
+                    </div>
+                </div>
+            </section>
+
+            <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-16 pt-12">
 
                 {/* Subtitle / Excerpt */}
                 {post.subtitle && (

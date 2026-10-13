@@ -25,15 +25,15 @@ export default function Navbar() {
     }, [currentPathname]);
 
     const isCentrePage = currentPathname?.startsWith("/centres/");
-    const isLightPage = currentPathname === "/contact" || currentPathname?.startsWith("/blogs");
+    const isLightPage = currentPathname === "/contact";
     const isNavDark = isCentrePage ? false : (scrolled || isLightPage);
 
     return (
         <motion.header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 bg-ivory md:bg-transparent ${isNavDark
-                ? "md:glass-nav md:shadow-soft"
-                : "md:border-b md:border-transparent"
-                } border-b border-plum/10 md:border-b-0`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isNavDark
+                ? "bg-ivory/95 backdrop-blur-md shadow-soft border-b border-plum/10"
+                : "bg-ivory md:bg-transparent border-b border-plum/10 md:border-b-0"
+                }`}
             role="banner"
             initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -46,23 +46,36 @@ export default function Navbar() {
                 {/* Logo wordmark */}
                 <Link href="/" className="flex items-center gap-3 group" aria-label={`${SITE_NAME} — home`}>
                     {/* On mobile always dark logo since mobile navbar is brand off-white (ivory); on desktop switch based on isNavDark */}
-                    <div className="relative w-20 h-12 flex items-center">
-                        <Image
-                            src="/assets/Changampally Remedium_logo.png"
-                            alt={`${SITE_NAME} logo`}
-                            width={80}
-                            height={80}
-                            className={`object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300 md:${isNavDark ? "block" : "hidden"}`}
-                            priority
-                        />
-                        <Image
-                            src="/assets/Changampally Remedium_logo-light1.png"
-                            alt={`${SITE_NAME} logo`}
-                            width={80}
-                            height={80}
-                            className={`object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300 hidden md:${isNavDark ? "hidden" : "block"}`}
-                            priority
-                        />
+                    <div className="relative w-24 h-12 flex items-center">
+                        {isNavDark ? (
+                            <Image
+                                src="/assets/Changampally Remedium_logo.png"
+                                alt={`${SITE_NAME} logo`}
+                                width={84}
+                                height={84}
+                                className="object-contain opacity-95 group-hover:opacity-100 transition-opacity duration-300"
+                                priority
+                            />
+                        ) : (
+                            <>
+                                <Image
+                                    src="/assets/Changampally Remedium_logo.png"
+                                    alt={`${SITE_NAME} logo`}
+                                    width={84}
+                                    height={84}
+                                    className="object-contain opacity-95 group-hover:opacity-100 transition-opacity duration-300 md:hidden"
+                                    priority
+                                />
+                                <Image
+                                    src="/assets/Changampally Remedium_logo-light1.png"
+                                    alt={`${SITE_NAME} logo`}
+                                    width={84}
+                                    height={84}
+                                    className="object-contain opacity-95 group-hover:opacity-100 transition-opacity duration-300 hidden md:block"
+                                    priority
+                                />
+                            </>
+                        )}
                     </div>
                 </Link>
 

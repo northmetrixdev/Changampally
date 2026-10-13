@@ -31,9 +31,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       {/* #EAECE4 = brand sandstone */}
-      <body className="min-h-[80vh] font-sans antialiased bg-sandstone text-charcoal" style={{ backgroundColor: "#EAECE4", color: "#33181C" }}>
+      <body className="min-h-[80vh] font-sans antialiased bg-sandstone text-charcoal" style={{ backgroundColor: "#EAECE4", color: "#33181C" }} suppressHydrationWarning>
         <SmoothScroll>
           <a href="#main-content" className="skip-nav">Skip to main content</a>
           <Navbar />
