@@ -25,15 +25,15 @@ export default function Navbar() {
     }, [currentPathname]);
 
     const isCentrePage = currentPathname?.startsWith("/centres/");
-    const isLightPage = currentPathname === "/contact";
+    const isLightPage = currentPathname === "/contact" || currentPathname?.startsWith("/blogs");
     const isNavDark = isCentrePage ? false : (scrolled || isLightPage);
 
     return (
         <motion.header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${isNavDark
-                ? "glass-nav shadow-soft"
-                : "bg-transparent border-b border-transparent"
-                }`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 bg-ivory md:bg-transparent ${isNavDark
+                ? "md:glass-nav md:shadow-soft"
+                : "md:border-b md:border-transparent"
+                } border-b border-plum/10 md:border-b-0`}
             role="banner"
             initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -45,18 +45,25 @@ export default function Navbar() {
             >
                 {/* Logo wordmark */}
                 <Link href="/" className="flex items-center gap-3 group" aria-label={`${SITE_NAME} — home`}>
-                    <Image
-                        src={isNavDark
-                            ? "/assets/Changampally Remedium_logo.png"
-                            : "/assets/Changampally Remedium_logo-light1.png"
-                        }
-                        alt={`${SITE_NAME} logo`}
-                        width={80}
-                        height={80}
-                        className="object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                        priority
-                    />
-
+                    {/* On mobile always dark logo since mobile navbar is brand off-white (ivory); on desktop switch based on isNavDark */}
+                    <div className="relative w-20 h-12 flex items-center">
+                        <Image
+                            src="/assets/Changampally Remedium_logo.png"
+                            alt={`${SITE_NAME} logo`}
+                            width={80}
+                            height={80}
+                            className={`object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300 md:${isNavDark ? "block" : "hidden"}`}
+                            priority
+                        />
+                        <Image
+                            src="/assets/Changampally Remedium_logo-light1.png"
+                            alt={`${SITE_NAME} logo`}
+                            width={80}
+                            height={80}
+                            className={`object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300 hidden md:${isNavDark ? "hidden" : "block"}`}
+                            priority
+                        />
+                    </div>
                 </Link>
 
                 {/* Desktop links */}
@@ -86,7 +93,7 @@ export default function Navbar() {
                         </Link>
                     </div>
 
-                    {/* Mobile hamburger */}
+                    {/* Mobile hamburger - dark bars since mobile navbar is off-white */}
                     <button
                         className="md:hidden flex flex-col gap-1.5 p-2"
                         aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -95,9 +102,9 @@ export default function Navbar() {
                         type="button"
                         onClick={() => setMobileOpen((v) => !v)}
                     >
-                        <span className={`block w-6 h-px transition-all duration-300 ${isNavDark ? "bg-charcoal/60" : "bg-ivory/80"} ${mobileOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
-                        <span className={`block w-6 h-px transition-all duration-300 ${isNavDark ? "bg-charcoal/60" : "bg-ivory/80"} ${mobileOpen ? "opacity-0" : ""}`} />
-                        <span className={`block w-6 h-px transition-all duration-300 ${isNavDark ? "bg-charcoal/60" : "bg-ivory/80"} ${mobileOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
+                        <span className={`block w-6 h-px transition-all duration-300 bg-charcoal/80 ${mobileOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
+                        <span className={`block w-6 h-px transition-all duration-300 bg-charcoal/80 ${mobileOpen ? "opacity-0" : ""}`} />
+                        <span className={`block w-6 h-px transition-all duration-300 bg-charcoal/80 ${mobileOpen ? "-rotate-45 -translate-y-[7px]" : ""}`} />
                     </button>
                 </div>
             </nav>
@@ -111,7 +118,7 @@ export default function Navbar() {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-                        className="md:hidden overflow-hidden border-t border-plum/10"
+                        className="md:hidden overflow-hidden border-t border-plum/10 bg-ivory shadow-lg"
                         style={{ background: "rgba(255,252,248,0.97)", backdropFilter: "blur(20px)" }}
                     >
                         <ul className="flex flex-col py-5 px-6 gap-5" role="list">

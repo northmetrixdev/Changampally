@@ -22,8 +22,7 @@ export default function ContactPage() {
                 <motion.div
                     variants={stagger}
                     initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
+                    animate="show"
                 >
                     <motion.div variants={fadeReveal} className="mb-8">
                         <span className="font-sans font-medium text-[9px] tracking-[0.28em] uppercase text-plum">Enquiry Form</span>
@@ -202,8 +201,7 @@ export default function ContactPage() {
                     className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16"
                     variants={stagger}
                     initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
+                    animate="show"
                 >
                     {/* Main centre contact */}
                     <motion.div variants={fadeReveal} className="flex flex-col gap-4">

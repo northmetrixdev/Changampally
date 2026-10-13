@@ -157,10 +157,9 @@ export default function DepartmentsPage() {
                         {DEPARTMENTS.map((dept, idx) => (
                             <motion.article
                                 key={dept.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.6, delay: (idx % 3) * 0.1, ease: "easeOut" }}
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.7, delay: (idx % 6) * 0.08, ease: "easeOut" }}
                                 className="group flex flex-col bg-white border border-charcoal/[0.04] hover:border-plum/20 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:-translate-y-1 h-full"
                             >
                                 {/* Fully Visible Image Banner */}
@@ -215,10 +214,9 @@ export default function DepartmentsPage() {
             {/* ── CTA ──────────────────────────────────────────────────────── */}
             <section className="py-16 md:py-20 px-4 md:px-6 bg-ivory text-center border-t border-plum/10" aria-label="Book a consultation">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
                     className="max-w-2xl mx-auto"
                 >
                     <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-charcoal mb-4 tracking-tight" style={{ fontFamily: "var(--font-juana)" }}>

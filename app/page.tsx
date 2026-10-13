@@ -78,11 +78,11 @@ export default function HomePage() {
       >
         <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
           <p className="eyebrow mb-4 md:mb-6 text-ivory/50 tracking-[0.3em]">Begin Today</p>
-          <h2 className="font-serif font-light text-4xl sm:text-5xl md:text-6xl tracking-tight mb-6 md:mb-8 mx-auto max-w-[15ch]" style={{ fontFamily: "var(--font-juana)" }}>
-            Your Health, Reimagined
+          <h2 className="font-serif font-light text-3xl sm:text-4xl md:text-5xl tracking-tight mb-4 md:mb-6 mx-auto max-w-2xl leading-tight" style={{ fontFamily: "var(--font-juana)" }}>
+            Get free second opinion from India’s leading specialists
           </h2>
           <p className="font-sans font-light text-base md:text-lg leading-relaxed mb-10 md:mb-12 text-ivory/80 max-w-xl">
-            Book a consultation with our specialists — Ayurvedic and allopathic — and receive a personalised, integrated care plan.
+            Per consultation handle (free)
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto sm:gap-6 justify-center">
             <a href="/contact" className="btn-ghost-white border-ivory/50 text-ivory hover:bg-ivory hover:text-plum hover:border-ivory w-full sm:w-auto text-center">Book a Consultation</a>

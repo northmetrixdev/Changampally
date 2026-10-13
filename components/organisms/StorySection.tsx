@@ -191,21 +191,16 @@ export default function StorySection() {
         restDelta: 0.001,
     });
 
-    // Phase 1
-    const W_REVEAL_START = 0.02;
-    const W_REVEAL_END = 0.16;
-    const W_SUB_START = 0.16;
-    const W_SUB_END = 0.28;
+    // Phase 1: Soft auto-revealed text (visible immediately at resting scroll, no forced scroll needed to read)
+    const eyebrowOp = useTransform(scrollYProgress, [0, 0.02], [1, 1]);
+    const eyebrowY = useTransform(scrollYProgress, [0, 0.02], [0, 0]);
 
-    const eyebrowOp = useTransform(scrollYProgress, [0.01, 0.05], [0, 1]);
-    const eyebrowY = useTransform(scrollYProgress, [0.01, 0.05], [16, 0]);
+    const textOpacity = useTransform(scrollYProgress, [0, 0.02], [1, 1]);
+    const textY = useTransform(scrollYProgress, [0, 0.02], [0, 0]);
+    const textFilter = useTransform(scrollYProgress, [0, 0.02], ["blur(0px)", "blur(0px)"]);
 
-    const textOpacity = useTransform(scrollYProgress, [W_REVEAL_START, W_REVEAL_END], [0, 1]);
-    const textY = useTransform(scrollYProgress, [W_REVEAL_START, W_REVEAL_END], [24, 0]);
-    const textFilter = useTransform(scrollYProgress, [W_REVEAL_START, W_REVEAL_END], ["blur(8px)", "blur(0px)"]);
-
-    const subtitleOp = useTransform(scrollYProgress, [W_SUB_START, W_SUB_END], [0, 1]);
-    const subtitleY = useTransform(scrollYProgress, [W_SUB_START, W_SUB_END], [16, 0]);
+    const subtitleOp = useTransform(scrollYProgress, [0, 0.02], [1, 1]);
+    const subtitleY = useTransform(scrollYProgress, [0, 0.02], [0, 0]);
     // Phase 1 stays fully visible — the plum curtain covers it
     // (no opacity or scale exit needed)
 
@@ -283,23 +278,7 @@ export default function StorySection() {
                     </motion.p>
                 </div>
 
-                {/* Scroll hint */}
-                <motion.div
-                    style={{ opacity: hintOp }}
-                    className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-20"
-                    aria-hidden="true"
-                >
-                    <span className="text-[9px] font-sans font-medium tracking-[0.4em] uppercase text-taupe">
-                        Scroll
-                    </span>
-                    <div className="w-px h-10 bg-[#3D2B1F]/20 relative overflow-hidden">
-                        <motion.div
-                            className="w-full h-1/2 bg-[#3D2B1F]/50"
-                            animate={{ y: ["-100%", "200%"] }}
-                            transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
-                        />
-                    </div>
-                </motion.div>
+
 
                 {/* ── PHASE 2 — plum card curtain-raises from bottom, sits above Phase 1 ── */}
                 <motion.div

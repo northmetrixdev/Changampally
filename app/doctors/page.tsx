@@ -24,7 +24,7 @@ const FEATURED_DOCTORS = [
         speciality: "Ayurveda Oncology",
         tagline: "Chief Consultant and Ayurveda Oncology Specialist",
         highlights: [
-            "25 years of Ayurvedic Oncology experience",
+            "30+ years of Ayurvedic Oncology experience",
             "12-year tenure at Nims Super Specialty Hospital, Trivandrum",
             "Member, Open Source Drug Discovery (OSDD) initiative",
         ],
@@ -111,15 +111,6 @@ const OTHER_DOCTORS = [
         tagline: "Panchakarma Specialist",
         image: "/images/doctors/Dr_navya.png",
     },
-    {
-        id: "team-8",
-        name: "Dr. Azhar Kalliyath",
-        credentials: "MBBS, DNB(PM&R), MNAMS, FIPM",
-        bio: "An experienced Physiatrist specializing in Physical Medicine and Rehabilitation, offering comprehensive care for intricate physical health conditions.",
-        centre: "Changampally Remedium, Edappal",
-        speciality: "Physiatrist",
-        tagline: "Specialist in Physical Medicine and Rehabilitation",
-    },
 ];
 
 export default function DoctorsPage() {
@@ -173,9 +164,8 @@ export default function DoctorsPage() {
             <section className="py-16 md:py-20 px-4 md:px-8 xl:px-16 bg-ivory" aria-labelledby="featured-doctors-heading">
                 <div className="max-w-[1440px] mx-auto">
                     <motion.p
-                        initial={{ opacity: 0, y: 16 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                         className="font-sans font-medium text-[10px] tracking-[0.25em] uppercase text-plum mb-2"
                     >
@@ -183,9 +173,8 @@ export default function DoctorsPage() {
                     </motion.p>
                     <motion.h2
                         id="featured-doctors-heading"
-                        initial={{ opacity: 0, y: 16 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7 }}
                         className="font-serif font-light text-3xl md:text-4xl text-charcoal mb-10"
                         style={{ fontFamily: "var(--font-juana)" }}
@@ -197,8 +186,7 @@ export default function DoctorsPage() {
                         className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
                         variants={stagger}
                         initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true, amount: 0.1 }}
+                        animate="show"
                     >
                         {FEATURED_DOCTORS.map((doctor, idx) => {
                             const initials = doctor.name
@@ -292,9 +280,8 @@ export default function DoctorsPage() {
             <section className="py-16 md:py-24 px-4 md:px-8 xl:px-16 bg-sandstone border-t border-charcoal/[0.06]" aria-labelledby="other-doctors-heading">
                 <div className="max-w-[1440px] mx-auto">
                     <motion.div
-                        initial={{ opacity: 0, y: 16 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                         className="mb-12 text-center"
                     >
@@ -312,8 +299,7 @@ export default function DoctorsPage() {
                         className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
                         variants={stagger}
                         initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true, amount: 0.1 }}
+                        animate="show"
                     >
                         {OTHER_DOCTORS.map((doctor) => {
                             const initials = doctor.name
@@ -381,9 +367,8 @@ export default function DoctorsPage() {
             <section className="py-16 md:py-24 px-4 sm:px-6 bg-ivory" aria-label="Chief Physician guiding principle">
                 <div className="max-w-4xl mx-auto">
                     <motion.div
-                        initial={{ opacity: 0, y: 24 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                         className="flex flex-col md:flex-row gap-10 md:gap-16 items-center"
                     >
@@ -420,9 +405,8 @@ export default function DoctorsPage() {
             {/* ── CTA ─────────────────────────────────────────────────────────── */}
             <section className="py-14 px-6 text-center bg-plum" aria-label="Book a consultation">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
                     <p className="font-sans font-light text-sm mb-4 text-ivory/70">Ready to speak with one of our physicians?</p>

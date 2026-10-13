@@ -286,7 +286,7 @@ export const SERVICE_ITEMS: ServiceItem[] = [
         name: "Cancer Rehabilitation",
         shortDescription: "Ayurvedic oncology integrated with modern cancer care",
         longDescription:
-            "Led by Dr. Jannathul Firdouse Changampally — an Ayurveda Oncology Specialist with 25 years of experience and a 12-year tenure at Nims Super Specialty Hospital — Changampally Remedium Cancer Rehabilitation unit combines evidence based Ayurvedic protocols with conventional oncology to support recovery, mitigate side effects, and improve quality of life.",
+            "Led by Dr. Jannathul Firdouse Changampally — an Ayurveda Oncology Specialist with 30+ years of experience and a 12-year tenure at Nims Super Specialty Hospital — Changampally Remedium Cancer Rehabilitation unit combines evidence based Ayurvedic protocols with conventional oncology to support recovery, mitigate side effects, and improve quality of life.",
         iconId: "microscope",
         highlights: ["Ayurvedic oncology", "Side-effect mitigation", "Quality of life support"],
     },
@@ -365,7 +365,7 @@ export const TEAM = [
         name: "Dr. Jannathul Firdouse Changampally",
         credentials: "BSc, BAMS",
         role: "Chief Consultant — Ayurveda Oncology Specialist",
-        bio: "A distinguished figure in Ayurvedic oncology with 25 years of expertise. Dr. Firdouse served as a cancer consultant at Nims Super Specialty Hospital, Trivandrum for 12 years and is a member of the Open Source Drug Discovery (OSDD) initiative.",
+        bio: "A distinguished figure in Ayurvedic oncology with 30+ years of expertise. Dr. Firdouse served as a cancer consultant at Nims Super Specialty Hospital, Trivandrum for 12 years and is a member of the Open Source Drug Discovery (OSDD) initiative.",
         image: "/images/doctors/Dr_Firdouse.png",
     },
     {
