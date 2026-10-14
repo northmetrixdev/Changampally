@@ -5,9 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Centre } from "@/lib/types";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { getCentreBySlug } from "@/lib/i18n/data";
 
 interface CentreDetailClientProps {
-    centre: Centre;
+    centreSlug: string;
+    initialCentre?: Centre;
 }
 
 const MEDIA_MAP: Record<string, { video?: string; photos: string[] }> = {
@@ -46,8 +49,17 @@ const MEDIA_MAP: Record<string, { video?: string; photos: string[] }> = {
     },
 };
 
-export default function CentreDetailClient({ centre }: CentreDetailClientProps) {
-    const media = MEDIA_MAP[centre.anchor] || { photos: [] };
+export default function CentreDetailClient({ centreSlug, initialCentre }: CentreDetailClientProps) {
+    const { locale, t } = useLanguage();
+    const centre = getCentreBySlug(centreSlug, locale) || initialCentre;
+
+    useEffect(() => {
+        if (centre) {
+            document.title = `${centre.name} | ${t("common.brandName")}`;
+        }
+    }, [centre, t]);
+
+    const media = MEDIA_MAP[centreSlug] || { photos: [] };
     const hasMedia = Boolean(media.video || media.photos.length > 0);
     const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
     const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -66,7 +78,6 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
             vid.play()
                 .then(() => setIsPlaying(true))
                 .catch(() => {
-                    // Autoplay was blocked, will play upon first touch/click
                     setIsPlaying(false);
                 });
         };
@@ -112,7 +123,6 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
         setIsMuted(!isMuted);
     };
 
-    // Keyboard navigation for lightbox
     useEffect(() => {
         if (selectedPhotoIndex === null) return;
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -134,16 +144,18 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
         setSelectedPhotoIndex((prev) => (prev === media.photos.length - 1 ? 0 : (prev ?? 0) + 1));
     };
 
+    if (!centre) return null;
+
     return (
         <main className="min-h-screen bg-ivory font-sans pt-0">
-            {/* ── First Viewport Screen: Hero Video landscape on mobile below navbar, full screen on desktop, or Elegant Text Hero for photo-less centres ───── */}
+            {/* ── First Viewport Screen: Hero Video landscape on mobile below navbar, full screen on desktop ───── */}
             {hasMedia ? (
                 <div className="relative w-full pt-[72px] md:pt-0 md:h-screen md:min-h-[600px] flex flex-col justify-between bg-black">
                     {/* Upper Video / Photo Container */}
                     {media.video ? (
                         <section
                             className="relative w-full aspect-video md:aspect-auto md:flex-1 overflow-hidden bg-black flex items-center justify-center"
-                            aria-label={`${centre.name} Video Tour`}
+                            aria-label={t("centres.detail.videoTourAria", { name: centre.name })}
                         >
                             <video
                                 ref={videoRef}
@@ -152,20 +164,18 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
                                 loop
                                 muted
                                 playsInline
-                                webkit-playsinline="true"
-                                preload="auto"
                                 className="w-full h-full object-cover opacity-100"
                             >
                                 <source src={media.video} type="video/mp4" />
                             </video>
 
-                            {/* Interactive Play/Pause & Sound Controls overlay — minimal seamless buttons */}
+                            {/* Controls overlay */}
                             <div className="absolute bottom-3 right-3 md:bottom-6 md:right-8 flex items-center gap-2 z-20">
                                 <button
                                     onClick={togglePlay}
                                     className="w-8 h-8 md:w-9 md:h-9 flex items-center justify-center bg-black/50 hover:bg-black/75 text-ivory rounded-full shadow-lg backdrop-blur-md border border-white/20 transition-all duration-300 hover:scale-105"
-                                    aria-label={isPlaying ? "Pause video" : "Play video"}
-                                    title={isPlaying ? "Pause" : "Play"}
+                                    aria-label={isPlaying ? t("centres.detail.pauseVideo") : t("centres.detail.playVideo")}
+                                    title={isPlaying ? t("centres.detail.pauseVideo") : t("centres.detail.playVideo")}
                                 >
                                     {isPlaying ? (
                                         <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -181,8 +191,8 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
                                 <button
                                     onClick={toggleMute}
                                     className="w-8 h-8 md:w-9 md:h-9 flex items-center justify-center bg-black/50 hover:bg-black/75 text-ivory rounded-full shadow-lg backdrop-blur-md border border-white/20 transition-all duration-300 hover:scale-105"
-                                    aria-label={isMuted ? "Unmute audio" : "Mute audio"}
-                                    title={isMuted ? "Unmute" : "Mute"}
+                                    aria-label={isMuted ? t("centres.detail.unmuteAudio") : t("centres.detail.muteAudio")}
+                                    title={isMuted ? t("centres.detail.unmuteAudio") : t("centres.detail.muteAudio")}
                                 >
                                     {isMuted ? (
                                         <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -230,8 +240,8 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 bg-plum text-ivory rounded-full hover:bg-plum-dark transition-all duration-300 shadow-md hover:scale-110 shrink-0"
-                                        aria-label={`Open Google Maps location for ${centre.name}`}
-                                        title={`Open Google Maps for ${centre.name}`}
+                                        aria-label={t("centres.detail.openMaps", { name: centre.name })}
+                                        title={t("centres.detail.openMaps", { name: centre.name })}
                                     >
                                         <svg className="w-4 h-4 fill-current text-ivory" viewBox="0 0 24 24">
                                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
@@ -263,13 +273,13 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
                         {/* Quick hero highlights */}
                         <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 pt-6 border-t border-ivory/15 w-full max-w-2xl text-xs sm:text-sm font-sans font-light text-ivory/90">
                             <div className="flex items-center gap-2">
-                                <span className="text-ivory/40">Location:</span>
+                                <span className="text-ivory/40">{t("centres.detail.locationLabel")}</span>
                                 <strong className="font-medium text-ivory">{centre.location}</strong>
                             </div>
                             <div className="flex items-center gap-2">
-                                <span className="text-ivory/40">Direct Helpline:</span>
-                                <a href={`tel:${centre.phone.replace(/\s+/g, "")}`} className="font-medium text-ivory underline hover:text-ivory/80">
-                                    {centre.phone}
+                                <span className="text-ivory/40">{t("centres.detail.helplineLabel")}</span>
+                                <a href={`tel:${centre.phone.replace(/\s+/g, "")}`} className="font-medium text-ivory underline hover:text-ivory/80" dir="ltr">
+                                    <bdi>{centre.phone}</bdi>
                                 </a>
                             </div>
                             {centre.mapUrl && (
@@ -279,8 +289,7 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-ivory/15 hover:bg-ivory/25 text-ivory rounded-full text-xs font-sans transition-all border border-ivory/20"
                                 >
-                                    <span>Google Maps</span>
-                                    <span>↗</span>
+                                    <span>{t("centres.detail.googleMaps")}</span>
                                 </a>
                             )}
                         </div>
@@ -294,13 +303,13 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
                     {/* Main Description */}
                     <div className="lg:col-span-2 flex flex-col gap-6">
                         <span className="font-sans font-medium text-[9px] tracking-[0.28em] uppercase text-plum">
-                            Centre Overview
+                            {t("centres.detail.overviewEyebrow")}
                         </span>
                         <h2
                             className="font-serif font-light text-3xl md:text-4xl text-charcoal leading-tight"
                             style={{ fontFamily: "var(--font-juana)" }}
                         >
-                            Scientific Healing and Authentic Ayurveda
+                            {t("centres.detail.overviewHeading")}
                         </h2>
                         <div className="w-12 h-px bg-plum/20" />
                         <p className="font-sans font-light text-base md:text-lg text-taupe leading-relaxed">
@@ -311,17 +320,21 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
                     {/* Quick Info Card */}
                     <div className="flex flex-col gap-5 bg-sandstone p-8 border border-plum/10 rounded-2xl h-fit">
                         <h3 className="font-sans font-medium text-[10px] tracking-[0.2em] uppercase text-plum border-b border-plum/15 pb-3">
-                            Facility Details
+                            {t("centres.detail.facilityDetails")}
                         </h3>
                         <div className="flex flex-col gap-3 font-sans font-light text-sm text-charcoal">
                             <div>
-                                <span className="block text-[10px] text-taupe uppercase tracking-wider">Location</span>
+                                <span className="block text-[10px] text-taupe uppercase tracking-wider">
+                                    {t("centres.detail.location")}
+                                </span>
                                 <strong className="font-medium text-charcoal">{centre.location}</strong>
                             </div>
                             <div>
-                                <span className="block text-[10px] text-taupe uppercase tracking-wider">Direct Helpline</span>
-                                <a href={`tel:${centre.phone.replace(/\s+/g, "")}`} className="font-medium text-plum hover:text-plum-dark transition-colors">
-                                    {centre.phone}
+                                <span className="block text-[10px] text-taupe uppercase tracking-wider">
+                                    {t("centres.detail.directHelpline")}
+                                </span>
+                                <a href={`tel:${centre.phone.replace(/\s+/g, "")}`} className="font-medium text-plum hover:text-plum-dark transition-colors" dir="ltr">
+                                    <bdi>{centre.phone}</bdi>
                                 </a>
                             </div>
                         </div>
@@ -332,7 +345,7 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="mt-2 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-plum text-ivory text-xs font-sans font-medium uppercase tracking-widest rounded hover:bg-plum-dark transition-all duration-300 shadow-sm"
-                                aria-label="Open Google Maps"
+                                aria-label={t("centres.detail.openMaps", { name: centre.name })}
                             >
                                 <svg className="w-4 h-4 fill-current text-ivory" viewBox="0 0 24 24">
                                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
@@ -344,7 +357,7 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
                             href="/contact"
                             className="w-full inline-flex items-center justify-center px-4 py-3 border border-plum/30 text-plum font-sans font-medium text-xs tracking-widest uppercase hover:bg-plum hover:text-ivory transition-all duration-300 rounded"
                         >
-                            Book Consultation
+                            {t("centres.detail.bookConsultation")}
                         </Link>
                     </div>
                 </div>
@@ -352,26 +365,26 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
 
             {/* ── Photo Gallery (Selectable & Swipeable Lightbox) ───────────── */}
             {media.photos.length > 0 && (
-                <section className="py-16 md:py-24 px-6 md:px-12 bg-sandstone border-t border-plum/10" aria-label="Photo Gallery">
+                <section className="py-16 md:py-24 px-6 md:px-12 bg-sandstone border-t border-plum/10" aria-label={t("centres.detail.galleryEyebrow")}>
                     <div className="max-w-[1440px] mx-auto">
                         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
                             <div>
                                 <span className="font-sans font-medium text-[9px] tracking-[0.28em] uppercase text-plum block mb-2">
-                                    Property Gallery
+                                    {t("centres.detail.galleryEyebrow")}
                                 </span>
                                 <h2
                                     className="font-serif font-light text-3xl md:text-4xl text-charcoal"
                                     style={{ fontFamily: "var(--font-juana)" }}
                                 >
-                                    Explore {centre.name}
+                                    {t("centres.detail.galleryHeading", { name: centre.name })}
                                 </h2>
                             </div>
                             <p className="hidden md:block font-sans font-light text-xs text-taupe">
-                                Click any photo to view full screen &amp; swipe through the gallery
+                                {t("centres.detail.galleryHelper")}
                             </p>
                         </div>
 
-                        {/* Photo Grid: 2-col grid on mobile for compact gallery feel, 3-col on desktop */}
+                        {/* Photo Grid */}
                         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
                             {media.photos.map((photo, idx) => (
                                 <motion.div
@@ -381,18 +394,18 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
                                     className="relative h-44 sm:h-64 md:h-72 rounded-xl overflow-hidden border border-plum/15 shadow-soft cursor-pointer group bg-ivory"
                                     role="button"
                                     tabIndex={0}
-                                    aria-label={`View photo ${idx + 1} of ${centre.name}`}
+                                    aria-label={t("centres.detail.photoAria", { index: idx + 1, name: centre.name })}
                                     onKeyDown={(e) => { if (e.key === 'Enter') setSelectedPhotoIndex(idx); }}
                                 >
                                     <Image
                                         src={photo}
-                                        alt={`${centre.name} property photo ${idx + 1}`}
+                                        alt={`${centre.name} photo ${idx + 1}`}
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
                                     <div className="absolute inset-0 bg-charcoal/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                         <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-plum text-ivory text-[10px] sm:text-xs font-sans font-medium tracking-wider uppercase rounded-full shadow-lg">
-                                            Expand Photo ↗
+                                            {t("centres.detail.expandPhoto")}
                                         </span>
                                     </div>
                                 </motion.div>
@@ -415,12 +428,12 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
                         {/* Top bar */}
                         <div className="w-full max-w-6xl flex items-center justify-between z-10 text-ivory" onClick={(e) => e.stopPropagation()}>
                             <span className="font-sans font-light text-xs tracking-widest uppercase text-ivory/70">
-                                {centre.name} — Photo {selectedPhotoIndex + 1} of {media.photos.length}
+                                {t("centres.detail.photoCounter", { name: centre.name, current: selectedPhotoIndex + 1, total: media.photos.length })}
                             </span>
                             <button
                                 onClick={() => setSelectedPhotoIndex(null)}
-                                className="w-10 h-10 rounded-full bg-ivory/10 hover:bg-ivory/20 flex items-center justify-center text-ivory text-xl transition-all"
-                                aria-label="Close photo preview"
+                                className="w-10 h-10 rounded-full bg-ivory/10 hover:bg-ivory/20 flex items-center justify-center text-ivory text-xl transition-all cursor-pointer"
+                                aria-label={t("centres.detail.closePreview")}
                             >
                                 ✕
                             </button>
@@ -451,8 +464,8 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
                             {/* Prev button */}
                             <button
                                 onClick={handlePrev}
-                                className="absolute left-2 md:-left-12 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-ivory/20 hover:bg-ivory text-white hover:text-plum flex items-center justify-center text-2xl transition-all shadow-lg"
-                                aria-label="Previous photo"
+                                className="absolute left-2 md:-left-12 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-ivory/20 hover:bg-ivory text-white hover:text-plum flex items-center justify-center text-2xl transition-all shadow-lg cursor-pointer"
+                                aria-label={t("centres.detail.prevPhoto")}
                             >
                                 ‹
                             </button>
@@ -460,8 +473,8 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
                             {/* Next button */}
                             <button
                                 onClick={handleNext}
-                                className="absolute right-2 md:-right-12 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-ivory/20 hover:bg-ivory text-white hover:text-plum flex items-center justify-center text-2xl transition-all shadow-lg"
-                                aria-label="Next photo"
+                                className="absolute right-2 md:-right-12 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-ivory/20 hover:bg-ivory text-white hover:text-plum flex items-center justify-center text-2xl transition-all shadow-lg cursor-pointer"
+                                aria-label={t("centres.detail.nextPhoto")}
                             >
                                 ›
                             </button>
@@ -473,7 +486,7 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
                                 <button
                                     key={idx}
                                     onClick={() => setSelectedPhotoIndex(idx)}
-                                    className={`relative w-14 h-14 rounded-lg overflow-hidden border-2 transition-all ${idx === selectedPhotoIndex ? "border-ivory scale-110" : "border-transparent opacity-50"}`}
+                                    className={`relative w-14 h-14 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${idx === selectedPhotoIndex ? "border-ivory scale-110" : "border-transparent opacity-50"}`}
                                 >
                                     <Image src={p} alt={`Thumbnail ${idx + 1}`} fill className="object-cover" />
                                 </button>
@@ -490,10 +503,10 @@ export default function CentreDetailClient({ centre }: CentreDetailClientProps) 
                         className="font-serif font-light text-3xl md:text-4xl text-charcoal mb-3"
                         style={{ fontFamily: "var(--font-juana)" }}
                     >
-                        Specialised Clinical Focus
+                        {t("centres.detail.specialisationsHeading")}
                     </h2>
                     <p className="font-sans font-light text-sm text-taupe max-w-xl mx-auto">
-                        Specialities and clinical units available at {centre.name}.
+                        {t("centres.detail.specialisationsSub", { name: centre.name })}
                     </p>
                 </div>
 

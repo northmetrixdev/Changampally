@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import VideoBackground from "@/components/atoms/VideoBackground";
-import { SITE_NAME, SITE_TAGLINE } from "@/lib/constants";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { motion } from "framer-motion";
 
 // ─── Variants ───────────────────────────────────────────────────────────────
@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 const containerVariants = {
     hidden: {},
     visible: {
-        transition: { staggerChildren: 0.4, delayChildren: 0.5 }, // Slower stagger for cinematic feel
+        transition: { staggerChildren: 0.4, delayChildren: 0.5 },
     },
 };
 
@@ -26,41 +26,33 @@ const fadeUpBlur = {
         y: 0,
         filter: "blur(0px)",
         transition: {
-            duration: 1.8, // Extremely slow fade for luxury feel
+            duration: 1.8,
             ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
         },
-    },
-};
-
-const lineVariant = {
-    hidden: { scaleX: 0 },
-    visible: {
-        scaleX: 1,
-        transition: { duration: 1.4, delay: 1.2, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
     },
 };
 
 // ─── Component ──────────────────────────────────────────────────────────────
 
 export default function HeroSection() {
+    const { t } = useLanguage();
+
     return (
         <section
             className="relative w-full h-screen min-h-[700px] overflow-hidden bg-sandstone"
-            aria-label="Changampally Clinical Wellness Sanctuary"
+            aria-label={t("common.brandTagline")}
         >
             {/* ── Video backdrop ────────────────────────────────────────────── */}
             <div className="absolute inset-0" aria-hidden="true">
                 <VideoBackground
                     src="/assets/hero-bg.mp4"
                     poster=""
-                    ariaLabel="Changampally hero background"
+                    ariaLabel={t("home.hero.bgVideoAria")}
                     slot="hero"
                 />
 
                 {/* Minimal top/bottom gradient to ensure text contrast without changing video hue */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50 pointer-events-none" />
-
-
             </div>
 
             {/* ── Content overlay ──────────────────────────────────────────── */}
@@ -74,7 +66,7 @@ export default function HeroSection() {
                 <motion.div variants={fadeUpBlur} className="mb-12">
                     <Image
                         src="/assets/Changampally Remedium_logo-light1.png"
-                        alt="Changampally logo"
+                        alt={t("home.hero.logoAlt")}
                         width={140}
                         height={140}
                         className="object-contain opacity-90"
@@ -89,8 +81,8 @@ export default function HeroSection() {
                         className="font-serif font-light text-4xl sm:text-5xl md:text-7xl lg:text-[6rem] tracking-[0.05em] text-ivory leading-[1.1] mb-6 md:mb-8"
                         style={{ fontFamily: "var(--font-juana)", fontWeight: 300 }}
                     >
-                        Where Centuries of<br />
-                        <span className="italic">Healing Meet Today.</span>
+                        {t("home.hero.line1")}<br />
+                        <span className="italic">{t("home.hero.line2")}</span>
                     </motion.h1>
 
                     {/* Subheadline */}
@@ -98,7 +90,7 @@ export default function HeroSection() {
                         variants={fadeUpBlur}
                         className="font-sans font-light text-base md:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed text-ivory/80 tracking-wide"
                     >
-                        600 years of Ayurvedic heritage, integrated with modern oncology and rehabilitation.
+                        {t("home.hero.subheadline")}
                     </motion.p>
 
                     {/* CTAs */}
@@ -107,8 +99,8 @@ export default function HeroSection() {
                         className="flex flex-col sm:flex-row gap-6 mt-16 justify-center"
                         role="group"
                     >
-                        <Link href="/contact" className="btn-ghost-white tracking-[0.25em]" aria-label="Book a consultation">
-                            Begin Healing
+                        <Link href="/contact" className="btn-ghost-white tracking-[0.25em]" aria-label={t("home.hero.ctaAria")}>
+                            {t("home.hero.cta")}
                         </Link>
                     </motion.div>
                 </div>
@@ -122,7 +114,7 @@ export default function HeroSection() {
                     transition={{ delay: 2.2, duration: 1.5 }}
                 >
                     <span className="text-[9px] font-sans font-medium tracking-[0.4em] uppercase text-ivory/60">
-                        Discover
+                        {t("home.hero.discover")}
                     </span>
                     <div className="w-px h-16 bg-ivory/20 relative overflow-hidden">
                         <motion.div

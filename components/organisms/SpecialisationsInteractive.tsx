@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-const DEPARTMENTS = [
+const EN_DEPARTMENTS = [
     { name: "Oncology and Tumor Disorders", centre: "Remedium" },
     { name: "Mental Health and Behavioral Disorders", centre: "Remedium" },
     { name: "Neurological and Neuro Psychiatric Disorders", centre: "Remedium" },
@@ -12,7 +13,19 @@ const DEPARTMENTS = [
     { name: "Dermatology, Aesthetic and Regenerative Care", centre: "Remedium" },
 ];
 
+const AR_DEPARTMENTS = [
+    { name: "الأورام واضطرابات الخلايا الورمية", centre: "ريميديوم" },
+    { name: "الصحة النفسية والاضطرابات السلوكية", centre: "ريميديوم" },
+    { name: "الاضطرابات العصبية والنفسية العصبية", centre: "ريميديوم" },
+    { name: "أمراض المناعة الذاتية والالتهابات", centre: "ريميديوم" },
+    { name: "رعاية الإنجاب والخصوبة", centre: "ريميديوم" },
+    { name: "الجلدية، والتجميل، والرعاية التجديدية", centre: "ريميديوم" },
+];
+
 export default function SpecialisationsInteractive() {
+    const { locale, t, isRtl } = useLanguage();
+    const departments = locale === "ar" ? AR_DEPARTMENTS : EN_DEPARTMENTS;
+
     return (
         <section
             className="py-20 md:py-32 px-4 sm:px-6 bg-plum relative"
@@ -23,27 +36,29 @@ export default function SpecialisationsInteractive() {
                 {/* ── Left Column: Sticky Header ── */}
                 <div className="lg:w-1/3 relative">
                     <div className="sticky top-24 md:top-32">
-                        <p className="eyebrow mb-4 md:mb-6 text-ivory/50">Specialisations</p>
+                        <p className="eyebrow mb-4 md:mb-6 text-ivory/50">{t("home.specialisations.eyebrow")}</p>
                         <h2 id="depts-preview-heading" className="font-serif font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-ivory leading-[1.2] md:leading-[1.1] mb-6" style={{ letterSpacing: "0.02em" }}>
-                            33 Specialisations.<br />
-                            <span className="italic text-ivory/80">5 Centres.</span>
+                            {t("home.specialisations.title1")}<br />
+                            <span className="italic text-ivory/80">{t("home.specialisations.title2")}</span>
                         </h2>
                         <p className="font-sans font-light text-sm md:text-base lg:text-lg text-ivory/60 leading-relaxed mb-8 md:mb-10 max-w-sm">
-                            From Oncology and Psychiatry to Panchakarma and Skin Regeneration — scientific healing across every system of the body and mind.
+                            {t("home.specialisations.desc")}
                         </p>
                         <Link
                             href="/departments"
                             className="inline-flex items-center gap-4 text-ivory group uppercase tracking-[0.2em] text-[10px] md:text-xs font-medium pb-2 border-b border-ivory/30 hover:border-ivory transition-colors"
                         >
-                            View All Departments
-                            <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
+                            {t("home.specialisations.viewAll")}
+                            <span className={`${isRtl ? "group-hover:-translate-x-2" : "group-hover:translate-x-2"} transition-transform duration-300`}>
+                                {isRtl ? "←" : "→"}
+                            </span>
                         </Link>
                     </div>
                 </div>
 
                 {/* ── Right Column: Interactive List ── */}
                 <div className="lg:w-2/3 flex flex-col pt-4 lg:pt-0">
-                    {DEPARTMENTS.map((dept, idx) => (
+                    {departments.map((dept, idx) => (
                         <motion.div
                             key={dept.name}
                             initial={{ opacity: 0, y: 30 }}

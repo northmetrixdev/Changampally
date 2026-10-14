@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { CENTRES } from "@/lib/constants";
 import CentreDetailClient from "@/components/organisms/CentreDetailClient";
 
-// Generate static params for the dynamic routes
 export async function generateStaticParams() {
     return CENTRES.map((centre) => ({
         slug: centre.anchor,
@@ -18,11 +17,18 @@ interface CentrePageProps {
 export async function generateMetadata({ params }: CentrePageProps) {
     const resolvedParams = await params;
     const centre = CENTRES.find((c) => c.anchor === resolvedParams.slug);
-    if (!centre) return { title: "Centre Not Found" };
+    if (!centre) return { title: "Centre Not Found | Changampally" };
 
     return {
         title: `${centre.name} | Changampally`,
         description: centre.description,
+        alternates: {
+            canonical: `https://www.changampally.com/centres/${centre.anchor}`,
+            languages: {
+                en: `https://www.changampally.com/centres/${centre.anchor}`,
+                ar: `https://www.changampally.com/centres/${centre.anchor}?lang=ar`,
+            },
+        },
     };
 }
 
@@ -34,5 +40,5 @@ export default async function CentrePage({ params }: CentrePageProps) {
         notFound();
     }
 
-    return <CentreDetailClient centre={centre} />;
+    return <CentreDetailClient centreSlug={resolvedParams.slug} initialCentre={centre} />;
 }

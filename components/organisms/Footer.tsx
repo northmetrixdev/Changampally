@@ -1,9 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { SITE_NAME, FOOTER_LINK_GROUPS, SOCIAL_LINKS, SITE_TAGLINE } from "@/lib/constants";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { getFooterLinkGroups } from "@/lib/i18n/data";
+import { SITE_NAME, SOCIAL_LINKS } from "@/lib/constants";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+    const { locale, t } = useLanguage();
+    const footerLinkGroups = getFooterLinkGroups(locale);
 
     return (
         <footer
@@ -16,7 +22,7 @@ export default function Footer() {
                 
                 {/* Brand Column */}
                 <div className="flex flex-col gap-4 max-w-sm">
-                    <Link href="/" className="group w-fit block" aria-label={`${SITE_NAME} — home`}>
+                    <Link href="/" className="group w-fit block" aria-label={t("nav.ariaHome")}>
                         <Image
                             src="/assets/Changampally Remedium_logo.png"
                             alt="Changampally Medical Institute"
@@ -27,27 +33,34 @@ export default function Footer() {
                         />
                     </Link>
                     <p className="font-light text-[11px] leading-relaxed text-taupe">
-                        {SITE_TAGLINE}
+                        {t("common.brandTagline")}
                     </p>
                     <div className="flex items-center gap-4 mt-2">
-                        {SOCIAL_LINKS.map((social) => (
-                            <a
-                                key={social.platform}
-                                href={social.href}
-                                className="font-sans text-[10px] uppercase tracking-widest transition-colors duration-300 text-taupe hover:text-plum"
-                                aria-label={social.ariaLabel}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                {social.platform}
-                            </a>
-                        ))}
+                        {SOCIAL_LINKS.map((social) => {
+                            const ariaLabelKey = social.platform === "Instagram" 
+                                ? "footer.followInstagram" 
+                                : social.platform === "Facebook" 
+                                ? "footer.likeFacebook" 
+                                : "footer.subscribeYouTube";
+                            return (
+                                <a
+                                    key={social.platform}
+                                    href={social.href}
+                                    className="font-sans text-[10px] uppercase tracking-widest transition-colors duration-300 text-taupe hover:text-plum"
+                                    aria-label={t(ariaLabelKey)}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    {social.platform}
+                                </a>
+                            );
+                        })}
                     </div>
                 </div>
 
                 {/* Link Columns */}
                 <div className="grid grid-cols-2 gap-8 md:gap-16">
-                    {FOOTER_LINK_GROUPS.slice(0, 2).map((group) => (
+                    {footerLinkGroups.slice(0, 2).map((group) => (
                         <div key={group.heading} className="flex flex-col gap-3">
                             <h3 className="font-medium text-[10px] tracking-[0.2em] uppercase text-plum">
                                 {group.heading}
@@ -71,10 +84,10 @@ export default function Footer() {
 
             <div className="px-6 py-4 border-t border-plum/10">
                 <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-light text-taupe">
-                    <p>&copy; {currentYear} {SITE_NAME}. All rights reserved.</p>
+                    <p>{t("footer.copyright", { year: currentYear })}</p>
                     <nav className="flex gap-4" aria-label="Legal navigation">
-                        <Link href="#" className="hover:text-plum">Privacy Policy</Link>
-                        <Link href="#" className="hover:text-plum">Terms of Service</Link>
+                        <Link href="#" className="hover:text-plum">{t("common.privacyPolicy")}</Link>
+                        <Link href="#" className="hover:text-plum">{t("common.termsOfService")}</Link>
                     </nav>
                 </div>
             </div>

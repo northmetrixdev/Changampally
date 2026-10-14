@@ -1,12 +1,12 @@
 "use client";
 
-import type { Metadata } from "next";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { CENTRES } from "@/lib/constants";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { getCentres } from "@/lib/i18n/data";
 
-// ── Animation variant: single scroll reveal ──────────────────────────────────
 const fadeReveal = {
     hidden: { opacity: 0, y: 24 },
     show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
@@ -14,8 +14,10 @@ const fadeReveal = {
 
 function truncateToSentence(text: string) {
     const periodIndex = text.indexOf('.');
-    if (periodIndex === -1) return text;
-    return text.substring(0, periodIndex + 1);
+    const arabicPeriodIndex = text.indexOf('۔');
+    const idx = periodIndex !== -1 ? periodIndex : arabicPeriodIndex;
+    if (idx === -1) return text;
+    return text.substring(0, idx + 1);
 }
 
 const staggerGrid = {
@@ -24,6 +26,19 @@ const staggerGrid = {
 };
 
 export default function ServicesPage() {
+    const { locale, t } = useLanguage();
+    const centres = getCentres(locale);
+
+    useEffect(() => {
+        document.title = t("meta.centresTitle");
+    }, [t, locale]);
+
+    const photoMap: Record<string, string> = {
+        remedium: "/images/properties/REMEDIUM/D7F08459.JPG",
+        kaivalya: "/images/properties/PERINGODE KAIVALYA/unnamed.jpg",
+        vaidyabhavan: "/images/properties/THIRUNNAVYA/unnamed.jpg",
+    };
+
     return (
         <main className="min-h-screen bg-ivory">
             {/* ── Compact hero: ~20% page height, matches Departments style ── */}
@@ -37,7 +52,7 @@ export default function ServicesPage() {
                             transition={{ duration: 0.6 }}
                             className="font-sans font-light text-[10px] tracking-[0.3em] uppercase text-ivory/60 mb-3"
                         >
-                            Our Centres of Excellence
+                            {t("centres.hero.eyebrow")}
                         </motion.p>
                         <motion.h1
                             initial={{ opacity: 0, y: 15 }}
@@ -46,7 +61,7 @@ export default function ServicesPage() {
                             className="font-serif font-light text-4xl sm:text-5xl md:text-[4.5rem] text-ivory tracking-tight leading-tight mb-4"
                             style={{ fontFamily: "var(--font-juana)" }}
                         >
-                            Care Across Kerala
+                            {t("centres.hero.title")}
                         </motion.h1>
                         <motion.p
                             initial={{ opacity: 0, y: 15 }}
@@ -54,7 +69,7 @@ export default function ServicesPage() {
                             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
                             className="font-sans font-light text-sm sm:text-base text-ivory/80 leading-relaxed max-w-2xl"
                         >
-                            Five centres — each distinct in specialisation and setting — united by one philosophy: treating the whole person with Ayurveda and modern medicine.
+                            {t("centres.hero.desc")}
                         </motion.p>
                     </div>
                     <motion.div
@@ -64,7 +79,9 @@ export default function ServicesPage() {
                         className="hidden md:flex flex-col items-end border-l border-ivory/20 pl-8 py-2"
                     >
                         <span className="font-serif text-4xl text-ivory mb-1">5</span>
-                        <span className="font-sans font-medium text-[11px] tracking-widest uppercase text-ivory/60">Centres Across Kerala</span>
+                        <span className="font-sans font-medium text-[11px] tracking-widest uppercase text-ivory/60">
+                            {t("centres.hero.statLabel")}
+                        </span>
                     </motion.div>
                 </div>
             </section>
@@ -72,7 +89,7 @@ export default function ServicesPage() {
             {/* ── Centre Cards Grid (3 cards top, 2 cards bottom) ──────────────── */}
             <section className="py-16 md:py-20 px-4 md:px-6 xl:px-12 bg-ivory" aria-labelledby="centres-grid-heading">
                 <div className="max-w-[1440px] mx-auto">
-                    <h2 id="centres-grid-heading" className="sr-only">Our Five Centres</h2>
+                    <h2 id="centres-grid-heading" className="sr-only">{t("centres.gridHeading")}</h2>
                     
                     {/* Top row: 3 cards */}
                     <motion.div
@@ -81,13 +98,7 @@ export default function ServicesPage() {
                         initial="hidden"
                         animate="show"
                     >
-                        {CENTRES.slice(0, 3).map((centre) => {
-                            // Map photos strictly by anchor so Munnar ('wellness') and Sanjeevani have NO photo
-                            const photoMap: Record<string, string> = {
-                                remedium: "/images/properties/REMEDIUM/D7F08459.JPG",
-                                kaivalya: "/images/properties/PERINGODE KAIVALYA/unnamed.jpg",
-                                vaidyabhavan: "/images/properties/THIRUNNAVYA/unnamed.jpg",
-                            };
+                        {centres.slice(0, 3).map((centre) => {
                             const photo = photoMap[centre.anchor];
 
                             return (
@@ -99,9 +110,8 @@ export default function ServicesPage() {
                                     <Link
                                         href={`/centres/${centre.anchor}`}
                                         className="group flex flex-col w-full bg-sandstone border border-charcoal/[0.06] hover:border-plum/30 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:-translate-y-1 cursor-pointer"
-                                        aria-label={`View ${centre.name}`}
+                                        aria-label={centre.name}
                                     >
-                                        {/* Property photo header if available */}
                                         {photo ? (
                                             <div className="relative h-48 bg-plum/5 border-b border-charcoal/[0.04] overflow-hidden">
                                                 <Image
@@ -123,7 +133,6 @@ export default function ServicesPage() {
 
                                         {/* Content */}
                                         <div className="flex flex-col flex-grow p-6">
-                                            {/* Badge */}
                                             <span className="inline-block text-[8px] tracking-[0.2em] uppercase font-sans font-medium text-plum bg-plum/10 px-2.5 py-1 rounded mb-3 self-start border border-plum/15">
                                                 {centre.tagline}
                                             </span>
@@ -140,8 +149,8 @@ export default function ServicesPage() {
                                             <div className="flex items-center justify-between pt-3 border-t border-charcoal/[0.08]">
                                                 <div className="flex flex-col gap-1">
                                                     <span className="font-sans font-light text-[11px] text-taupe tracking-wide">{centre.location}</span>
-                                                    <span className="text-[10px] font-sans font-medium text-plum">
-                                                        {centre.phone}
+                                                    <span className="text-[10px] font-sans font-medium text-plum" dir="ltr">
+                                                        <bdi>{centre.phone}</bdi>
                                                     </span>
                                                 </div>
                                             </div>
@@ -158,7 +167,7 @@ export default function ServicesPage() {
 
                                         {/* Seamless Bottom Action */}
                                         <div className="mt-auto px-5 py-3.5 text-xs tracking-[0.18em] uppercase font-sans font-medium text-plum border-t border-charcoal/[0.08] group-hover:bg-plum group-hover:text-ivory transition-all duration-300 text-center">
-                                            View Centre →
+                                            {t("common.viewCentre")}
                                         </div>
                                     </Link>
                                 </motion.div>
@@ -173,12 +182,7 @@ export default function ServicesPage() {
                         initial="hidden"
                         animate="show"
                     >
-                        {CENTRES.slice(3, 5).map((centre) => {
-                            const photoMap: Record<string, string> = {
-                                remedium: "/images/properties/REMEDIUM/D7F08459.JPG",
-                                kaivalya: "/images/properties/PERINGODE KAIVALYA/unnamed.jpg",
-                                vaidyabhavan: "/images/properties/THIRUNNAVYA/unnamed.jpg",
-                            };
+                        {centres.slice(3, 5).map((centre) => {
                             const photo = photoMap[centre.anchor];
 
                             return (
@@ -190,9 +194,8 @@ export default function ServicesPage() {
                                     <Link
                                         href={`/centres/${centre.anchor}`}
                                         className="group flex flex-col w-full bg-sandstone border border-charcoal/[0.06] hover:border-plum/30 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-lg hover:-translate-y-1 cursor-pointer"
-                                        aria-label={`View ${centre.name}`}
+                                        aria-label={centre.name}
                                     >
-                                        {/* Property photo header if available */}
                                         {photo ? (
                                             <div className="relative h-48 bg-plum/5 border-b border-charcoal/[0.04] overflow-hidden">
                                                 <Image
@@ -214,7 +217,6 @@ export default function ServicesPage() {
 
                                         {/* Content */}
                                         <div className="flex flex-col flex-grow p-6">
-                                            {/* Badge */}
                                             <span className="inline-block text-[8px] tracking-[0.2em] uppercase font-sans font-medium text-plum bg-plum/10 px-2.5 py-1 rounded mb-3 self-start border border-plum/15">
                                                 {centre.tagline}
                                             </span>
@@ -231,8 +233,8 @@ export default function ServicesPage() {
                                             <div className="flex items-center justify-between pt-3 border-t border-charcoal/[0.08]">
                                                 <div className="flex flex-col gap-1">
                                                     <span className="font-sans font-light text-[11px] text-taupe tracking-wide">{centre.location}</span>
-                                                    <span className="text-[10px] font-sans font-medium text-plum">
-                                                        {centre.phone}
+                                                    <span className="text-[10px] font-sans font-medium text-plum" dir="ltr">
+                                                        <bdi>{centre.phone}</bdi>
                                                     </span>
                                                 </div>
                                             </div>
@@ -249,7 +251,7 @@ export default function ServicesPage() {
 
                                         {/* Seamless Bottom Action */}
                                         <div className="mt-auto px-5 py-3.5 text-xs tracking-[0.18em] uppercase font-sans font-medium text-plum border-t border-charcoal/[0.08] group-hover:bg-plum group-hover:text-ivory transition-all duration-300 text-center">
-                                            View Centre →
+                                            {t("common.viewCentre")}
                                         </div>
                                     </Link>
                                 </motion.div>
@@ -267,15 +269,17 @@ export default function ServicesPage() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="max-w-2xl mx-auto"
                 >
-                    <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-ivory/50 mb-4">Begin Your Journey</p>
+                    <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-ivory/50 mb-4">
+                        {t("centres.cta.eyebrow")}
+                    </p>
                     <h2 className="font-serif font-light text-3xl sm:text-4xl text-ivory mb-6" style={{ fontFamily: "var(--font-juana)" }}>
-                        Find the Centre Right for You
+                        {t("centres.cta.title")}
                     </h2>
                     <p className="font-sans font-light text-sm text-ivory/70 mb-8 leading-relaxed">
-                        Each of our five centres offers a unique healing environment. Book a consultation and our team will guide you to the most suitable care.
+                        {t("centres.cta.desc")}
                     </p>
                     <Link href="/contact" className="inline-flex items-center justify-center px-8 py-3 border border-ivory/50 text-ivory font-sans font-light text-xs tracking-[0.2em] uppercase transition-all duration-400 hover:bg-ivory hover:text-plum">
-                        Book a Consultation
+                        {t("centres.cta.button")}
                     </Link>
                 </motion.div>
             </section>

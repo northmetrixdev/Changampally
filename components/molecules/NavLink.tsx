@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 interface NavLinkProps {
     label: string;
@@ -11,14 +12,17 @@ interface NavLinkProps {
 }
 
 export default function NavLink({ label, href, ariaLabel, currentPathname, scrolled = false }: NavLinkProps) {
+    const { locale } = useLanguage();
+    const isArabic = locale === "ar";
     const isActive = currentPathname === href || (href === "/services" && currentPathname?.startsWith("/centres/"));
 
     return (
         <Link
             href={href}
-            className={`relative font-sans font-light text-sm tracking-wider transition-all duration-500 pb-0.5
+            className={`relative font-sans transition-all duration-500 pb-0.5 whitespace-nowrap
+                  ${isArabic ? "text-[18px] md:text-[17.5px] lg:text-[18.5px] font-medium tracking-normal leading-normal" : "text-sm font-light tracking-wider"}
                   after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px
-                  after:transition-transform after:duration-300 after:origin-left
+                  after:transition-transform after:duration-300 after:origin-left rtl:after:origin-right
                   ${scrolled
                     ? isActive
                         ? "text-plum after:bg-plum after:scale-x-100"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useMemo } from "react";
 import {
     useScroll,
     useTransform,
@@ -10,6 +10,7 @@ import {
     AnimatePresence,
     type Variants,
 } from "framer-motion";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 /**
  * StorySection — Two-Phase Cinematic Scroll
@@ -24,40 +25,6 @@ const BISTRE_BG = "#33181C";   // Brand plum dark
 const BISTRE_DIV = "rgba(234,236,228,0.18)";
 
 const LUXURY_EASE = [0.22, 1, 0.36, 1] as const;
-
-const HEADLINE =
-    "Since 1300 AD, the Changampally family has preserved the purest forms of Ayurvedic healing.";
-
-const SUBTITLE =
-    "Today, that unbroken heritage meets molecular precision — treating the whole person, not just the disease.";
-
-const PILLARS = [
-    {
-        label: "Tradition",
-        title: "Traditional Ayurveda",
-        titleNode: <>Traditional<br /><span className="italic">Ayurveda</span></>,
-        body: "Rooted in the Changampally Vaidya lineage — Panchakarma, classical formulations, and time-tested therapies passed down since 1300 AD.",
-        pull: "700 years of unbroken lineage.",
-    },
-    {
-        label: "Integration",
-        title: "Integrated Modern Medicine",
-        titleNode: <>Integrated Modern<br /><span className="italic">Medicine</span></>,
-        body: "Under the combined expertise of our Ayurvedic specialists and allopathic physicians, we address intricate disorders with an evidence based, dual approach.",
-        pull: "Two traditions. One care plan.",
-    },
-    {
-        label: "Wholeness",
-        title: "Mental and Emotional Wellbeing",
-        titleNode: <>Mental and Emotional<br /><span className="italic">Wellbeing</span></>,
-        body: "Guided by our Ayurvedic psychiatric care, we provide counselling and psychotherapy — because healing is never complete without addressing the mind.",
-        pull: "The mind is never an afterthought.",
-    },
-];
-
-// Words for Phase 1 text reveal
-const HEADLINE_WORDS = HEADLINE.split(" ");
-const SUBTITLE_WORDS = SUBTITLE.split(" ");
 
 // Variants for Phase 1 "Our Story" section (slow, contemplative reveal)
 const eyebrowVariants: Variants = {
@@ -142,12 +109,19 @@ const subtitleWordVariants: Variants = {
     },
 };
 
+interface Pillar {
+    label: string;
+    titleNode: React.ReactNode;
+    body: string;
+    pull: string;
+}
+
 // ── PillarText Component ──────────────────────────────────────────────────────
 function PillarText({
     pillar,
     isActive,
 }: {
-    pillar: typeof PILLARS[number];
+    pillar: Pillar;
     isActive: boolean;
 }) {
     const containerVariants = {
@@ -238,27 +212,52 @@ function PillarText({
 export default function StorySection() {
     const containerRef = useRef<HTMLDivElement>(null);
     const [activePillar, setActivePillar] = useState<number>(0);
+    const { t, locale } = useLanguage();
+
+    const headline = t("home.story.headline");
+    const subtitle = t("home.story.subtitle");
+
+    const headlineWords = useMemo(() => headline.split(" "), [headline]);
+    const subtitleWords = useMemo(() => subtitle.split(" "), [subtitle]);
+
+    const pillars: Pillar[] = useMemo(() => [
+        {
+            label: t("home.story.pillar1Label"),
+            titleNode: <>{t("home.story.pillar1Title1")}<br /><span className="italic">{t("home.story.pillar1Title2")}</span></>,
+            body: t("home.story.pillar1Body"),
+            pull: t("home.story.pillar1Pull"),
+        },
+        {
+            label: t("home.story.pillar2Label"),
+            titleNode: <>{t("home.story.pillar2Title1")}<br /><span className="italic">{t("home.story.pillar2Title2")}</span></>,
+            body: t("home.story.pillar2Body"),
+            pull: t("home.story.pillar2Pull"),
+        },
+        {
+            label: t("home.story.pillar3Label"),
+            titleNode: <>{t("home.story.pillar3Title1")}<br /><span className="italic">{t("home.story.pillar3Title2")}</span></>,
+            body: t("home.story.pillar3Body"),
+            pull: t("home.story.pillar3Pull"),
+        },
+    ], [t, locale]);
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end end"],
     });
 
-    // Spring-smoothed progress for the upward curtain raise
     const springProgress = useSpring(scrollYProgress, {
         stiffness: 85,
         damping: 24,
         restDelta: 0.001,
     });
 
-    // Phase 2 curtain-raise from bottom: rises smoothly as you scroll
     const plumCurtain = useTransform(
         springProgress,
         [0.15, 0.28],
         ["inset(100% 0% 0% 0%)", "inset(0% 0% 0% 0%)"]
     );
 
-    // Track active pillar smoothly across the scroll window
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
         let newActive = 0;
         if (latest >= 0.52 && latest < 0.74) {
@@ -289,6 +288,7 @@ export default function StorySection() {
                 {/* ── PHASE 1 — Ivory Word-by-Word Reveal ── */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center bg-ivory z-10">
                     <motion.div
+                        key={`phase1-${locale}`}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.25 }}
@@ -298,7 +298,7 @@ export default function StorySection() {
                             variants={eyebrowVariants}
                             className="eyebrow text-[#3D2B1F] tracking-[0.3em] md:tracking-[0.4em] mb-6 md:mb-8 text-xs md:text-sm"
                         >
-                            Our Story
+                            {t("home.story.eyebrow")}
                         </motion.p>
 
                         <motion.h2
@@ -307,7 +307,7 @@ export default function StorySection() {
                             className="font-serif font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-charcoal leading-[1.28] tracking-tight max-w-4xl px-2"
                             style={{ fontFamily: "var(--font-juana)" }}
                         >
-                            {HEADLINE_WORDS.map((word, index) => (
+                            {headlineWords.map((word, index) => (
                                 <span
                                     key={index}
                                     className="inline-block whitespace-nowrap mr-[0.28em] last:mr-0"
@@ -328,7 +328,7 @@ export default function StorySection() {
                         >
                             <div className="h-px w-10 bg-[#3D2B1F]/20" />
                             <span className="text-[9px] font-sans font-medium tracking-[0.3em] uppercase text-taupe">
-                                Est. 1300 AD
+                                {t("home.story.badge")}
                             </span>
                             <div className="h-px w-10 bg-[#3D2B1F]/20" />
                         </motion.div>
@@ -337,7 +337,7 @@ export default function StorySection() {
                             variants={subtitleContainerVariants}
                             className="font-sans font-light text-sm sm:text-base md:text-lg max-w-xl text-taupe leading-relaxed"
                         >
-                            {SUBTITLE_WORDS.map((word, index) => (
+                            {subtitleWords.map((word, index) => (
                                 <span
                                     key={index}
                                     className="inline-block whitespace-nowrap mr-[0.25em] last:mr-0"
@@ -368,9 +368,9 @@ export default function StorySection() {
 
                         {/* Three pillar cards — only active card visible with smooth cross-fade */}
                         <div className="absolute inset-0">
-                            {PILLARS.map((pillar, index) => (
+                            {pillars.map((pillar, index) => (
                                 <PillarText
-                                    key={pillar.label}
+                                    key={`${pillar.label}-${locale}`}
                                     pillar={pillar}
                                     isActive={activePillar === index}
                                 />
@@ -382,7 +382,7 @@ export default function StorySection() {
                             className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-3 z-30"
                             aria-hidden="true"
                         >
-                            {PILLARS.map((p, idx) => (
+                            {pillars.map((p, idx) => (
                                 <div
                                     key={p.label}
                                     className={`h-1.5 rounded-full transition-all duration-500 ${activePillar === idx

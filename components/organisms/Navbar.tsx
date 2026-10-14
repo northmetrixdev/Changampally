@@ -6,12 +6,19 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import NavLink from "@/components/molecules/NavLink";
-import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
+import LanguageToggle from "@/components/atoms/LanguageToggle";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { getNavLinks } from "@/lib/i18n/data";
+import { SITE_NAME } from "@/lib/constants";
 
 export default function Navbar() {
     const currentPathname = usePathname();
     const [mobileOpen, setMobileOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const { locale, t } = useLanguage();
+    const isArabic = locale === "ar";
+
+    const navLinks = getNavLinks(locale);
 
     useEffect(() => {
         const isCentrePage = currentPathname?.startsWith("/centres/");
@@ -40,11 +47,11 @@ export default function Navbar() {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] as [number, number, number, number], delay: 0.1 }}
         >
             <nav
-                className="flex items-center justify-between max-w-[1440px] mx-auto px-6 py-4"
+                className="relative flex items-center justify-between max-w-[1440px] mx-auto px-6 py-4"
                 aria-label="Main site navigation"
             >
                 {/* Logo wordmark */}
-                <Link href="/" className="flex items-center gap-3 group" aria-label={`${SITE_NAME} — home`}>
+                <Link href="/" className="flex items-center gap-3 group relative z-10" aria-label={t("nav.ariaHome")}>
                     {/* On mobile always dark logo since mobile navbar is brand off-white (ivory); on desktop switch based on isNavDark */}
                     <div className="relative w-24 h-12 flex items-center">
                         {isNavDark ? (
@@ -79,9 +86,14 @@ export default function Navbar() {
                     </div>
                 </Link>
 
-                {/* Desktop links */}
-                <ul className="hidden md:flex items-center gap-10" role="list">
-                    {NAV_LINKS.map((link) => (
+                {/* Desktop links - centered dead-center in the page */}
+                <ul
+                    className={`hidden md:flex items-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 ${
+                        isArabic ? "gap-4 lg:gap-6 xl:gap-8" : "gap-5 lg:gap-7 xl:gap-9"
+                    }`}
+                    role="list"
+                >
+                    {navLinks.map((link) => (
                         <li key={link.href}>
                             <NavLink
                                 label={link.label}
@@ -94,22 +106,36 @@ export default function Navbar() {
                     ))}
                 </ul>
 
-                {/* Right side: Desktop CTA + Mobile Hamburger */}
-                <div className="flex items-center gap-4">
+                {/* Right side: Language Toggle + Desktop CTA + Mobile Hamburger */}
+                <div className="flex items-center gap-3 md:gap-4 relative z-10">
+                    {/* Language Toggle in Desktop Header */}
+                    <div className="hidden sm:block">
+                        <LanguageToggle isNavDark={isNavDark} />
+                    </div>
+
                     {/* Desktop CTA */}
                     <div className="hidden md:block">
-                        <Link href="/contact" className={`text-xs tracking-[0.2em] uppercase font-sans font-light px-6 py-2.5 border transition-all duration-400 ${isNavDark
+                        <Link href="/contact" className={`uppercase font-sans border transition-all duration-400 whitespace-nowrap ${
+                            isArabic
+                                ? "text-[15px] md:text-[15.5px] tracking-normal font-medium px-5 py-2.5"
+                                : "text-xs tracking-[0.2em] font-light px-6 py-2.5"
+                        } ${isNavDark
                             ? "border-charcoal/20 text-charcoal hover:bg-plum hover:border-plum hover:text-ivory"
                             : "border-ivory/50 text-ivory hover:bg-ivory hover:text-plum"
                             }`}>
-                            Book Consultation
+                            {t("common.bookConsultation")}
                         </Link>
+                    </div>
+
+                    {/* Mobile language button next to hamburger */}
+                    <div className="sm:hidden">
+                        <LanguageToggle isNavDark={true} />
                     </div>
 
                     {/* Mobile hamburger - dark bars since mobile navbar is off-white */}
                     <button
                         className="md:hidden flex flex-col gap-1.5 p-2"
-                        aria-label={mobileOpen ? "Close menu" : "Open menu"}
+                        aria-label={mobileOpen ? t("nav.closeMenu") : t("nav.openMenu")}
                         aria-expanded={mobileOpen}
                         aria-controls="mobile-menu"
                         type="button"
@@ -135,7 +161,7 @@ export default function Navbar() {
                         style={{ background: "rgba(255,252,248,0.97)", backdropFilter: "blur(20px)" }}
                     >
                         <ul className="flex flex-col py-5 px-6 gap-5" role="list">
-                            {NAV_LINKS.map((link) => (
+                            {navLinks.map((link) => (
                                 <li key={link.href} onClick={() => setMobileOpen(false)}>
                                     <NavLink
                                         label={link.label}
@@ -146,9 +172,14 @@ export default function Navbar() {
                                     />
                                 </li>
                             ))}
-                            <li className="pt-3 border-t border-plum/15">
-                                <Link href="/contact" className="btn-ghost w-full text-center text-xs" onClick={() => setMobileOpen(false)}>
-                                    Book Consultation
+                            <li className="pt-3 border-t border-plum/15 flex flex-col gap-3">
+                                <LanguageToggle isMobileDrawer={true} />
+                                <Link
+                                    href="/contact"
+                                    className={`btn-ghost w-full text-center ${isArabic ? "text-[16px] font-medium py-3" : "text-xs py-2.5"}`}
+                                    onClick={() => setMobileOpen(false)}
+                                >
+                                    {t("common.bookConsultation")}
                                 </Link>
                             </li>
                         </ul>

@@ -1,30 +1,37 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { BLOG_POSTS } from "@/lib/blogs";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { getBlogPosts } from "@/lib/i18n/data";
 
 const fadeUp = {
     hidden: { opacity: 0, y: 12 },
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
 };
 
-const CATEGORIES = [
-    { id: "all", label: "All Articles" },
-    { id: "psychiatry", label: "Ayurvedic Psychiatry" },
-    { id: "cyber", label: "Cyber Psychology" },
-    { id: "oncology", label: "Integrative Oncology" },
-    { id: "wellness", label: "Mental Well-being" },
-];
-
 export default function BlogsPage() {
+    const { locale, t, isRtl } = useLanguage();
+    const blogPosts = getBlogPosts(locale);
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("all");
 
+    useEffect(() => {
+        document.title = t("meta.blogsTitle");
+    }, [t, locale]);
+
+    const categories = useMemo(() => [
+        { id: "all", label: t("blogs.allArticles") },
+        { id: "psychiatry", label: locale === "ar" ? "الطب النفسي الأيورفيدي" : "Ayurvedic Psychiatry" },
+        { id: "cyber", label: locale === "ar" ? "علم النفس السيبراني" : "Cyber Psychology" },
+        { id: "oncology", label: locale === "ar" ? "طب الأورام التكاملي" : "Integrative Oncology" },
+        { id: "wellness", label: locale === "ar" ? "الصحة النفسية" : "Mental Well-being" },
+    ], [t, locale]);
+
     const filteredPosts = useMemo(() => {
-        return BLOG_POSTS.filter((post) => {
+        return blogPosts.filter((post) => {
             const matchesSearch =
                 searchQuery.trim() === "" ||
                 post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -33,18 +40,18 @@ export default function BlogsPage() {
 
             const matchesCategory =
                 selectedCategory === "all" ||
-                (selectedCategory === "psychiatry" && post.category.toLowerCase().includes("psychiatry")) ||
-                (selectedCategory === "cyber" && (post.category.toLowerCase().includes("cyber") || post.title.toLowerCase().includes("cyber") || post.title.toLowerCase().includes("nomophobia"))) ||
-                (selectedCategory === "oncology" && post.category.toLowerCase().includes("oncology")) ||
-                (selectedCategory === "wellness" && (post.category.toLowerCase().includes("mental") || post.category.toLowerCase().includes("well")));
+                (selectedCategory === "psychiatry" && (post.category.includes("Psychiatry") || post.category.includes("النفسي"))) ||
+                (selectedCategory === "cyber" && (post.category.includes("Cyber") || post.title.includes("Cyber") || post.title.includes("Nomophobia") || post.category.includes("السيبراني") || post.title.includes("النوموفوبيا"))) ||
+                (selectedCategory === "oncology" && (post.category.includes("Oncology") || post.category.includes("الأورام"))) ||
+                (selectedCategory === "wellness" && (post.category.includes("Mental") || post.category.includes("Well") || post.category.includes("النفسية") || post.category.includes("العافية")));
 
             return matchesSearch && matchesCategory;
         });
-    }, [searchQuery, selectedCategory]);
+    }, [searchQuery, selectedCategory, blogPosts]);
 
     return (
         <main className="min-h-screen bg-sandstone text-charcoal">
-            {/* ── Seamless Plum Hero: Exact same structure & colors as Services, Doctors, Departments ── */}
+            {/* ── Seamless Plum Hero ── */}
             <section
                 className="relative pt-24 md:pt-32 pb-8 md:pb-10 px-4 md:px-12 xl:px-24 bg-plum overflow-hidden"
                 style={{ minHeight: "18vh" }}
@@ -58,7 +65,7 @@ export default function BlogsPage() {
                             transition={{ duration: 0.5 }}
                             className="font-sans font-light text-[10px] tracking-[0.3em] uppercase text-ivory/60 mb-2"
                         >
-                            Clinical Insights &amp; Articles
+                            {t("blogs.hero.eyebrow")}
                         </motion.p>
                         <motion.h1
                             initial={{ opacity: 0, y: 12 }}
@@ -67,7 +74,7 @@ export default function BlogsPage() {
                             className="font-serif font-light text-3xl sm:text-4xl md:text-5xl text-ivory tracking-tight leading-tight mb-2.5"
                             style={{ fontFamily: "var(--font-juana)" }}
                         >
-                            All Articles
+                            {t("blogs.hero.title")}
                         </motion.h1>
                         <motion.p
                             initial={{ opacity: 0, y: 10 }}
@@ -75,13 +82,13 @@ export default function BlogsPage() {
                             transition={{ duration: 0.7, delay: 0.08, ease: "easeOut" }}
                             className="font-sans font-light text-xs sm:text-sm text-ivory/80 leading-relaxed max-w-2xl"
                         >
-                            Find clinically grounded perspectives, research summaries, and therapeutic wisdom to navigate modern psychosomatic and physical wellbeing.
+                            {t("blogs.hero.desc")}
                         </motion.p>
                     </div>
                 </div>
             </section>
 
-            {/* ── Search & Filter Controls: Tight bar directly above cards ── */}
+            {/* ── Search & Filter Controls ── */}
             <div className="bg-ivory border-b border-plum/10 py-3 px-4 md:px-12 xl:px-24">
                 <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
                     {/* Search Input Box */}
@@ -95,21 +102,21 @@ export default function BlogsPage() {
                             type="text"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            placeholder="Search articles..."
+                            placeholder={t("blogs.searchPlaceholder")}
                             className="w-full pl-9 pr-3 py-1.5 bg-white border border-charcoal/15 rounded-lg text-xs text-charcoal placeholder-taupe/60 focus:outline-none focus:border-plum focus:ring-1 focus:ring-plum transition-all"
                         />
                     </div>
 
-                    {/* Filter Pills without emojis */}
+                    {/* Filter Pills */}
                     <div className="flex flex-wrap items-center gap-1.5 overflow-x-auto">
-                        {CATEGORIES.map((cat) => {
+                        {categories.map((cat) => {
                             const isSelected = selectedCategory === cat.id;
                             return (
                                 <button
                                     key={cat.id}
                                     type="button"
                                     onClick={() => setSelectedCategory(cat.id)}
-                                    className={`px-3 py-1 rounded-full text-[11px] font-sans transition-all border ${
+                                    className={`px-3 py-1 rounded-full text-[11px] font-sans transition-all border cursor-pointer ${
                                         isSelected
                                             ? "bg-plum text-ivory border-plum font-medium shadow-sm"
                                             : "bg-white text-charcoal/70 border-charcoal/15 hover:border-plum/40 hover:text-charcoal"
@@ -123,29 +130,29 @@ export default function BlogsPage() {
                 </div>
             </div>
 
-            {/* ── Article Feed: Compact Medium-style layout that fits without scrolling ── */}
+            {/* ── Article Feed ── */}
             <section className="py-6 px-4 md:px-12 xl:px-24 max-w-[1440px] mx-auto">
                 <div className="mb-4 flex items-center justify-between">
                     <h2
                         className="font-serif font-light text-xl md:text-2xl text-charcoal tracking-tight"
                         style={{ fontFamily: "var(--font-juana)" }}
                     >
-                        Latest Blog
+                        {t("blogs.latestBlog")}
                     </h2>
                     <span className="text-xs font-sans text-taupe">
-                        {filteredPosts.length} {filteredPosts.length === 1 ? "article" : "articles"}
+                        {filteredPosts.length} {filteredPosts.length === 1 ? t("blogs.articleSingle") : t("blogs.articlePlural")}
                     </span>
                 </div>
 
                 {filteredPosts.length === 0 ? (
                     <div className="text-center py-12 bg-white/60 rounded-2xl border border-charcoal/10">
-                        <p className="text-taupe text-xs">No articles found matching your query.</p>
+                        <p className="text-taupe text-xs">{t("blogs.noArticles")}</p>
                         <button
                             type="button"
                             onClick={() => { setSearchQuery(""); setSelectedCategory("all"); }}
-                            className="mt-2 text-xs text-plum underline font-medium"
+                            className="mt-2 text-xs text-plum underline font-medium cursor-pointer"
                         >
-                            Reset filters
+                            {t("blogs.resetFilters")}
                         </button>
                     </div>
                 ) : (
@@ -159,7 +166,7 @@ export default function BlogsPage() {
                                 className="flex flex-col group bg-white rounded-xl p-4 border border-charcoal/10 shadow-soft hover:shadow-medium hover:border-plum/30 transition-all duration-300"
                             >
                                 <Link href={`/blogs/${post.slug}`} className="flex flex-col h-full cursor-pointer">
-                                    {/* Medium-style Author Header (Avatar + Name + Date • Read Time) */}
+                                    {/* Author Header */}
                                     <div className="flex items-center gap-2.5 mb-3">
                                         <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0 border border-plum/20 bg-sandstone">
                                             <Image
@@ -181,7 +188,7 @@ export default function BlogsPage() {
                                         </div>
                                     </div>
 
-                                    {/* Compact Thumbnail Banner */}
+                                    {/* Thumbnail */}
                                     <div className="relative w-full h-36 sm:h-40 rounded-lg overflow-hidden bg-sandstone mb-3">
                                         <Image
                                             src={post.coverImage}
@@ -198,7 +205,7 @@ export default function BlogsPage() {
                                         </span>
                                     </div>
 
-                                    {/* Article Heading with Juana Font */}
+                                    {/* Title */}
                                     <h3
                                         className="font-serif font-light text-base md:text-lg text-charcoal leading-snug group-hover:text-plum transition-colors mb-1.5 line-clamp-2"
                                         style={{ fontFamily: "var(--font-juana)" }}
@@ -206,16 +213,18 @@ export default function BlogsPage() {
                                         {post.title}
                                     </h3>
 
-                                    {/* Excerpt Body */}
+                                    {/* Excerpt */}
                                     <p className="font-sans text-xs text-taupe leading-relaxed mb-3 line-clamp-2">
                                         {post.excerpt}
                                     </p>
 
-                                    {/* Card Footer: Read Story + Role */}
+                                    {/* Footer */}
                                     <div className="mt-auto pt-2.5 border-t border-charcoal/5 flex items-center justify-between text-xs">
                                         <span className="font-medium text-xs text-plum group-hover:text-plum-dark transition-colors inline-flex items-center gap-1">
-                                            <span>Read Story</span>
-                                            <span className="group-hover:translate-x-1 transition-transform">→</span>
+                                            <span>{t("blogs.readStory")}</span>
+                                            <span className={`${isRtl ? "group-hover:-translate-x-1" : "group-hover:translate-x-1"} transition-transform`}>
+                                                {isRtl ? "←" : "→"}
+                                            </span>
                                         </span>
                                         <span className="text-[10px] text-taupe/70 font-sans truncate max-w-[130px]">
                                             {post.author.role}
