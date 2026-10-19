@@ -122,7 +122,7 @@ export const en = {
       quoteLead: "A person walking into your clinic should not be the reason to treat them. Treat only if you are sure that the person is safe in your hands.",
       quoteBody: "Safety is the first and most sacred aspect of any treatment. The doctorhood is not the promise of extended life but the accuracy in diagnosis, excellence in practical knowledge, and the compassionate touch to remove physical and mental suffering.",
       doctorName: "Dr. Jannathul Firdouse Changampally",
-      doctorRole: "Chief Consultant — Ayurveda Oncology Specialist",
+      doctorRole: "Chief Consultant — Ayurveda Oncology Consultant",
     },
     finalCta: {
       eyebrow: "Begin Today",
@@ -269,7 +269,7 @@ export const en = {
     principle: {
       eyebrow: "Guiding Principle",
       doctorName: "Dr. Jannathul Firdouse Changampally",
-      doctorRole: "Chief Consultant — Ayurveda Oncology Specialist",
+      doctorRole: "Chief Consultant — Ayurveda Oncology Consultant",
       quote: "A person walking into your clinic should not be the reason to treat them. Treat only if you are sure that the person is safe in your hands.",
     },
     cta: {

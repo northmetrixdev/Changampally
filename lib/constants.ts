@@ -59,7 +59,7 @@ export const NAV_LINKS: NavItem[] = [
 
 export const FOOTER_LINK_GROUPS: FooterLinkGroup[] = [
     {
-        heading: "Company",
+        heading: "",
         links: [
             { label: "Home", href: "/" },
             { label: "About Us", href: "/about" },
@@ -364,14 +364,14 @@ export const TEAM = [
         id: "team-1",
         name: "Dr. Jannathul Firdouse Changampally",
         credentials: "BSc, BAMS",
-        role: "Chief Consultant — Ayurveda Oncology Specialist",
+        role: "Chief Consultant — Ayurveda Oncology Consultant",
         bio: "A distinguished figure in Ayurvedic oncology with 30+ years of expertise. Dr. Firdouse served as a cancer consultant at Nims Super Specialty Hospital, Trivandrum for 12 years and is a member of the Open Source Drug Discovery (OSDD) initiative.",
         image: "/images/doctors/Dr_Firdouse.png",
     },
     {
         id: "team-2",
         name: "Dr. Jibu Gurukkal Changampally",
-        credentials: "MBBS",
+        credentials: "MD Physician",
         role: "Allopathic General Physician and Medicine Manufacturer",
         bio: "An accomplished Allopathic General Physician with 13 years of experience. Actively engaged in Ayurvedic medicine manufacturing and export at Changampally Vaidya Bhavan and Vedic Age in Thirunnavaya. Medical Director at Orchid Medicity.",
         image: "/images/doctors/DR.jibu_Gurukkal.png",

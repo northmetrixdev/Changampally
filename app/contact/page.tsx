@@ -209,10 +209,6 @@ export default function ContactPage() {
                                 <bdi>{CONTACT.phoneMedical2}</bdi>
                             </a>
                         </div>
-                        <a href={`mailto:${CONTACT.email}`}
-                            className="font-sans font-light text-xs text-taupe hover:text-plum transition-colors mt-1" dir="ltr">
-                            <bdi>{CONTACT.email}</bdi>
-                        </a>
                     </motion.div>
 
                     {/* Other number */}
@@ -223,9 +219,9 @@ export default function ContactPage() {
                         <p className="font-sans font-light text-xs text-taupe leading-relaxed">
                             {t("contact.info.helplineDesc")}
                         </p>
-                        <a href="tel:+919072666105"
+                        <a href="tel:+919072666104"
                             className="font-sans font-light text-base text-plum hover:text-plum-dark transition-colors" dir="ltr">
-                            <bdi>+91 9072 666 105</bdi>
+                            <bdi>+91 9072 666 104</bdi>
                         </a>
                         <p className="font-sans font-light text-xs text-taupe mt-2">
                             {t("contact.info.hours")}

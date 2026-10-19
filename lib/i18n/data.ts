@@ -174,7 +174,7 @@ export function getFooterLinkGroups(locale: Locale): FooterLinkGroup[] {
   }
   return [
     {
-      heading: "Company",
+      heading: "",
       links: [
         { label: "Home", href: "/" },
         { label: "About Us", href: "/about" },
@@ -433,8 +433,8 @@ export const EN_FEATURED_DOCTORS: DoctorItem[] = [
     id: "team-1",
     name: "Dr. Jannathul Firdouse Changampally",
     credentials: "BSc, BAMS",
-    role: "Chief Consultant — Ayurveda Oncology Specialist",
-    tagline: "Chief Consultant and Ayurveda Oncology Specialist",
+    role: "Chief Consultant — Ayurveda Oncology Consultant",
+    tagline: "Chief Consultant and Ayurveda Oncology Consultant",
     bio: "A distinguished figure in Ayurvedic oncology with 30+ years of expertise. Dr. Firdouse served as a cancer consultant at Nims Super Specialty Hospital, Trivandrum for 12 years and is a member of the Open Source Drug Discovery (OSDD) initiative.",
     centre: "Changampally Remedium, Edappal",
     speciality: "Ayurveda Oncology",
@@ -449,7 +449,7 @@ export const EN_FEATURED_DOCTORS: DoctorItem[] = [
   {
     id: "team-2",
     name: "Dr. Jibu Gurukkal Changampally",
-    credentials: "MBBS",
+    credentials: "MD Physician",
     role: "Allopathic General Physician and Medicine Manufacturer",
     tagline: "Allopathic Physician and Ayurvedic Medicine Manufacturer",
     bio: "An accomplished Allopathic General Physician with 13 years of experience. Actively engaged in Ayurvedic medicine manufacturing and export at Changampally Vaidya Bhavan and Vedic Age in Thirunnavaya. Medical Director at Orchid Medicity.",
@@ -487,8 +487,8 @@ export const AR_FEATURED_DOCTORS: DoctorItem[] = [
     id: "team-1",
     name: "د. جنة الفردوس تشانغامبالي",
     credentials: "بكالوريوس علوم، بكالوريوس طب وجراحة أيورفيدا",
-    role: "كبير المستشارين — أخصائي علاج الأورام بالأيورفيدا",
-    tagline: "كبير المستشارين وأخصائي علاج الأورام بالأيورفيدا",
+    role: "كبير المستشارين — استشاري علاج الأورام بالأيورفيدا",
+    tagline: "كبير المستشارين واستشاري علاج الأورام بالأيورفيدا",
     bio: "قامة طبية رائدة في علاج الأورام بالأيورفيدا بخبرة تتجاوز 30 عاماً. شغل منصب استشاري الأورام في مستشفى نيمز للتخصصات الدقيقة بتريفاندروم لمدة 12 عاماً، وهو عضو في مبادرة اكتشاف الأدوية مفتوحة المصدر (OSDD).",
     centre: "تشانغامبالي ريميديوم، إدابال",
     speciality: "طب الأورام الأيورفيدي",
@@ -503,7 +503,7 @@ export const AR_FEATURED_DOCTORS: DoctorItem[] = [
   {
     id: "team-2",
     name: "د. جيبو غوروكل تشانغامبالي",
-    credentials: "بكالوريوس طب وجراحة (MBBS)",
+    credentials: "طبيب بشري (MD Physician)",
     role: "طبيب عام ومصنّع أدوية أيورفيدية",
     tagline: "طبيب بشري عام ومصنّع ومصدر للأدوية الأيورفيدية",
     bio: "طبيب بشري عام متميز بخبرة سريرية تمتد لـ 13 عاماً. يشارك بفاعلية في تصنيع وتصدير الأدوية الأيورفيدية في فايديا بافان وفيديك إيدج في ثيرونافايا. المدير الطبي لمجموعة أوركيد ميديسيتي.",
@@ -555,41 +555,41 @@ export const EN_OTHER_DOCTORS: DoctorItem[] = [
     role: "Senior Ayurvedic Physician",
     tagline: "Senior Ayurvedic Physician",
     bio: "A dedicated Senior Ayurvedic Physician providing traditional consultations and integrated health management.",
-    centre: "Changampally Remedium, Edappal",
-    speciality: "Senior Physician",
+    centre: "Changampally Vaidya Bhavan, Thirunavaya",
+    speciality: "Ayurveda Physician",
     image: "/images/doctors/Dr_shani.png",
   },
   {
     id: "team-5b",
     name: "Dr. Shahna MT",
     credentials: "BAMS, PGDAN, CSAMT",
-    role: "Associate Physician",
-    tagline: "HOD – Ayurveda & Medical Communications",
-    bio: "Ayurveda physician specializing in holistic & personalized care, psychosomatic disorders, clinical nutrition, dermatological and orthopaedic conditions, and mind-body wellbeing.",
+    role: "Ayurveda Physician",
+    tagline: "Ayurveda Physician & Medical Communications",
+    bio: "Ayurveda physician with a clinical focus on psychosomatic disorders, gut health, clinical nutrition, dermatology, and musculoskeletal disorders. Certified in Ayurveda Nutrition and Smriti Ayurveda Meditation Therapy, with an emphasis on individualized, integrative patient care.",
     centre: "Changampally Remedium, Edappal",
-    speciality: "Associate Physician",
+    speciality: "Ayurveda Physician",
     image: "/images/doctors/Dr_shana.png",
   },
   {
     id: "team-6",
     name: "Dr. Neethu",
     credentials: "BAMS",
-    role: "Ayurvedic Physician",
-    tagline: "Ayurvedic Specialist",
-    bio: "Experienced Ayurvedic practitioner dedicated to holistic patient care and personalized treatment protocols.",
+    role: "Resident Medical Officer",
+    tagline: "Resident Medical Officer",
+    bio: "Experienced Ayurvedic practitioner dedicated to holistic patient care and personalized treatment protocols as Resident Medical Officer.",
     centre: "Changampally Vaidya Bhavan, Thirunavaya",
-    speciality: "Ayurvedic Physician",
+    speciality: "Resident Medical Officer",
     image: "/images/doctors/Dr.Neethu.png",
   },
   {
     id: "team-7",
-    name: "Dr. Navya",
-    credentials: "BAMS",
-    role: "Ayurvedic Physician",
-    tagline: "Panchakarma Specialist",
-    bio: "Specialist in classical Ayurvedic therapies, Panchakarma management, and preventative lifestyle consultation.",
-    centre: "Changampally Kaivalya, Peringode",
-    speciality: "Ayurvedic Physician",
+    name: "Dr. Navyasree E M",
+    credentials: "BAMS, PGDM – Clinical Pathology (Ay), CCCT",
+    role: "Oncology Consultant",
+    tagline: "Quality Coordinator (QC) & Junior Research Fellow (JRF)",
+    bio: "An Ayurvedic physician with 5 years of clinical experience, serving as JRF and Quality Coordinator/NABH Coordinator at Changampally, with clinical focus on women’s health, rheumatic & lifestyle disorders, and cosmetology.",
+    centre: "Changampally Remedium, Edappal",
+    speciality: "Oncology Consultant",
     image: "/images/doctors/Dr_navya.png",
   },
 ];
@@ -613,41 +613,41 @@ export const AR_OTHER_DOCTORS: DoctorItem[] = [
     role: "طبيبة أيورفيدا أولى",
     tagline: "طبيبة أيورفيدية استشارية",
     bio: "طبيبة أيورفيدا أولى متمرسة تقدم استشارات علاجية تقليدية وإدارة صحية متكاملة للحالات المزمنة.",
-    centre: "تشانغامبالي ريميديوم، إدابال",
-    speciality: "طبيبة أولى",
+    centre: "تشانغامبالي فايديا بافان، ثيرونافايا",
+    speciality: "طبيبة أيورفيدا",
     image: "/images/doctors/Dr_shani.png",
   },
   {
     id: "team-5b",
     name: "د. شاهنة م. ت.",
     credentials: "بكالوريوس طب وجراحة أيورفيدا، دبلوم تغذية، CSAMT",
-    role: "طبيبة مشاركة",
-    tagline: "رئيسة قسم الأيورفيدا والاتصال الطبي",
-    bio: "طبيبة أيورفيدا متخصصة في الرعاية الشاملة المخصصة، والاضطرابات النفسجسدية، والتغذية السريرية، وأمراض الجلد والعظام، وصحة العقل والجسد.",
+    role: "طبيبة أيورفيدا",
+    tagline: "طبيبة أيورفيدا والاتصال الطبي",
+    bio: "طبيبة أيورفيدا مع تركيز سريري على الاضطرابات النفسجسدية، وصحة الجهاز الهضمي، والتغذية السريرية، والأمراض الجلدية، واضطرابات الجهاز العضلي الهيكلي. معتمدة في التغذية الأيورفيدية والعلاج بالتأمل الأيورفيدي سمريتي، مع التركيز على الرعاية التكاملية الفردية للمرضى.",
     centre: "تشانغامبالي ريميديوم، إدابال",
-    speciality: "طبيبة مشاركة",
+    speciality: "طبيبة أيورفيدا",
     image: "/images/doctors/Dr_shana.png",
   },
   {
     id: "team-6",
     name: "د. نيثو",
     credentials: "بكالوريوس طب وجراحة أيورفيدا (BAMS)",
-    role: "طبيبة أيورفيدا",
-    tagline: "أخصائية علاج أيورفيدي",
-    bio: "ممارسة أيورفيدية ذات خبرة واسعة، مكرسة جهودها للرعاية الشاملة للمرضى وبروتوكولات العلاج الفردية.",
+    role: "مسؤول طبي مقيم",
+    tagline: "مسؤول طبي مقيم",
+    bio: "ممارسة أيورفيدية ذات خبرة واسعة، مكرسة جهودها للرعاية الشاملة للمرضى وبروتوكولات العلاج الفردية كمسؤول طبي مقيم.",
     centre: "تشانغامبالي فايديا بافان، ثيرونافايا",
-    speciality: "طبيبة أيورفيدا",
+    speciality: "مسؤول طبي مقيم",
     image: "/images/doctors/Dr.Neethu.png",
   },
   {
     id: "team-7",
-    name: "د. نافيا",
-    credentials: "بكالوريوس طب وجراحة أيورفيدا (BAMS)",
-    role: "طبيبة أيورفيدا",
-    tagline: "أخصائية علاجات بانتشاكارما",
-    bio: "أخصائية في العلاجات الأيورفيدية الكلاسيكية، وإدارة برامج بانتشاكارما، واستشارات نمط الحياة الوقائي.",
-    centre: "تشانغامبالي كايفاليا، بيرينغود",
-    speciality: "طبيبة أيورفيدا",
+    name: "د. نافيا سري إي إم",
+    credentials: "BAMS, PGDM – Clinical Pathology (Ay), CCCT",
+    role: "استشارية أورام",
+    tagline: "منسقة الجودة وباحثة علمية مبتدئة",
+    bio: "طبيبة أيورفيدا بخبرة سريرية 5 سنوات، تعمل كباحثة ومنسقة جودة واعتماد NABH في تشانغامبالي، مع تركيز سريري على صحة المرأة، والاضطرابات الروماتيزمية، وعلاجات التجميل والعناية بالبشرة.",
+    centre: "تشانغامبالي ريميديوم، إدابال",
+    speciality: "استشارية أورام",
     image: "/images/doctors/Dr_navya.png",
   },
 ];
@@ -738,6 +738,80 @@ export const AR_BLOG_POSTS: BlogPost[] = [
       {
         type: "paragraph",
         text: "إن مواجهة النوموفوبيا وتحديات العصر الرقمي تتطلب رعاية نفسية رحيمة ومتعددة التخصصات ترتكز بقوة على البحث العلمي والأصالة الإنسانية."
+      }
+    ]
+  },
+  {
+    id: "synesthetic-minds-tridosha-cognitive-science",
+    slug: "synesthetic-minds-tridosha-cognitive-science",
+    title: "عقول حسّية مشتركة؟ استكشاف نظام التريدوشا من منظور العلوم المعرفية",
+    subtitle: "رؤية متعددة التخصصات حول الارتباطات الحسية، والنظرية الأيورفيدية، والميل الإنساني لتحديد الأنماط عبر مجالات التجربة المختلفة.",
+    category: "العلوم المعرفية والأيورفيدا",
+    date: "أكتوبر 2026",
+    readTime: "قراءة 7 دقائق",
+    coverImage: "/images/departments/dept_neurology.png",
+    author: {
+      name: "د. شاهنة م. ت.",
+      role: "طبيبة أيورفيدا",
+      dept: "قسم الأيورفيدا والاتصال الطبي",
+      institute: "معهد تشانغامبالي ريميديوم للرعاية الصحية المتكاملة (CRIH)",
+      avatar: "/images/doctors/Dr_shana.png",
+      bio: "طبيبة أيورفيدا متخصصة في الاضطرابات النفسجسدية، وصحة الجهاز الهضمي، والتغذية السريرية، وصحة العقل والجسد، ومعتمدة في التغذية الأيورفيدية وعلاج التأمل سمريتي."
+    },
+    excerpt:
+      "يقدم إطار التريدوشا الأيورفيدي نموذجاً مترابطاً تُستخدم فيه صفات مثل الحرارة والجفاف والحركة والثقل والاستقرار لوصف أبعاد الجسد والعقل والنظام الغذائي والبيئة. هل يمكن مقارنة هذا البناء الوصفي بظاهرة الحواس المتشابكة (السينستيزيا)؟",
+    content: [
+      {
+        type: "paragraph",
+        text: "يقدم إطار التريدوشا الأيورفيدي نموذجاً مترابطاً تُستخدم فيه صفات مثل الحرارة والجفاف والحركة والثقل والاستقرار لوصف أبعاد الجسد والعقل والنظام الغذائي والبيئة. ويثير هذا التنظيم عبر المجالات المختلفة سؤالاً مفاهيمياً مهماً: هل يمكن مقارنة هذا البناء الوصفي بظاهرة الحواس المتشابكة (Synesthesia)، وهي ظاهرة إدراكية تثير فيها منبهات معينة تجارب حسية إضافية وتلقائية؟ يتناول هذا المقال أوجه الشبه والاختلاف بين الإطارين، ويوضح أن نظام التريدوشا يُفهم على نحو أفضل بوصفه نظام تصنيف متوارثاً ثقافياً أكثر من كونه دليلاً على إدراك حسي متشابك عصبياً."
+      },
+      {
+        type: "heading",
+        text: "1. مقدمة: عندما تشترك التجارب المتباينة في صفة جوهرية واحدة"
+      },
+      {
+        type: "paragraph",
+        text: "ما الرابط المشترك بين حرارة شمس الظهيرة، والمذاق الحار للفلفل، والشعور بالدفء أثناء الهضم، والإحساس بالغضب أو التوتر؟ على الرغم من اختلاف هذه التجارب في خصائصها الفيزيائية والنفسية، فإن المنظور الأيورفيدي يفسرها من خلال صفة مشتركة واحدة: أوشنا (Ushna) أو الحرارة."
+      },
+      {
+        type: "paragraph",
+        text: "يتكرر هذا النمط في سائر نظام التريدوشا؛ حيث يرتبط الفاتا (Vata) بصفات الجفاف والخفة والبرودة والحركة، ويرتبط البيتا (Pitta) بالحرارة والحدة والتحول، في حين يتصل الكافا (Kapha) بالثقل والاستقرار والرطوبة والتماسك. وتُوظف هذه الصفات لتفسير ملاحظات متنوعة تشمل وظائف الأعضاء، والتغذية، والسلوك، والظروف البيئية المحيطة."
+      },
+      {
+        type: "quote",
+        text: "الهدف من هذه المقارنة ليس الادعاء بأن السينستيزيا هي أصل النظرية الأيورفيدية، بل استكشاف ما تكشفه هذه المماثلة حول الطرق الإنسانية في تنظيم التجربة الحياتية وتفسيرها."
+      },
+      {
+        type: "heading",
+        text: "2. السينستيزيا: ظاهرة إدراكية حسية متزامنة"
+      },
+      {
+        type: "paragraph",
+        text: "تتميز السينستيزيا بارتباطات يثير فيها محفز حسي معين تجربة إضافية متزامنة؛ مثل رؤية ألوان محددة عند سماع أصوات أو قراءة حروف. ويختلف نظام التريدوشا جذرياً عن ذلك، إذ يُكتسب عبر منظومة مفاهيمية تعليمية ومصطلحات وتقاليد نصية عريقة، وليس كاستجابة عصبية حسية لا إرادية."
+      },
+      {
+        type: "heading",
+        text: "3. نظام التريدوشا كإطار تصنيفي متكامل عبر المجالات"
+      },
+      {
+        type: "paragraph",
+        text: "ينظم نموذج التريدوشا طائفة واسعة من الملاحظات السريرية والطبيعية. فالفاتا يفسر التغيرات والحركة، والبيتا يفسر الهضم والتمثيل الغذائي والتحولات الحيوية، بينما يفسر الكافا البنية والترطيب والاستقرار النسيجي."
+      },
+      {
+        type: "heading",
+        text: "4. التقاطع مع العلوم المعرفية المعاصرة"
+      },
+      {
+        type: "paragraph",
+        text: "يقدم مفهومان أساسيان في العلوم المعرفية الحديثة مداخل تفسيرية واعدة: الإدراك المتجسد (Embodied Cognition) الذي يوضح كيف تساهم التجارب الجسدية في بناء المفاهيم المجردة، والاستعارة المفاهيمية (Conceptual Metaphor) التي تفسر استخدام الصفات المادية الحية لوصف الحالات المعنوية والنفسية."
+      },
+      {
+        type: "heading",
+        text: "5. الخاتمة والآفاق العلمية"
+      },
+      {
+        type: "paragraph",
+        text: "يمثل نظام التريدوشا نموذجاً تراثياً فريداً لتنظيم الملاحظات الشاملة عبر لغة نوعية غنية. إن التعامل مع المعرفة الطبية التقليدية بوصفها موضوعاً للبحث الاستكشافي المنهجي يسمح بتقدير عمقها الفلسفي دون الخلط بين المجاز المفاهيمي والبرهان العصبي المعاصر."
       }
     ]
   }

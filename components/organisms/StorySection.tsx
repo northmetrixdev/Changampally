@@ -26,15 +26,15 @@ const BISTRE_DIV = "rgba(234,236,228,0.18)";
 
 const LUXURY_EASE = [0.22, 1, 0.36, 1] as const;
 
-// Variants for Phase 1 "Our Story" section (slow, contemplative reveal)
+// Variants for Phase 1 "Our Story" section (balanced, elegant pacing ~2.8s total)
 const eyebrowVariants: Variants = {
-    hidden: { opacity: 0, y: 14, filter: "blur(6px)" },
+    hidden: { opacity: 0, y: 12, filter: "blur(5px)" },
     visible: {
         opacity: 1,
         y: 0,
         filter: "blur(0px)",
         transition: {
-            duration: 1.0,
+            duration: 0.6,
             ease: LUXURY_EASE,
         },
     },
@@ -45,8 +45,8 @@ const headlineContainerVariants: Variants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.26,
-            delayChildren: 0.35,
+            staggerChildren: 0.09,
+            delayChildren: 0.25,
         },
     },
 };
@@ -54,15 +54,15 @@ const headlineContainerVariants: Variants = {
 const headlineWordVariants: Variants = {
     hidden: {
         opacity: 0,
-        y: 10,
-        filter: "blur(10px)",
+        y: 8,
+        filter: "blur(8px)",
     },
     visible: {
         opacity: 1,
         y: 0,
         filter: "blur(0px)",
         transition: {
-            duration: 1.0,
+            duration: 0.6,
             ease: LUXURY_EASE,
         },
     },
@@ -74,8 +74,8 @@ const dividerVariants: Variants = {
         opacity: 1,
         scale: 1,
         transition: {
-            duration: 1.2,
-            delay: 4.0,
+            duration: 0.6,
+            delay: 1.2,
             ease: LUXURY_EASE,
         },
     },
@@ -86,8 +86,8 @@ const subtitleContainerVariants: Variants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.18,
-            delayChildren: 4.5,
+            staggerChildren: 0.07,
+            delayChildren: 1.45,
         },
     },
 };
@@ -95,15 +95,15 @@ const subtitleContainerVariants: Variants = {
 const subtitleWordVariants: Variants = {
     hidden: {
         opacity: 0,
-        y: 8,
-        filter: "blur(8px)",
+        y: 6,
+        filter: "blur(6px)",
     },
     visible: {
         opacity: 1,
         y: 0,
         filter: "blur(0px)",
         transition: {
-            duration: 0.9,
+            duration: 0.55,
             ease: LUXURY_EASE,
         },
     },

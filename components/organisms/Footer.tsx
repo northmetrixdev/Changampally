@@ -60,11 +60,15 @@ export default function Footer() {
 
                 {/* Link Columns */}
                 <div className="grid grid-cols-2 gap-8 md:gap-16">
-                    {footerLinkGroups.slice(0, 2).map((group) => (
-                        <div key={group.heading} className="flex flex-col gap-3">
-                            <h3 className="font-medium text-[10px] tracking-[0.2em] uppercase text-plum">
-                                {group.heading}
-                            </h3>
+                    {footerLinkGroups.slice(0, 2).map((group, idx) => (
+                        <div key={group.heading || idx} className="flex flex-col gap-3">
+                            {group.heading ? (
+                                <h3 className="font-medium text-[10px] tracking-[0.2em] uppercase text-plum">
+                                    {group.heading}
+                                </h3>
+                            ) : (
+                                <div className="h-4" aria-hidden="true" />
+                            )}
                             <ul className="flex flex-col gap-2" role="list">
                                 {group.links.map((link) => (
                                     <li key={link.href}>
