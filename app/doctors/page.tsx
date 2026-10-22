@@ -263,7 +263,9 @@ export default function DoctorsPage() {
                                             {doctor.name}
                                         </h3>
                                         <p className="font-sans font-medium text-xs text-plum">{doctor.credentials}</p>
-                                        <p className="font-sans font-light text-xs text-taupe mb-2">{doctor.tagline}</p>
+                                        {doctor.tagline ? (
+                                            <p className="font-sans font-light text-xs text-taupe mb-2">{doctor.tagline}</p>
+                                        ) : null}
 
                                         <p className="font-sans font-light text-sm text-taupe leading-relaxed flex-grow border-t border-charcoal/[0.06] pt-3 mt-1">
                                             {doctor.bio}

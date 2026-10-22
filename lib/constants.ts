@@ -364,7 +364,7 @@ export const TEAM = [
         id: "team-1",
         name: "Dr. Jannathul Firdouse Changampally",
         credentials: "BSc, BAMS",
-        role: "Chief Consultant — Ayurveda Oncology Consultant",
+        role: "Chief Physician — Ayurveda Oncology Consultant",
         bio: "A distinguished figure in Ayurvedic oncology with 30+ years of expertise. Dr. Firdouse served as a cancer consultant at Nims Super Specialty Hospital, Trivandrum for 12 years and is a member of the Open Source Drug Discovery (OSDD) initiative.",
         image: "/images/doctors/Dr_Firdouse.png",
     },
@@ -381,7 +381,7 @@ export const TEAM = [
         name: "Dr. Sajjad Changampally",
         credentials: "MD (Ayurvedic Psychiatry)",
         role: "Ayurvedic Psychiatrist and Managing Director, Happymoon",
-        bio: "An esteemed Ayurvedic Psychiatrist offering compassionate care at Changampally Vaidya Bhavan, Thirunnavaya. Managing Director of Happymoon, advocating scientific mental health approaches. Secretary, Ayurveda Medical Association of India, Ponnani. Researcher on mobile phone addiction and contemporary mental health challenges.",
+        bio: "An esteemed Ayurvedic Psychiatrist offering compassionate care at Changampally Remedium, Edappal. Managing Director of Happymoon, advocating scientific mental health approaches. Secretary, Ayurveda Medical Association of India, Ponnani. Researcher on mobile phone addiction and contemporary mental health challenges.",
         image: "/images/doctors/Dr_Sajad.png",
     },
 ];

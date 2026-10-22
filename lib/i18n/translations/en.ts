@@ -269,7 +269,7 @@ export const en = {
     principle: {
       eyebrow: "Guiding Principle",
       doctorName: "Dr. Jannathul Firdouse Changampally",
-      doctorRole: "Chief Consultant — Ayurveda Oncology Consultant",
+      doctorRole: "Chief Physician — Ayurveda Oncology Consultant",
       quote: "A person walking into your clinic should not be the reason to treat them. Treat only if you are sure that the person is safe in your hands.",
     },
     cta: {
