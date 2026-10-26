@@ -565,7 +565,7 @@ export const EN_OTHER_DOCTORS: DoctorItem[] = [
     credentials: "BAMS, PGDAN, CSAMT",
     role: "HOD - Ayurveda Department and Medical communications",
     tagline: "HOD - Ayurveda Department and Medical communications",
-    bio: "Ayurveda physician with a clinical focus on psychosomatic disorders, gut health, clinical nutrition, dermatology, and musculoskeletal disorders. Certified in Ayurveda Nutrition and Smriti Ayurveda Meditation Therapy, with an emphasis on individualized, integrative patient care.",
+    bio: "Ayurveda physician with clinical focus in psychosomatic disorders, gut health, clinical nutrition, dermatology, and musculoskeletal disorders. Certified in Ayurveda Nutrition and Smriti Ayurveda Meditation Therapy, with an emphasis on individualized, integrative patient care.",
     centre: "Changampally Remedium, Edappal",
     speciality: "Ayurveda Physician",
     image: "/images/doctors/Dr_shana.png",
@@ -591,6 +591,17 @@ export const EN_OTHER_DOCTORS: DoctorItem[] = [
     centre: "Changampally Remedium, Edappal",
     speciality: "Oncology Consultant",
     image: "/images/doctors/Dr_navya.png",
+  },
+  {
+    id: "team-8",
+    name: "Ms. Hiba Karakkad",
+    credentials: "Master of Clinical Psychology",
+    role: "Consultant Psychologist",
+    tagline: "Happy Moon — Department of Happiness and Mental Wellbeing",
+    bio: "A compassionate mental health professional with 2+ years of clinical experience, focusing on anxiety, depression, interpersonal concerns, and life coaching. Integrates Cognitive Behavioural Therapy (CBT) and Acceptance and Commitment Therapy (ACT) to support emotional well-being, psychological flexibility, and personal growth.",
+    centre: "Changampally Remedium, Edappal",
+    speciality: "Consultant Psychologist",
+    image: "/images/doctors/hiba_karakkad.jpg",
   },
 ];
 
@@ -649,6 +660,17 @@ export const AR_OTHER_DOCTORS: DoctorItem[] = [
     centre: "تشانغامبالي ريميديوم، إدابال",
     speciality: "استشارية أورام",
     image: "/images/doctors/Dr_navya.png",
+  },
+  {
+    id: "team-8",
+    name: "أ. هبة كراكاد",
+    credentials: "ماجستير علم النفس الإكلينيكي",
+    role: "أخصائية نفسية استشارية",
+    tagline: "هابي مون — قسم السعادة والصحة النفسية",
+    bio: "أخصائية نفسية إكلينيكية متمرسة بخبرة سريرية تزيد عن عامين، تركز على القلق، الاكتئاب، العلاقات الشخصية، والتوجيه الحياتي. تطبق العلاج المعرفي السلوكي (CBT) والعلاج بالقبول والالتزام (ACT) لدعم العافية النفسية والمرونة الذهنية والنمو الشخصي.",
+    centre: "تشانغامبالي ريميديوم، إدابال",
+    speciality: "أخصائية نفسية استشارية",
+    image: "/images/doctors/hiba_karakkad.jpg",
   },
 ];
 

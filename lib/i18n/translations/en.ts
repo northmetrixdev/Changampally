@@ -328,7 +328,7 @@ export const en = {
       mainCentre: "Main Centre",
       helpline: "Medical Helpline",
       helplineDesc: "For urgent medical queries, speak directly with our care team.",
-      hours: "Available Mon–Sat, 9am–6pm",
+      hours: "Available Mon–Sun, 9am–6pm",
     },
   },
   meta: {

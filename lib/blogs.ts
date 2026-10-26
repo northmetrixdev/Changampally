@@ -108,11 +108,11 @@ export const BLOG_POSTS: BlogPost[] = [
         coverImage: "/images/departments/dept_neurology.png",
         author: {
             name: "Dr. Shahna MT",
-            role: "Ayurveda Physician",
+            role: "HOD - Ayurveda Department and Medical communications",
             dept: "Ayurveda & Medical Communications",
             institute: "Changampally Remedium Integrated Healthcare (CRIH)",
             avatar: "/images/doctors/Dr_shana.png",
-            bio: "Ayurveda physician specializing in psychosomatic disorders, gut health, clinical nutrition, and mind-body wellbeing, with certified training in Ayurveda Nutrition and Smriti Ayurveda Meditation Therapy."
+            bio: "Ayurveda physician with clinical focus in psychosomatic disorders, gut health, clinical nutrition, dermatology, and musculoskeletal disorders. Certified in Ayurveda Nutrition and Smriti Ayurveda Meditation Therapy, with an emphasis on individualized, integrative patient care."
         },
         excerpt:
             "The Ayurvedic tridosha framework presents an interconnected model in which qualities such as heat, dryness, mobility, heaviness, and stability are used to describe aspects of the body, mind, diet, and environment. Can its descriptive structure be compared with synesthesia?",
