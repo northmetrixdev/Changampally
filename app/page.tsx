@@ -5,6 +5,7 @@ import HeroSection from "@/components/organisms/HeroSection";
 import StorySection from "@/components/organisms/StorySection";
 import ServiceSpectrum from "@/components/organisms/ServiceSpectrum";
 import SpecialisationsInteractive from "@/components/organisms/SpecialisationsInteractive";
+import TestimonialsAndStats from "@/components/organisms/TestimonialsAndStats";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import Link from "next/link";
 
@@ -14,15 +15,6 @@ export default function HomePage() {
   useEffect(() => {
     document.title = t("meta.defaultTitle");
   }, [t, locale]);
-
-  const trustMetrics = [
-    { value: "24×7", label: t("home.trustMetrics.emergencyCare") },
-    { value: "120", label: t("home.trustMetrics.beds") },
-    { value: "3", label: t("home.trustMetrics.coreSpecialties") },
-    { value: "50+", label: t("home.trustMetrics.expertPractitioners") },
-    { value: "1300", label: t("home.trustMetrics.estYearAd") },
-    { value: "5", label: t("home.trustMetrics.centresAcrossKerala") },
-  ];
 
   return (
     <>
@@ -36,24 +28,8 @@ export default function HomePage() {
       {/* ── Departments preview ────────────────────────────────────────── */}
       <SpecialisationsInteractive />
 
-      {/* ── Trust metrics ──────────────────────── */}
-      <section
-        className="py-16 md:py-24 bg-sandstone border-y border-plum/10"
-        aria-label={t("common.brandName")}
-      >
-        <ul className="max-w-[1440px] mx-auto auto-rows-max px-6 grid grid-cols-2 lg:grid-cols-6 gap-y-12 md:gap-y-16 gap-x-8" role="list">
-          {trustMetrics.map((metric) => (
-            <li key={metric.label} className="flex flex-col items-center text-center gap-2 md:gap-3">
-              <strong className="font-serif font-light text-3xl md:text-5xl tracking-tight text-plum" style={{ fontFamily: "var(--font-juana)" }}>
-                {metric.value}
-              </strong>
-              <span className="font-sans font-medium text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-taupe leading-tight">
-                {metric.label}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {/* ── Testimonials Carousel & Relocated Numerical Statistics ── */}
+      <TestimonialsAndStats />
 
       {/* ── Doctor message ────────────────────────────────────────────── */}
       <section

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
+import ChatbotWidget from "@/components/molecules/ChatbotWidget";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import SkipNav from "@/components/atoms/SkipNav";
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {children}
             </main>
             <Footer />
+            <ChatbotWidget />
           </SmoothScroll>
         </LanguageProvider>
       </body>

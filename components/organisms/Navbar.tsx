@@ -49,6 +49,8 @@ export default function Navbar() {
             <nav
                 className="relative flex items-center justify-between max-w-[1440px] mx-auto px-6 py-4"
                 aria-label="Main site navigation"
+                dir="ltr"
+                style={{ direction: "ltr" }}
             >
                 {/* Logo wordmark */}
                 <Link href="/" className="flex items-center gap-3 group relative z-10" aria-label={t("nav.ariaHome")}>
@@ -107,7 +109,7 @@ export default function Navbar() {
                 </ul>
 
                 {/* Right side: Language Toggle + Desktop CTA + Mobile Hamburger */}
-                <div className="flex items-center gap-3 md:gap-4 relative z-10">
+                <div className="flex items-center gap-3 md:gap-4 relative z-10" dir="ltr" style={{ direction: "ltr" }}>
                     {/* Language Toggle in Desktop Header */}
                     <div className="hidden sm:block">
                         <LanguageToggle isNavDark={isNavDark} />

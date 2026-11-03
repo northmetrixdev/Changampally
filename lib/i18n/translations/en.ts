@@ -117,6 +117,15 @@ export const en = {
       estYearAd: "Est. Year AD",
       centresAcrossKerala: "Centres Across Kerala",
     },
+    testimonials: {
+      eyebrow: "Patient Experiences & Voices",
+      title: "Stories of Healing & Hope",
+      viewPost: "View Original Post",
+      verifiedBadge: "Verified Social Link",
+      prevSlide: "Previous Testimonial",
+      nextSlide: "Next Testimonial",
+      trustStatsHeading: "Institutional Pillars",
+    },
     physician: {
       eyebrow: "Chief Physician's Message",
       quoteLead: "A person walking into your clinic should not be the reason to treat them. Treat only if you are sure that the person is safe in your hands.",

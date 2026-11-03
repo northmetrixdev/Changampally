@@ -120,6 +120,15 @@ export const ar: Translations = {
       estYearAd: "عام التأسيس م",
       centresAcrossKerala: "مراكز في أنحاء كيرلا",
     },
+    testimonials: {
+      eyebrow: "تجارب المرضى وآراؤهم",
+      title: "قصص الشفاء والأمل",
+      viewPost: "عرض المنشور الأصلي",
+      verifiedBadge: "رابط موثق",
+      prevSlide: "الشهادة السابقة",
+      nextSlide: "الشهادة التالية",
+      trustStatsHeading: "ركائز المؤسسة",
+    },
     physician: {
       eyebrow: "رسالة كبير الأطباء",
       quoteLead: "دخول المريض إلى عيادتك لا ينبغي أن يكون سبباً لعلاجه؛ بل عالجه فقط عندما تتيقن من أنه في أيدٍ أمينة.",

@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "index:rag": "node scripts/build-rag-index.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.34.3",
