@@ -39,8 +39,8 @@ export async function POST(req: NextRequest) {
     }
 
     // ── Vector Similarity Retrieval ────────────────────────────────────
-    // Retrieve top 3-4 most relevant chunks (does NOT send entire website)
-    const retrievedChunks = retrieveRelevantChunks(query, 4);
+    // Retrieve top relevant chunks (does NOT send entire website)
+    const retrievedChunks = retrieveRelevantChunks(query, 6);
     const sourceTitles = retrievedChunks.map((r) => r.chunk.title);
 
     // ── LLM Generation with Context ────────────────────────────────────

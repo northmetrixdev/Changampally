@@ -32,7 +32,7 @@ function tokenizeQuery(text: string): string[] {
 /**
  * Calculates vector cosine similarity between query tokens and pre-indexed chunks.
  */
-export function retrieveRelevantChunks(query: string, topK: number = 4): RetrievalResult[] {
+export function retrieveRelevantChunks(query: string, topK: number = 6): RetrievalResult[] {
   const queryTokens = tokenizeQuery(query);
   if (queryTokens.length === 0) {
     return [];

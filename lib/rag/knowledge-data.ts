@@ -37,44 +37,73 @@ export const KNOWLEDGE_CHUNKS: KnowledgeChunk[] = [
   // 2. CENTRES OF EXCELLENCE (ALL 5 CENTRES)
   // ═════════════════════════════════════════════════════════════════════
   {
+    id: "centres-all-overview",
+    title: "Overview of All 5 Changampally Centres Across Kerala",
+    category: "centre",
+    content: `Changampally operates 5 specialized healing centres across Kerala:
+1. Changampally Remedium (Kandanakam, Edappal, Malappuram): Flagship 120-bed multi-specialty integrated healthcare hospital with 24x7 emergency, Ayurvedic Oncology, PM&R, Happy Moon, and modern diagnostic facilities. Contact: +91 9072 666 103 / 104 / 105.
+2. Changampally Kaivalya (Peringode, Palakkad): Ayurveda village and serene retreat for stress management, sleep disorders, insomnia, obesity, and seasonal detox/Panchakarma. Contact: +91 70251 29232.
+3. Changampally Ayurveda Wellness Centre (Veu, Munnar): Highland heritage retreat for scientific rejuvenation, anti-ageing, immune boosting, and spine care in Munnar's pristine mountain climate. Contact: +91 9072 666 107.
+4. Changampally Vaidya Bhavan (Thirunavaya, Malappuram): Authentic heritage sanctuary for classical Panchakarma, respiratory care, women's health, geriatric wellness, balcony suites, and medicine manufacturing. Contact: +91 8921 043851.
+5. Changampally Sanjeevani (Edappal, Malappuram): Scientific healing retreat set in landscaped grounds with medicinal herbal gardens and meditation pavilions, specializing in arthritis, joint care, and digestive health. Contact: +91 85473 53585.`,
+    keywords: ["all centres", "5 centres", "centres of excellence", "locations", "remedium", "kaivalya", "munnar", "vaidya bhavan", "sanjeevani", "branches", "facilities", "where are centres", "centres", "centers"],
+  },
+  {
     id: "centre-remedium-edappal",
     title: "Changampally Remedium — Integrated Healthcare Hospital (Edappal)",
     category: "centre",
     content: `Changampally Remedium is the flagship multi-specialty integrated healthcare hospital located at Kandanakam, Edappal, Malappuram District, Kerala - 679582. It features 120 hospital beds and 24x7 emergency care. Remedium bridges classical Ayurveda with modern diagnostic precision, housing departments in Ayurvedic Oncology (Cancer Rehabilitation), Psychiatry and Psychology (Happy Moon department), PM&R (Physical Medicine and Rehabilitation), Cosmetooncology, Endocrinology & Metabolic Care, Neurology, Orthopedics, and Chronic Diabetic Wound Care. Contact Phone: Medical Desk: +91 9072 666 103 / +91 9072 666 104 / +91 9072 666 105; Office: +91 9072 666 106. Email: remediumchangampally@gmail.com. Google Maps: Kandanakam, Edappal.`,
-    keywords: ["remedium", "edappal", "kandanakam", "malappuram", "flagship hospital", "120 beds", "24x7", "emergency", "oncology", "contact", "phone"],
+    keywords: ["remedium", "edappal", "kandanakam", "malappuram", "flagship hospital", "120 beds", "24x7", "emergency", "oncology", "contact", "phone", "centres", "centers"],
   },
   {
     id: "centre-kaivalya-peringode",
     title: "Changampally Kaivalya — Ayurveda Village and Retreat (Peringode)",
     category: "centre",
     content: `Changampally Kaivalya is a specialized Ayurveda village and wellness retreat nestled in the serene, lush greenery of Peringode, Kerala. Kaivalya is designed for inpatient recovery, stress alleviation, and deep rejuvenation. Specializations include Stress Management Therapy, Obesity & Metabolism Correction, Insomnia & Sleep Disorder Care, Migraine & Chronic Headache Treatment, and Seasonal Detox & Panchakarma Programmes. It provides tranquil living accommodations, custom Ayurvedic diet plans, and holistic recovery therapies. Contact Phone: +91 70251 29232.`,
-    keywords: ["kaivalya", "peringode", "ayurveda village", "retreat", "stress management", "insomnia", "sleep", "obesity", "migraine", "detox", "phone"],
+    keywords: ["kaivalya", "peringode", "ayurveda village", "retreat", "stress management", "insomnia", "sleep", "obesity", "migraine", "detox", "phone", "centres", "centers"],
   },
   {
     id: "centre-wellness-munnar",
     title: "Changampally Ayurveda Wellness Centre — Heritage Retreat (Munnar)",
     category: "centre",
     content: `Changampally Ayurveda Wellness Centre is a heritage retreat located at Veu in the misty highlands of Munnar, Kerala. Munnar's crisp, cool climate and pristine natural setting provide the ideal setting for Ayurvedic healing. Specializations include Scientific Rejuvenation Packages, Anti-Ageing Therapies, Ayurvedic Beauty & Skin Treatments, Immune Boosting Programmes, and Bone & Spine Care. Guests experience personalised therapies, yoga, meditation, and pure Ayurvedic nutrition. Contact Phone: +91 9072 666 107.`,
-    keywords: ["munnar", "wellness centre", "heritage retreat", "highlands", "veu", "rejuvenation", "anti-ageing", "immune boosting", "spine care", "beauty", "phone"],
+    keywords: ["munnar", "wellness centre", "heritage retreat", "highlands", "veu", "rejuvenation", "anti-ageing", "immune boosting", "spine care", "beauty", "phone", "centres", "centers"],
   },
   {
     id: "centre-vaidya-bhavan-thirunavaya",
     title: "Changampally Vaidya Bhavan — Authentic Ayurvedic Heritage Centre (Thirunavaya)",
     category: "centre",
     content: `Located in Thirunavaya, Malappuram, Changampally Vaidya Bhavan reflects the timeless heritage architecture of the Vaidya family. It serves as an authentic sanctuary for classical Panchakarma therapies (Vamana, Virechana, Vasti, Nasya, Raktamokshana), Respiratory Disorders Management, Women's Health Ayurveda (gynecology, hormonal balance, menopause), Geriatric Care, and Mind-Body Wellness. Accommodations range from standard heritage rooms to air-conditioned suites with private balconies and personalized Ayurvedic catering. Vaidya Bhavan also houses Vedic Age Ayurvedic medicine manufacturing facilities. Contact Phone: +91 8921 043851.`,
-    keywords: ["vaidya bhavan", "thirunavaya", "panchakarma", "respiratory", "women's health", "geriatric", "balcony suites", "heritage", "manufacturing", "phone"],
+    keywords: ["vaidya bhavan", "thirunavaya", "panchakarma", "respiratory", "women's health", "geriatric", "balcony suites", "heritage", "manufacturing", "phone", "centres", "centers"],
   },
   {
     id: "centre-sanjeevani-edappal",
     title: "Changampally Sanjeevani — Scientific Healing Retreat (Edappal)",
     category: "centre",
     content: `Changampally Sanjeevani is a scientific healing retreat situated in Edappal, Kerala. Set amidst tranquil landscaped grounds, Sanjeevani features specialized treatment suites, lush medicinal herbal gardens, a dedicated meditation pavilion, and therapeutic spa amenities. Core clinical areas include Joint Care & Arthritis Management, Digestive Disorders & Gut Health Treatment, Lifestyle Disease Management, and Chronic Skin Disease Treatments. Contact Phone: +91 85473 53585.`,
-    keywords: ["sanjeevani", "edappal", "joint care", "arthritis", "digestive", "skin diseases", "herbal garden", "meditation pavilion", "healing retreat", "phone"],
+    keywords: ["sanjeevani", "edappal", "joint care", "arthritis", "digestive", "skin diseases", "herbal garden", "meditation pavilion", "healing retreat", "phone", "centres", "centers"],
   },
 
   // ═════════════════════════════════════════════════════════════════════
   // 3. DOCTORS & CLINICAL LEADERSHIP (ALL EXPERTS)
   // ═════════════════════════════════════════════════════════════════════
+  {
+    id: "doctors-all-roster",
+    title: "Complete Medical Team & Doctor Roster",
+    category: "doctor",
+    content: `Changampally's clinical faculty comprises over 50 expert physicians across Ayurveda, Modern Allopathic Medicine, and Psychological Sciences. Key medical leaders include:
+1. Dr. Jannathul Firdouse Changampally (BSc, BAMS) — Chief Physician & Chief Consultant in Ayurveda Oncology (30+ years exp, ex-NIMS Trivandrum, OSDD).
+2. Dr. Jibu Gurukkal Changampally (MD Physician) — Allopathic General Physician (13 yrs exp), Medical Director at Orchid Medicity, Head of Ayurvedic Medicine Manufacturing & Export.
+3. Dr. Sajjad Changampally (BAMS, MD) — MD Ayurvedic Psychiatrist, MD of Happy Moon, Secretary AMAI Ponnani, researcher on Nomophobia and cyber psychology.
+4. Dr. Azhar Kalliyath (MBBS, DNB PM&R, MNAMS, FIPM) — Physiatrist & Interventional Pain Management Specialist leading Physical Medicine & Rehabilitation.
+5. Dr. Shani Nebil (BAMS, MSc) — Senior Consultant Physician (12+ yrs exp) at Vaidya Bhavan, specializing in Gynecology, Women's Health & Para-surgical procedures.
+6. Dr. Shahna MT (BAMS, PGDAN, CSAMT) — HOD Ayurveda & Medical Communications, specialist in Ayurvedic Nutrition, Smriti Meditation & Psychosomatic health.
+7. Dr. Najla Gurukkal (BDS) — Dental Surgeon specializing in Dental Oncology, oral mucositis, and cancer restorative dentistry.
+8. Dr. Navyasree E M (BAMS, PGDM, CCCT) — Ayurveda Oncology Consultant, Junior Research Fellow (JRF), and Quality / NABH Coordinator.
+9. Ms. Hiba Karakkad (MSc Clinical Psychology) — Consultant Psychologist at Happy Moon (CBT, ACT, Anxiety & Stress counselling).
+10. Dr. Neethu (BAMS) — Ayurveda Physician at Vaidya Bhavan specializing in Panchakarma and Geriatric wellness.`,
+    keywords: ["all doctors", "doctor roster", "medical team", "physicians", "who are the doctors", "specialists", "faculty", "consultants", "doctors list"],
+  },
   {
     id: "doctor-jannathul-firdouse",
     title: "Dr. Jannathul Firdouse Changampally (BSc, BAMS) — Chief Physician & Oncology Specialist",
@@ -149,6 +178,27 @@ export const KNOWLEDGE_CHUNKS: KnowledgeChunk[] = [
   // ═════════════════════════════════════════════════════════════════════
   // 4. DEPARTMENTS & CLINICAL SPECIALIZATIONS (ALL 14 DEPARTMENTS)
   // ═════════════════════════════════════════════════════════════════════
+  {
+    id: "departments-all-overview",
+    title: "Complete List of All 14 Clinical Departments & Specialties",
+    category: "department",
+    content: `Changampally features 14 specialized clinical departments and 33 sub-specialties:
+1. Oncology & Cancer Rehabilitation (led by Chief Physician Dr. Jannathul Firdouse)
+2. Neurology & Neurorehabilitation (post-stroke, Parkinson's, ALS, MS, memory loss)
+3. Rheumatology & Autoimmune Immunology (RA, SLE, Ankylosing Spondylitis, Psoriasis)
+4. Endocrinology & Metabolism (Diabetes, PCOS, Thyroid disorders, Metabolic Syndrome)
+5. Cardiology & Vascular Medicine (Hypertension, CAD support, Dyslipidemia)
+6. Gastroenterology & Hepatology (IBS, GERD, Colitis, Liver Cirrhosis, Fatty Liver)
+7. Psychiatry, Psychology & Happy Moon (MD Ayurvedic Psychiatry, CBT, Nomophobia, Depression, Anxiety)
+8. Pulmonology & Respiratory Medicine (COPD, Asthma, Bronchitis, Sinusitis)
+9. Orthopedics, Spine & Musculoskeletal Care (Osteoarthritis, Sciatica, Disc Prolapse, Spondylosis)
+10. Physical Medicine & Rehabilitation / PM&R (Interventional Pain, Sports injury, Neuro-rehab, led by Dr. Azhar Kalliyath)
+11. Dermatology & Chronic Diabetic Wound Care (Psoriasis, Eczema, Diabetic Foot ulcers)
+12. Dental Oncology & Oral Health (Mucositis, radiation oral care, led by Dr. Najla Gurukkal)
+13. Ophthalmology & Vision Care (Glaucoma, Netra Tarpana, Dry Eyes, Myopia)
+14. Hematology & Blood Health (Thrombocytopenia, Anemia, Bone marrow rejuvenation)`,
+    keywords: ["all departments", "14 departments", "specialties", "clinical services", "departments list", "what departments", "medical services", "treatments offered"],
+  },
   {
     id: "dept-oncology",
     title: "Department of Oncology & Cancer Rehabilitation",

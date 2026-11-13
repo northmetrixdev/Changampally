@@ -24,7 +24,7 @@ async function callGemini(model: string, contents: any[], apiKey: string, timeou
         contents,
         generationConfig: {
           temperature: 0.2,
-          maxOutputTokens: 600,
+          maxOutputTokens: 1200,
         },
       }),
       signal: controller.signal,
