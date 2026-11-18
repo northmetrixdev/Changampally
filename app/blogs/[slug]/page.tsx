@@ -23,10 +23,10 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
         title: `${post.title} — Changampally Insights`,
         description: post.excerpt,
         alternates: {
-            canonical: `https://www.changampally.com/blogs/${post.slug}`,
+            canonical: `/blogs/${post.slug}`,
             languages: {
-                en: `https://www.changampally.com/blogs/${post.slug}`,
-                ar: `https://www.changampally.com/blogs/${post.slug}?lang=ar`,
+                en: `/blogs/${post.slug}`,
+                ar: `/blogs/${post.slug}?lang=ar`,
             },
         },
     };

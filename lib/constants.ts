@@ -20,6 +20,9 @@ import type {
 // Site Metadata — verified
 // ---------------------------------------------------------------------------
 
+export const SITE_URL = (
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.changampally.com"
+).replace(/\/$/, "");
 export const SITE_NAME = "Changampally";
 export const SITE_TAGLINE = "Centre of Excellence in Intricate Disorders";
 export const SITE_DESCRIPTION =
@@ -35,7 +38,7 @@ export const CONTACT = {
     phoneMedical2: "+91 9072666105",
     phoneOffice: "+91 9072666104",
     email: "remediumchangampally@gmail.com",
-    website: "https://www.changampally.com",
+    website: SITE_URL,
     shop: "https://www.changampallyonline.com",
 };
 

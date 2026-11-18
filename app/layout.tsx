@@ -7,7 +7,8 @@ import SmoothScroll from "@/components/providers/SmoothScroll";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import SkipNav from "@/components/atoms/SkipNav";
 import StructuredData from "@/components/atoms/StructuredData";
-import { SITE_NAME, SITE_TAGLINE, SITE_DESCRIPTION } from "@/lib/constants";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { SITE_URL, SITE_NAME, SITE_TAGLINE, SITE_DESCRIPTION } from "@/lib/constants";
 import "./globals.css";
 
 const inter = Inter({
@@ -17,6 +18,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: { default: `${SITE_NAME} — ${SITE_TAGLINE}`, template: `%s · ${SITE_NAME}` },
   description: SITE_DESCRIPTION,
   keywords: ["Ayurveda", "Integrative Medicine", "Panchakarma", "Kerala", "Holistic Healthcare", "الأيورفيدا", "كيرلا", "الطب التكاملي"],
@@ -28,11 +30,11 @@ export const metadata: Metadata = {
     apple: "/assets/Changampally Remedium_logo.png",
   },
   alternates: {
-    canonical: "https://www.changampally.com",
+    canonical: "/",
     languages: {
-      "en": "https://www.changampally.com",
-      "ar": "https://www.changampally.com?lang=ar",
-      "x-default": "https://www.changampally.com",
+      "en": "/",
+      "ar": "/?lang=ar",
+      "x-default": "/",
     },
   },
   openGraph: {
@@ -62,6 +64,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <ChatbotWidget />
           </SmoothScroll>
         </LanguageProvider>
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
       </body>
     </html>
   );

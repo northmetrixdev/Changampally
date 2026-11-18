@@ -1,5 +1,6 @@
 "use client";
 
+import { SITE_URL } from "@/lib/constants";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function StructuredData() {
@@ -11,8 +12,8 @@ export default function StructuredData() {
     name: t("common.brandName"),
     alternateName: locale === "ar" ? "Changampally" : "تشانغامبالي",
     description: t("common.brandDescription"),
-    url: "https://www.changampally.com",
-    logo: "https://www.changampally.com/assets/Changampally%20Remedium_logo.png",
+    url: SITE_URL,
+    logo: `${SITE_URL}/assets/Changampally%20Remedium_logo.png`,
     foundingDate: "1300",
     telephone: "+91-9072666104",
     email: "remediumchangampally@gmail.com",
