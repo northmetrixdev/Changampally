@@ -23,10 +23,10 @@ export async function generateMetadata({ params }: CentrePageProps) {
         title: `${centre.name} | Changampally`,
         description: centre.description,
         alternates: {
-            canonical: `https://www.changampally.com/centres/${centre.anchor}`,
+            canonical: `/centres/${centre.anchor}`,
             languages: {
-                en: `https://www.changampally.com/centres/${centre.anchor}`,
-                ar: `https://www.changampally.com/centres/${centre.anchor}?lang=ar`,
+                en: `/centres/${centre.anchor}`,
+                ar: `/centres/${centre.anchor}?lang=ar`,
             },
         },
     };

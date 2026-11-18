@@ -1,9 +1,9 @@
 import { MetadataRoute } from "next";
-import { CENTRES } from "@/lib/constants";
+import { CENTRES, SITE_URL } from "@/lib/constants";
 import { BLOG_POSTS } from "@/lib/blogs";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.changampally.com";
+  const baseUrl = SITE_URL;
 
   const staticRoutes = [
     "",
