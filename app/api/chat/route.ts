@@ -12,6 +12,9 @@ import { ChatRequest, ChatResponse } from "@/lib/rag/types";
 const UNAVAILABLE_MESSAGE =
   "The chatbot is currently unavailable. We apologize for the inconvenience and appreciate your patience.";
 
+// Gemini can take >10s; allow room for primary + fallback calls.
+export const maxDuration = 60;
+
 export async function POST(req: NextRequest) {
   try {
     const apiKey = process.env.GEMINI_API_KEY?.trim();

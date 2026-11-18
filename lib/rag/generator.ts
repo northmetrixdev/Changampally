@@ -111,11 +111,11 @@ ${contextText}`;
 
   // Try primary model first, with fallback to lite model
   try {
-    return await callGemini(PRIMARY_MODEL, contents, apiKey, 10000);
+    return await callGemini(PRIMARY_MODEL, contents, apiKey, 25000);
   } catch (primaryErr) {
     console.warn(`Primary model (${PRIMARY_MODEL}) failed, trying fallback (${FALLBACK_MODEL})...`, primaryErr);
     try {
-      return await callGemini(FALLBACK_MODEL, contents, apiKey, 10000);
+      return await callGemini(FALLBACK_MODEL, contents, apiKey, 20000);
     } catch (fallbackErr) {
       console.error(`Fallback model (${FALLBACK_MODEL}) also failed:`, fallbackErr);
       throw fallbackErr;
