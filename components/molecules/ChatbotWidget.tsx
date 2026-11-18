@@ -33,10 +33,13 @@ export default function ChatbotWidget() {
   const [messages, setMessages] = useState<Message[]>([INITIAL_WELCOME_MESSAGE]);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    // Scroll only the chat container (scrollIntoView would also scroll the page)
+    const el = scrollContainerRef.current;
+    if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -172,7 +175,11 @@ export default function ChatbotWidget() {
             </div>
 
             {/* ── Conversation Area with 20% Opacity Logo Watermark ──── */}
-            <div className="relative flex-1 p-4 sm:p-5 overflow-y-auto space-y-4 bg-sandstone/30">
+            <div
+              ref={scrollContainerRef}
+              data-lenis-prevent
+              className="relative flex-1 min-h-0 p-4 sm:p-5 overflow-y-auto overscroll-contain space-y-4 bg-sandstone/30"
+            >
               
               {/* Subtle Logo Watermark (20% Opacity, Preserved Aspect Ratio) */}
               <div

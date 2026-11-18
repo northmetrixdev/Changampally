@@ -6,8 +6,9 @@
 
 import { ChatMessage, RetrievalResult } from "./types";
 
-const PRIMARY_MODEL = "gemini-3.5-flash";
-const FALLBACK_MODEL = "gemini-3.5-flash-lite";
+// Flash-Lite answers in ~3s; Flash "thinks" for 10-20s, too slow for chat. Use it only as fallback.
+const PRIMARY_MODEL = "gemini-3.5-flash-lite";
+const FALLBACK_MODEL = "gemini-3.5-flash";
 
 async function callGemini(model: string, contents: any[], apiKey: string, timeoutMs: number = 10000): Promise<string> {
   const controller = new AbortController();
@@ -111,11 +112,11 @@ ${contextText}`;
 
   // Try primary model first, with fallback to lite model
   try {
-    return await callGemini(PRIMARY_MODEL, contents, apiKey, 25000);
+    return await callGemini(PRIMARY_MODEL, contents, apiKey, 15000);
   } catch (primaryErr) {
     console.warn(`Primary model (${PRIMARY_MODEL}) failed, trying fallback (${FALLBACK_MODEL})...`, primaryErr);
     try {
-      return await callGemini(FALLBACK_MODEL, contents, apiKey, 20000);
+      return await callGemini(FALLBACK_MODEL, contents, apiKey, 30000);
     } catch (fallbackErr) {
       console.error(`Fallback model (${FALLBACK_MODEL}) also failed:`, fallbackErr);
       throw fallbackErr;
